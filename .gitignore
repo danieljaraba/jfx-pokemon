@@ -1,0 +1,8 @@
+#Files of IntelliJ IDEA
+.idea/*
+snakes-and-ladders.iml
+
+#Files of Eclipse IDE
+.settings/*
+.classpath
+.project

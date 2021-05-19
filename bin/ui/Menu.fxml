@@ -12,7 +12,7 @@
    <children>
       <Pane layoutX="43.0" layoutY="200.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('/img/wallpaper/portada.jpg'); -fx-background-size: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox layoutX="122.0" layoutY="200.0" prefHeight="280.0" prefWidth="300.0">
+            <VBox layoutX="122.0" layoutY="200.0" prefHeight="342.0" prefWidth="334.0">
                <children>
                   <JFXButton alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="300.0" ripplerFill="RED" styleClass="buttonNewGame" stylesheets="@../../style/Style.css" text="New Game" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -25,6 +25,21 @@
                      </font>
                   </JFXButton>
                   <JFXButton alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="500.0" ripplerFill="RED" styleClass="buttonScore" stylesheets="@../../style/Style.css" text="Score" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="500.0" ripplerFill="RED" styleClass="buttonScore" stylesheets="@../../style/Style.css" text="Credits" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="500.0" ripplerFill="RED" styleClass="buttonScore" stylesheets="@../../style/Style.css" text="Options" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="500.0" ripplerFill="RED" styleClass="buttonScore" stylesheets="@../../style/Style.css" text="Exit" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>

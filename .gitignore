@@ -1,6 +1,6 @@
 #Files of IntelliJ IDEA
 .idea/*
-snakes-and-ladders.iml
+jfx-pokemon.iml
 
 #Files of Eclipse IDE
 .settings/*

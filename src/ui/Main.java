@@ -5,6 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
+import model.classes.Music;
+import thread.MusicThread;
+
+import java.applet.AudioClip;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * Pokemon Game.
@@ -42,12 +51,15 @@ public class Main extends Application {
         primaryStage.setTitle("POKÉMON");
         primaryStage.show();
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
         fxmlLoader1.setController(masterGUI);
         Parent loginPane = fxmlLoader1.load();
         masterGUI.getBorderPane().setCenter(loginPane);
 
-
-
+        /*
+        AudioClip sound;
+        sound = java.applet.Applet.newAudioClip(getClass().getResource("/music/retro.wav"));
+        sound.play();
+        */
     }
 }

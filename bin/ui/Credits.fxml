@@ -2,8 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -51,17 +51,35 @@
                   <Font name="System Bold Italic" size="72.0" />
                </font>
             </Label>
-            <VBox layoutX="290.0" layoutY="260.0" prefHeight="200.0" prefWidth="370.0">
+            <VBox alignment="CENTER" layoutX="455.0" layoutY="284.0" prefHeight="200.0" prefWidth="468.0">
                <children>
-                  <Label text="Camilo Campaz Jimenez">
-                     <graphic>
-                        <Hyperlink onAction="#link" text="Link" />
-                     </graphic>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Camilo Campaz Jimenez" textAlignment="CENTER" textFill="#ff00ae">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
                   </Label>
-                  <Label text="Camilo González Velasco" />
-                  <Label text="Daniel Esteban Jaraba Gaviria" />
-                  <Label text="Johan Stiven Ricardo Sibaja" />
+                  <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Camilo González Velasco" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Daniel Esteban Jaraba Gaviria" textAlignment="CENTER" textFill="#6500ff">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Johan Stiven Ricardo Sibaja" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
                </children>
+               <effect>
+                  <Glow />
+               </effect>
             </VBox>
          </children></Pane>
    </children>

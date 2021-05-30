@@ -350,10 +350,8 @@ public class MasterGUI {
         return change;
     }
 
-    @FXML
-    public void link(ActionEvent event) {
 
-    }
+
 
 
 

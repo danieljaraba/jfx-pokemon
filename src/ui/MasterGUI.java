@@ -105,7 +105,7 @@ public class MasterGUI {
      */
     @FXML
     public void btOptionsMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Options.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Options.fxml"));
         fxmlLoader.setController(this);
         Parent optionsPane = fxmlLoader.load();
 
@@ -120,7 +120,7 @@ public class MasterGUI {
      */
     @FXML
     public void btScoreMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Score.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Score.fxml"));
         fxmlLoader.setController(this);
         Parent scorePane = fxmlLoader.load();
 

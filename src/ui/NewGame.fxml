@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="43.0" layoutY="200.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('/img/wallpaper/portada.jpg'); -fx-background-size: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,7 +24,7 @@
             </ImageView>
             <VBox layoutX="100.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="140.0" styleClass="buttonAdventureNewGame" stylesheets="@../../style/Style.css" text="Adventure" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btnAdventureNewGame" prefHeight="40.0" prefWidth="140.0" styleClass="buttonAdventureNewGame" stylesheets="@../../style/Style.css" text="Adventure" textAlignment="CENTER" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>

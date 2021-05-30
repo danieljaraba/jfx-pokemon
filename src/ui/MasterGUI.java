@@ -37,6 +37,7 @@ public class MasterGUI {
 
 
     //TODO buscar una clase para que sesa la principal del modelo
+    // TODO rangos para cambiar de mapa
     /**
      * Instantiates a new Master gui.
      */
@@ -258,6 +259,7 @@ public class MasterGUI {
                                    choices.add("pueblo: 3");
                     break;
             }
+
             ChoiceDialog<String> dialog = new ChoiceDialog<>(null, choices);
             dialog.setTitle("Where to go?");
             dialog.setHeaderText("Look, make a choice");
@@ -271,12 +273,14 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[0];
+                   village1.requestFocus();
                }else if(result.get().equals("pueblo: 2")){
                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village2.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[1];
+                   village1.requestFocus();
 
                }else if(result.get().equals("pueblo: 3")){
                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village3.fxml"));
@@ -284,14 +288,15 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[2];
+                   village1.requestFocus();
 
                }else {
                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village4.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
-
                    current = villages[3];
+                   village1.requestFocus();
 
                }
             }
@@ -335,7 +340,7 @@ public class MasterGUI {
 
     public boolean checkPosition(){
         boolean change = false;
-        if (imgPlayerAllVillages.getLayoutX() == -10.0 && imgPlayerAllVillages.getLayoutY() ==142.0){
+        if (imgPlayerAllVillages.getLayoutX() == 7.0 && imgPlayerAllVillages.getLayoutY() ==148.0){
             change = true;
 
         }else if(imgPlayerAllVillages.getLayoutX() == 473.0 && imgPlayerAllVillages.getLayoutY() ==337.0){
@@ -345,10 +350,10 @@ public class MasterGUI {
         return change;
     }
 
-   /* @FXML
+    @FXML
     public void link(ActionEvent event) {
 
-    }*/
+    }
 
 
 

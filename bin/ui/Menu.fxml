@@ -19,7 +19,7 @@
          <children>
             <VBox layoutX="158.0" layoutY="210.0" prefHeight="342.0" prefWidth="334.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="300.0" styleClass="buttonNewGame" stylesheets="@../../style/Style.css" text="New Game" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btNewGameMenu" prefHeight="50.0" prefWidth="300.0" styleClass="buttonNewGame" stylesheets="@../../style/Style.css" text="New Game" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -36,7 +36,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator prefHeight="5.0" prefWidth="200.0" visible="false" />
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="300.0" styleClass="buttonLoadGame" stylesheets="@../../style/Style.css" text="Load Game" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btLoadGameMenu" prefHeight="50.0" prefWidth="300.0" styleClass="buttonLoadGame" stylesheets="@../../style/Style.css" text="Load Game" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -53,7 +53,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator prefHeight="5.0" prefWidth="200.0" visible="false" />
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="50.0" prefWidth="300.0" styleClass="buttonScore" stylesheets="@../../style/Style.css" text="Score" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btScoreMenu" prefHeight="50.0" prefWidth="300.0" styleClass="buttonScore" stylesheets="@../../style/Style.css" text="Score" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -70,7 +70,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator prefHeight="5.0" prefWidth="200.0" visible="false" />
-                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="300.0" styleClass="buttonCredits" stylesheets="@../../style/Style.css" text="Credits" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" onAction="#btCreditsMenu" prefHeight="50.0" prefWidth="300.0" styleClass="buttonCredits" stylesheets="@../../style/Style.css" text="Credits" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -87,7 +87,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator prefHeight="5.0" prefWidth="200.0" visible="false" />
-                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="300.0" styleClass="buttonOptions" stylesheets="@../../style/Style.css" text="Options" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="160.0" onAction="#btOptionsMenu" prefHeight="50.0" prefWidth="300.0" styleClass="buttonOptions" stylesheets="@../../style/Style.css" text="Options" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -104,7 +104,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator prefHeight="5.0" prefWidth="200.0" visible="false" />
-                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="300.0" styleClass="buttonExit" stylesheets="@../../style/Style.css" text="Exit" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="210.0" onAction="#btExitMenu" prefHeight="50.0" prefWidth="300.0" styleClass="buttonExit" stylesheets="@../../style/Style.css" text="Exit" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>

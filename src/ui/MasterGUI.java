@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -28,6 +29,11 @@ public class MasterGUI {
     private Village[] villages;
     private Village current;
     public final static double STEP = 8;
+    int down = 0;
+    int up = 0;
+    int left = 0;
+    int right = 0;
+
 
 
     //TODO buscar una clase para que sesa la principal del modelo
@@ -44,6 +50,12 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Bt credits menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btCreditsMenu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Credits.fxml"));
@@ -70,6 +82,12 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Bt new game menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btNewGameMenu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/NewGame.fxml"));
@@ -79,24 +97,42 @@ public class MasterGUI {
         borderPane.setCenter(newGamePane);
     }
 
+    /**
+     * Bt options menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btOptionsMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Credits.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Options.fxml"));
         fxmlLoader.setController(this);
         Parent optionsPane = fxmlLoader.load();
 
         borderPane.setCenter(optionsPane);
     }
 
+    /**
+     * Bt score menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btScoreMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Credits.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Score.fxml"));
         fxmlLoader.setController(this);
         Parent scorePane = fxmlLoader.load();
 
         borderPane.setCenter(scorePane);
     }
 
+    /**
+     * Bt to back credits pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btToBackCreditsPane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
@@ -106,6 +142,12 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Bt to back options pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btToBackOptionsPane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
@@ -115,6 +157,12 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Bt to back new game pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btToBackNewGamePane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
@@ -132,6 +180,7 @@ public class MasterGUI {
         borderPane.setCenter(village1);
         current = villages[0];
         village1.requestFocus();
+
     }
 
     //metodo funciona en todas las pantallas que sean un mapa
@@ -143,16 +192,48 @@ public class MasterGUI {
 
         if(event.getCode() == KeyCode.UP){
             moveUp();
+            up++;
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_1.png"));
+            if(up%2==0){
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_2.png"));
+            }
+            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_rest.png"));
+
         }
+
         if(event.getCode() == KeyCode.DOWN){
             moveDown();
+            down++;
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_1.png"));
+            if(down%2==0) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_2.png"));
+
+            }
+            //Permanecer quieto despues de moverse (seria buena idea hacerlo con hilos cada cierto tiempo)
+            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+
 
         }
         if(event.getCode() == KeyCode.LEFT){
             moveLeft();
+            left++;
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_1.png"));
+            if(left%2==0){
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_2.png"));
+            }
+            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_rest.png"));
+
         }
+
         if(event.getCode() == KeyCode.RIGHT){
             moveRight();
+            right++;
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_1.png"));
+            if(right%2==0){
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_2.png"));
+            }
+            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_rest.png"));
+
         }
 
         if (checkPosition()){
@@ -268,6 +349,12 @@ public class MasterGUI {
         }
         return change;
     }
+
+    @FXML
+    public void link(ActionEvent event) {
+
+    }
+
 
 
 

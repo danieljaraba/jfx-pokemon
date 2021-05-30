@@ -35,6 +35,36 @@
     -fx-border-width: 0px 0px 0px 5px;
 }
 
+.buttonToBackOptions:hover{
+    -fx-background-color: GRAY;
+    -fx-border-color: RED;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
+.buttonToBackCredits:hover{
+    -fx-background-color: GRAY;
+    -fx-border-color: RED;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
+.buttonToBackNewGame:hover{
+    -fx-background-color: GRAY;
+    -fx-border-color: RED;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
+.buttonAdventureNewGame:hover{
+    -fx-background-color: GRAY;
+    -fx-border-color: RED;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
+.buttonTournamentNewGame{
+    -fx-background-color: GRAY;
+    -fx-border-color: RED;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
 .buttonNewGame {
     -fx-border-radius: 40px;
     -fx-border-width: 2px 2px 2px 2px;
@@ -78,6 +108,46 @@
 }
 
 .buttonExit{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.buttonToBackCredits{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.buttonToBackOptions{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.buttonToBackNewGame{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.buttonAdventureNewGame{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.buttonTournamentNewGame{
     -fx-border-radius: 40px;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-color: #EFB810;

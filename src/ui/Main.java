@@ -42,7 +42,7 @@ public class Main extends Application {
         primaryStage.setTitle("POKÉMON");
         primaryStage.show();
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
         fxmlLoader1.setController(masterGUI);
         Parent loginPane = fxmlLoader1.load();
         masterGUI.getBorderPane().setCenter(loginPane);

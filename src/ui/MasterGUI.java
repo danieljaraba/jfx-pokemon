@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.Village;
+import model.classes.Village;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class MasterGUI {
 
     @FXML
     public void btNewGameMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewGame.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/NewGame.fxml"));
         fxmlLoader.setController(this);
         Parent newGamePane = fxmlLoader.load();
 
@@ -99,7 +99,7 @@ public class MasterGUI {
 
     @FXML
     public void btToBackCreditsPane(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
 
@@ -108,7 +108,7 @@ public class MasterGUI {
 
     @FXML
     public void btToBackOptionsPane(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
 
@@ -117,7 +117,7 @@ public class MasterGUI {
 
     @FXML
     public void btToBackNewGamePane(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
 
@@ -126,7 +126,7 @@ public class MasterGUI {
 
     @FXML
     public void btnAdventureNewGame(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village1.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village1.fxml"));
         fxmlLoader.setController(this);
         Parent village1 = fxmlLoader.load();
         borderPane.setCenter(village1);
@@ -187,14 +187,14 @@ public class MasterGUI {
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
                if (result.get().equals("pueblo: 1")){
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village1.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village1.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[0];
                    village1.requestFocus();
                }else if(result.get().equals("pueblo: 2")){
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village2.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village2.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
@@ -202,7 +202,7 @@ public class MasterGUI {
                    village1.requestFocus();
 
                }else if(result.get().equals("pueblo: 3")){
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village3.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village3.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
@@ -210,7 +210,7 @@ public class MasterGUI {
                    village1.requestFocus();
 
                }else {
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("village4.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village4.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);

@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,9 +23,9 @@
                   <Image url="@../img/wallpaper/titleDark.png" />
                </image>
             </ImageView>
-            <VBox layoutX="99.0" layoutY="459.0" prefHeight="58.0" prefWidth="151.0">
+            <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackCreditsPane" prefHeight="89.0" prefWidth="334.0" styleClass="buttonToBackCredits" stylesheets="@../../style/Style.css" text="To Back" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackCreditsPane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackCredits" stylesheets="@../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>
@@ -43,6 +45,23 @@
                <effect>
                   <Glow />
                </effect>
+            </VBox>
+            <Label layoutX="689.0" layoutY="52.0" text="Credits" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="72.0" />
+               </font>
+            </Label>
+            <VBox layoutX="290.0" layoutY="260.0" prefHeight="200.0" prefWidth="370.0">
+               <children>
+                  <Label text="Camilo Campaz Jimenez">
+                     <graphic>
+                        <Hyperlink onAction="#link" text="Link" />
+                     </graphic>
+                  </Label>
+                  <Label text="Camilo González Velasco" />
+                  <Label text="Daniel Esteban Jaraba Gaviria" />
+                  <Label text="Johan Stiven Ricardo Sibaja" />
+               </children>
             </VBox>
          </children></Pane>
    </children>

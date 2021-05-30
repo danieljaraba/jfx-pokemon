@@ -29,6 +29,11 @@ public class MasterGUI {
     private Village[] villages;
     private Village current;
     public final static double STEP = 8;
+    int down = 0;
+    int up = 0;
+    int left = 0;
+    int right = 0;
+
 
 
     //TODO buscar una clase para que sesa la principal del modelo
@@ -99,7 +104,7 @@ public class MasterGUI {
      */
     @FXML
     public void btOptionsMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Credits.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Options.fxml"));
         fxmlLoader.setController(this);
         Parent optionsPane = fxmlLoader.load();
 
@@ -186,22 +191,48 @@ public class MasterGUI {
 
         if(event.getCode() == KeyCode.UP){
             moveUp();
+            up++;
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_1.png"));
+            if(up%2==0){
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_2.png"));
+            }
+            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_rest.png"));
+
         }
+
         if(event.getCode() == KeyCode.DOWN){
             moveDown();
-
+            down++;
             imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_1.png"));
+            if(down%2==0) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_2.png"));
 
-            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_2.png"));
-
+            }
+            //Permanecer quieto despues de moverse (seria buena idea hacerlo con hilos cada cierto tiempo)
             //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+
 
         }
         if(event.getCode() == KeyCode.LEFT){
             moveLeft();
+            left++;
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_1.png"));
+            if(left%2==0){
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_2.png"));
+            }
+            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_rest.png"));
+
         }
+
         if(event.getCode() == KeyCode.RIGHT){
             moveRight();
+            right++;
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_1.png"));
+            if(right%2==0){
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_2.png"));
+            }
+            //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_rest.png"));
+
         }
 
         if (checkPosition()){
@@ -313,6 +344,12 @@ public class MasterGUI {
         }
         return change;
     }
+
+   /* @FXML
+    public void link(ActionEvent event) {
+
+    }*/
+
 
 
 

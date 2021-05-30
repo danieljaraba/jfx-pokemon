@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,9 +23,9 @@
                   <Image url="@../img/wallpaper/titleDark.png" />
                </image>
             </ImageView>
-            <VBox layoutX="59.0" layoutY="479.0" prefHeight="72.0" prefWidth="182.0">
+            <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackOptionsPane" prefHeight="48.0" prefWidth="185.0" styleClass="buttonToBackOptions" stylesheets="@../../style/Style.css" text="To Back " textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackOptionsPane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackOptions" stylesheets="@../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -44,6 +46,17 @@
                   <Glow />
                </effect>
             </VBox>
+            <JFXSlider layoutX="580.0" layoutY="264.0" prefHeight="30.0" prefWidth="160.0" />
+            <Label alignment="BASELINE_LEFT" layoutX="427.0" layoutY="271.0" text="Music" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="660.0" layoutY="52.0" text="Options" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="72.0" />
+               </font>
+            </Label>
          </children></Pane>
    </children>
 </AnchorPane>

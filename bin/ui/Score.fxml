@@ -26,7 +26,7 @@
             </ImageView>
             <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackCreditsPane" prefHeight="89.0" prefWidth="334.0" styleClass="buttonToBackScore" stylesheets="@../../style/Style.css" text="Bact To Menu" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackCreditsPane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackScore" stylesheets="@../../style/Style.css" text="Bact To Menu" textAlignment="CENTER" textFill="WHITE">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>

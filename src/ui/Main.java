@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *Pokémon Game.
+ * Pokemon Game.
  * @author Camilo Campaz.
  * @author Camilo González.
  * @author Daniel Jaraba.
@@ -15,10 +15,8 @@ import javafx.stage.Stage;
  * @since May 2021
  * @version 1.0
  */
-public class Main extends Application{
-
+public class Main extends Application {
     //Relationship.
-
     private MasterGUI masterGUI;
 
     public Main() {
@@ -34,7 +32,6 @@ public class Main extends Application{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
 
         fxmlLoader.setController(masterGUI);
-
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
@@ -46,6 +43,7 @@ public class Main extends Application{
         fxmlLoader1.setController(masterGUI);
         Parent loginPane = fxmlLoader1.load();
         masterGUI.getBorderPane().setCenter(loginPane);
+
 
 
     }

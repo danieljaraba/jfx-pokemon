@@ -24,7 +24,7 @@
             </ImageView>
             <VBox layoutX="100.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="140.0" styleClass="buttonAdventureNewGame" stylesheets="@../../style/Style.css" text="Adventure" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btnAdventureNewGame" prefHeight="40.0" prefWidth="140.0" styleClass="buttonAdventureNewGame" stylesheets="@../../style/Style.css" text="Adventure" textAlignment="CENTER" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>

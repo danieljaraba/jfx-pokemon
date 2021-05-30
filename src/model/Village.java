@@ -2,9 +2,14 @@ package model;
 
 public class Village extends World{
 
-    private String img;
+    private String name;
 
-    public Village(double height, double width, int wildPokemons) {
+    public Village(double height, double width, int wildPokemons, String name) {
         super(height, width, wildPokemons);
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

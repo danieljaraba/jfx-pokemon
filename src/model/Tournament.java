@@ -1,8 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-
-import Thread.PokemonTrainnerThread;
+import thread.PokemonTrainnerThread;
 
 public class Tournament implements Autoplaying{
 

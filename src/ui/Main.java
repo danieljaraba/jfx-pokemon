@@ -35,6 +35,9 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
+        scene.getRoot().requestFocus();
+
+
         primaryStage.setScene(scene);
         primaryStage.setTitle("POKÉMON");
         primaryStage.show();

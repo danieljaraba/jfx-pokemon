@@ -59,11 +59,18 @@
     -fx-border-width: 0px 0px 0px 5px;
 }
 
-.buttonTournamentNewGame{
+.buttonTournamentNewGame:hover{
     -fx-background-color: GRAY;
     -fx-border-color: RED;
     -fx-border-width: 0px 0px 0px 5px;
 }
+
+.buttonToBackScore:hover{
+    -fx-background-color: GRAY;
+    -fx-border-color: RED;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
 
 .buttonNewGame {
     -fx-border-radius: 40px;
@@ -154,3 +161,19 @@
     -fx-background-color: #1D1B20;
     -fx-background-radius: 40px;
 }
+
+.buttonToBackScore{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.tvScore{
+    -fx-background-color: transparent;
+    -fx-text-fill: WHITE;
+
+}
+
+

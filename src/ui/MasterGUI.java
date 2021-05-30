@@ -23,6 +23,12 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Bt credits menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btCreditsMenu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Credits.fxml"));
@@ -50,6 +56,12 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Bt new game menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btNewGameMenu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewGame.fxml"));
@@ -59,6 +71,12 @@ public class MasterGUI {
         borderPane.setCenter(newGamePane);
     }
 
+    /**
+     * Bt options menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btOptionsMenu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Credits.fxml"));
@@ -68,15 +86,27 @@ public class MasterGUI {
         borderPane.setCenter(optionsPane);
     }
 
+    /**
+     * Bt score menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btScoreMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Credits.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Score.fxml"));
         fxmlLoader.setController(this);
         Parent scorePane = fxmlLoader.load();
 
         borderPane.setCenter(scorePane);
     }
 
+    /**
+     * Bt to back credits pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btToBackCreditsPane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
@@ -86,6 +116,12 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Bt to back options pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btToBackOptionsPane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
@@ -95,6 +131,12 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Bt to back new game pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btToBackNewGamePane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));

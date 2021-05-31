@@ -11,6 +11,7 @@
 
 
 - **¡Here Link!: [Previus Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo.pdf)**
+- **¡Here Link #2!: [Second Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo2.pdf)**
 
 ## <b> _Built with_ </b> 🛠️
 + [Java](https://www.oracle.com/co/java/technologies/javase/javase-jdk8-downloads.html) - Programming language used.
@@ -21,7 +22,22 @@
 ## <b> _Overview_ </b>
 
 
-<img src = "https://user-images.githubusercontent.com/69222739/118749515-47a08380-b823-11eb-9891-8fd3089a59d5.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848746205349019678/unknown.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848746301751033898/unknown.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848746464724516894/unknown.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848746651647475752/unknown.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848747000484855808/unknown.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848747056532422736/unknown.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848747118440349716/unknown.png" width="600px" height="400px">
+<img src = "https://cdn.discordapp.com/attachments/753000876494290995/848747166083710997/unknown.png" width="600px" height="400px">
+
+## <b> _Updates:_ </b>
+
+Functional requirements working:
+
++ **Music**
++ **Collisions**
++ **Map travel**
 
 
 ***<h2>coming soon....***<h2/> <br>

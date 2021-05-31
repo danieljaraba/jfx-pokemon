@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.classes.Village;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +48,13 @@ public class MasterGUI {
             System.out.println(villages[i].getName()); //validacion
         }
         villages[0].addObject(365,430,35,90, false);
+
+
+
     }
+
+
+
 
     /**
      * Bt credits menu.
@@ -64,6 +69,8 @@ public class MasterGUI {
         Parent creditsPane = fxmlLoader.load();
 
         borderPane.setCenter(creditsPane);
+
+
     }
 
     /**
@@ -369,6 +376,11 @@ public class MasterGUI {
         }
         return change;
     }
+
+
+
+
+
 
 
 

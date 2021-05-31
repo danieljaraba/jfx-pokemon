@@ -48,7 +48,24 @@ public class MasterGUI {
             villages[i] = new Village(34,45,10,"pueblo: "+(i+1), 5);
             System.out.println(villages[i].getName()); //validacion
         }
-        villages[0].addObject(365,430,35,90, false);
+        villages[0].addObject(110,250,35,115, false);
+        villages[0].addObject(420,570,30,90, false);
+        villages[0].addObject(810,950,35,115, false);
+        villages[0].addObject(1120,1270,35,115, false);
+        villages[0].addObject(140,290,215,295, false);
+        villages[0].addObject(465,605,210,290, false);
+        villages[0].addObject(840,990,215,295, false);
+        villages[0].addObject(1165,1305,210,290, false);
+
+        villages[0].addObject(110,250,435,515, false);
+        villages[0].addObject(420,570,430,490, false);
+        villages[0].addObject(810,950,435,515, false);
+        villages[0].addObject(1120,1270,435,515, false);
+        villages[0].addObject(140,290,615,695, false);
+        villages[0].addObject(465,605,610,690, false);
+        villages[0].addObject(840,990,615,695, false);
+        villages[0].addObject(1165,1305,610,690, false);
+
     }
 
     /**

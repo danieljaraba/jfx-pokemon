@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
+//import javazoom.jl.decoder.JavaLayerException;
+//import javazoom.jl.player.Player;
 import model.classes.Music;
 import thread.MusicThread;
 

@@ -3,6 +3,7 @@ package ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.image.Image;
@@ -377,14 +378,42 @@ public class MasterGUI {
 
     public boolean checkPosition(){
         boolean change = false;
-        if (imgPlayerAllVillages.getLayoutX() == 7.0 && imgPlayerAllVillages.getLayoutY() ==148.0){
+        if ((imgPlayerAllVillages.getLayoutX() >= -20 && imgPlayerAllVillages.getLayoutX() <= 30) && (imgPlayerAllVillages.getLayoutY() >= 150 && imgPlayerAllVillages.getLayoutY() <= 195)){
             change = true;
 
         }else if(imgPlayerAllVillages.getLayoutX() == 473.0 && imgPlayerAllVillages.getLayoutY() ==337.0){
             change = true;
-
         }
         return change;
+    }
+
+    @FXML
+    //metodo temporal
+    public void battle(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleExampleBeta.fxml"));
+        fxmlLoader.setController(this);
+        Parent battle = fxmlLoader.load();
+        borderPane.setCenter(battle);
+
+
+    }
+
+    @FXML
+    public void btTournamentNewGame(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battle2ExampleBetta.fxml"));
+        fxmlLoader.setController(this);
+        Parent tournament = fxmlLoader.load();
+        borderPane.setCenter(tournament);
+
+    }
+
+    @FXML
+    //metodo temporal tambien
+    public void btExit(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/NewGame.fxml"));
+        fxmlLoader.setController(this);
+        Parent tournament = fxmlLoader.load();
+        borderPane.setCenter(tournament);
     }
 
 

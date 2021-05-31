@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="43.0" layoutY="200.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('/img/wallpaper/portada.jpg'); -fx-background-size: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="350.0" layoutX="150.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/wallpaper/titleDark.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackCreditsPane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackScore" stylesheets="@../../../style/Style.css" text="Bact To Menu" textAlignment="CENTER" textFill="WHITE">
+                     <ripplerFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </ripplerFill>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+               <effect>
+                  <Glow />
+               </effect>
+            </VBox>
+            <Label layoutX="709.0" layoutY="52.0" text="SCORE" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="72.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
+            </Label>
+            <TableView layoutX="387.0" layoutY="187.0" prefHeight="378.0" prefWidth="872.0" styleClass="tvScore" stylesheets="@../../../style/Style.css">
+              <columns>
+                <TableColumn prefWidth="369.0" text="Player" />
+                <TableColumn prefWidth="291.0" text="Score" />
+              </columns>
+            </TableView>
+         </children></Pane>
+   </children>
+</AnchorPane>

@@ -378,12 +378,11 @@ public class MasterGUI {
 
     public boolean checkPosition(){
         boolean change = false;
-        if (imgPlayerAllVillages.getLayoutX() == 7.0 && imgPlayerAllVillages.getLayoutY() ==148.0){
+        if ((imgPlayerAllVillages.getLayoutX() >= -20 && imgPlayerAllVillages.getLayoutX() <= 30) && (imgPlayerAllVillages.getLayoutY() >= 150 && imgPlayerAllVillages.getLayoutY() <= 195)){
             change = true;
 
         }else if(imgPlayerAllVillages.getLayoutX() == 473.0 && imgPlayerAllVillages.getLayoutY() ==337.0){
             change = true;
-
         }
         return change;
     }

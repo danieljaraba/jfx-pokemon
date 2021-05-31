@@ -45,9 +45,10 @@ public class MasterGUI {
         villages = new Village[4];
         //por el momento todos los pueblos tienen el mismo tamaño
         for (int i = 0; i <villages.length ; i++) {
-            villages[i] = new Village(34,45,10,"pueblo: "+(i+1));
+            villages[i] = new Village(34,45,10,"pueblo: "+(i+1), 5);
             System.out.println(villages[i].getName()); //validacion
         }
+        villages[0].addObject(365,430,35,90, false);
     }
 
     /**
@@ -77,9 +78,19 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Bt load game menu.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
-    public void btLoadGameMenu(ActionEvent event) {
+    public void btLoadGameMenu(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/LoadGame.fxml"));
+        fxmlLoader.setController(this);
+        Parent loadGamePane = fxmlLoader.load();
 
+        borderPane.setCenter(loadGamePane);
     }
 
     /**
@@ -172,6 +183,21 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Bt to back load game pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
+    @FXML
+    void btToBackLoadGamePane(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
+        fxmlLoader.setController(this);
+        Parent toBackMenuPane = fxmlLoader.load();
+
+        borderPane.setCenter(toBackMenuPane);
+    }
+
     @FXML
     public void btnAdventureNewGame(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village1.fxml"));
@@ -185,7 +211,7 @@ public class MasterGUI {
 
     //metodo funciona en todas las pantallas que sean un mapa
     @FXML
-    public void moveCharacter(KeyEvent event) throws IOException {
+    public void moveCharacter(KeyEvent event) throws IOException, InterruptedException {
         System.out.println(event.getCode());
         System.out.println("current x: "+imgPlayerAllVillages.getLayoutX());
         System.out.println("current y: "+imgPlayerAllVillages.getLayoutY());
@@ -300,7 +326,6 @@ public class MasterGUI {
 
                }
             }
-
         }
 
 
@@ -308,33 +333,28 @@ public class MasterGUI {
     }
 
     public void moveLeft(){
-        double x = imgPlayerAllVillages.getLayoutX();
-        imgPlayerAllVillages.setLayoutX(x-STEP);
-
+        current.moveLeft();
+        imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
     }
 
 
 
     public void moveRight() {
-        double x = imgPlayerAllVillages.getLayoutX();
-        x = x + STEP;
-        imgPlayerAllVillages.setLayoutX(x);
-
+        current.moveRight();
+        imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
     }
 
 
 
     public void moveUp(){
-        double y = imgPlayerAllVillages.getLayoutY();
-        y = y - STEP;
-        imgPlayerAllVillages.setLayoutY(y);
+        current.moveUp();
+        imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
 
     }
 
     public void moveDown(){
-        double y = imgPlayerAllVillages.getLayoutY();
-        y = y+STEP;
-        imgPlayerAllVillages.setLayoutY(y);
+        current.moveDown();
+        imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
 
     }
 

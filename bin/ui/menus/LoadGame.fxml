@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,12 +20,12 @@
          <children>
             <ImageView fitHeight="300.0" fitWidth="350.0" layoutX="150.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/wallpaper/titleDark.png" />
+                  <Image url="@../../img/wallpaper/titleDark.png" />
                </image>
             </ImageView>
             <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackCreditsPane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackCredits" stylesheets="@../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackLoadGamePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackCredits" stylesheets="@../../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>
@@ -46,41 +46,16 @@
                   <Glow />
                </effect>
             </VBox>
-            <Label layoutX="689.0" layoutY="52.0" text="Credits" textFill="WHITE">
+            <Label layoutX="689.0" layoutY="52.0" text="Load Game" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="72.0" />
                </font>
             </Label>
-            <VBox alignment="CENTER" layoutX="455.0" layoutY="284.0" prefHeight="200.0" prefWidth="468.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Camilo Campaz Jimenez" textAlignment="CENTER" textFill="#ff00ae">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Camilo González Velasco" textAlignment="CENTER" textFill="RED">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Daniel Esteban Jaraba Gaviria" textAlignment="CENTER" textFill="#6500ff">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <Separator prefHeight="20.0" prefWidth="200.0" visible="false" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Johan Stiven Ricardo Sibaja" textAlignment="CENTER" textFill="RED">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-               <effect>
-                  <Glow />
-               </effect>
-            </VBox>
+            <JFXSpinner layoutX="629.0" layoutY="254.0" prefHeight="115.0" prefWidth="120.0">
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
+            </JFXSpinner>
          </children></Pane>
    </children>
 </AnchorPane>

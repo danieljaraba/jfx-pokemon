@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
@@ -26,10 +25,7 @@
             </ImageView>
             <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackOptionsPane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackOptions" stylesheets="@../../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="14.0" />
-                     </font>
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackLoadGamePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackCredits" stylesheets="@../../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>
@@ -38,6 +34,9 @@
                            </stops>
                         </RadialGradient>
                      </ripplerFill>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
@@ -47,35 +46,16 @@
                   <Glow />
                </effect>
             </VBox>
-            <JFXSlider layoutX="580.0" layoutY="264.0" prefHeight="30.0" prefWidth="160.0">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor></JFXSlider>
-            <Label alignment="BASELINE_LEFT" layoutX="427.0" layoutY="271.0" prefHeight="30.0" prefWidth="76.0" text="Music" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="660.0" layoutY="52.0" text="Options" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="689.0" layoutY="52.0" text="Load Game" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="72.0" />
                </font>
             </Label>
-            <JFXComboBox focusColor="BLUE" labelFloat="true" layoutX="593.0" layoutY="362.0" promptText="Screen Width" style="-fx-background-color: WHITE;" unFocusColor="RED">
+            <JFXSpinner layoutX="629.0" layoutY="254.0" prefHeight="115.0" prefWidth="120.0">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="DISAPPEAR" />
                </cursor>
-            </JFXComboBox>
-            <JFXComboBox focusColor="BLUE" labelFloat="true" layoutX="593.0" layoutY="470.0" promptText="Screen Height" style="-fx-background-color: WHITE;" unFocusColor="RED">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </JFXComboBox>
-            <Label alignment="BASELINE_LEFT" layoutX="427.0" layoutY="406.0" prefHeight="30.0" prefWidth="76.0" text="Screen" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
+            </JFXSpinner>
          </children></Pane>
    </children>
 </AnchorPane>

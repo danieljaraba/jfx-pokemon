@@ -1,9 +1,8 @@
-package ui;
+package ui.classes;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.image.Image;
@@ -80,7 +79,7 @@ public class MasterGUI {
      */
     @FXML
     public void btCreditsMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Credits.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Credits.fxml"));
         fxmlLoader.setController(this);
         Parent creditsPane = fxmlLoader.load();
 
@@ -109,7 +108,7 @@ public class MasterGUI {
      */
     @FXML
     public void btLoadGameMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/LoadGame.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/LoadGame.fxml"));
         fxmlLoader.setController(this);
         Parent loadGamePane = fxmlLoader.load();
 
@@ -124,7 +123,7 @@ public class MasterGUI {
      */
     @FXML
     public void btNewGameMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/NewGame.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/NewGame.fxml"));
         fxmlLoader.setController(this);
         Parent newGamePane = fxmlLoader.load();
 
@@ -139,7 +138,7 @@ public class MasterGUI {
      */
     @FXML
     public void btOptionsMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Options.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Options.fxml"));
         fxmlLoader.setController(this);
         Parent optionsPane = fxmlLoader.load();
 
@@ -154,7 +153,7 @@ public class MasterGUI {
      */
     @FXML
     public void btScoreMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Score.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Score.fxml"));
         fxmlLoader.setController(this);
         Parent scorePane = fxmlLoader.load();
 
@@ -169,7 +168,7 @@ public class MasterGUI {
      */
     @FXML
     public void btToBackCreditsPane(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
 
@@ -184,7 +183,7 @@ public class MasterGUI {
      */
     @FXML
     public void btToBackOptionsPane(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
 
@@ -199,7 +198,7 @@ public class MasterGUI {
      */
     @FXML
     public void btToBackNewGamePane(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
 
@@ -214,7 +213,7 @@ public class MasterGUI {
      */
     @FXML
     void btToBackLoadGamePane(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
 
@@ -223,7 +222,7 @@ public class MasterGUI {
 
     @FXML
     public void btnAdventureNewGame(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village1.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
         fxmlLoader.setController(this);
         Parent village1 = fxmlLoader.load();
         borderPane.setCenter(village1);
@@ -317,14 +316,14 @@ public class MasterGUI {
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
                if (result.get().equals("pueblo: 1")){
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village1.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[0];
                    village1.requestFocus();
                }else if(result.get().equals("pueblo: 2")){
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village2.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village2.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
@@ -332,7 +331,7 @@ public class MasterGUI {
                    village1.requestFocus();
 
                }else if(result.get().equals("pueblo: 3")){
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village3.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village3.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
@@ -340,7 +339,7 @@ public class MasterGUI {
                    village1.requestFocus();
 
                }else {
-                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("villages/village4.fxml"));
+                   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village4.fxml"));
                    fxmlLoader.setController(this);
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
@@ -395,7 +394,7 @@ public class MasterGUI {
     @FXML
     //metodo temporal
     public void battle(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleExampleBeta.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/battleExampleBeta.fxml"));
         fxmlLoader.setController(this);
         Parent battle = fxmlLoader.load();
         borderPane.setCenter(battle);
@@ -405,7 +404,7 @@ public class MasterGUI {
 
     @FXML
     public void btTournamentNewGame(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battle2ExampleBetta.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/battle2ExampleBetta.fxml"));
         fxmlLoader.setController(this);
         Parent tournament = fxmlLoader.load();
         borderPane.setCenter(tournament);
@@ -415,7 +414,7 @@ public class MasterGUI {
     @FXML
     //metodo temporal tambien
     public void btExit(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menus/NewGame.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/NewGame.fxml"));
         fxmlLoader.setController(this);
         Parent tournament = fxmlLoader.load();
         borderPane.setCenter(tournament);

@@ -1,11 +1,10 @@
-package ui;
+package ui.classes;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.classes.Music;
 import thread.MusicThread;
 
 
@@ -45,7 +44,7 @@ public class Main extends Application {
         primaryStage.setTitle("POKÉMON");
         primaryStage.show();
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menus/Menu.fxml"));
+        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader1.setController(masterGUI);
         Parent loginPane = fxmlLoader1.load();
         masterGUI.getBorderPane().setCenter(loginPane);

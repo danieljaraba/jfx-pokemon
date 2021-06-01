@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Village extends World {
 
     private String name;
-    private Player player;
+    private PokemonTrainer player;
     private ArrayList<GameObject> gameObjects;
     private boolean isTouched;
     private double movement;
@@ -15,7 +15,7 @@ public class Village extends World {
     public Village(double height, double width, int wildPokemons, String name, double movement) {
         super(height, width, wildPokemons);
         this.name = name;
-        this.player = new Player("img/character/emerald_down_rest.png", 50, 50);
+        this.player = new PokemonTrainer(50, 50,"pedro",null,"img/character/emerald_down_rest.png" );
         this.gameObjects = new ArrayList<>();
         this.isTouched = false;
         this.movement = movement;
@@ -78,12 +78,20 @@ public class Village extends World {
         this.name = name;
     }
 
-    public Player getPlayer() {
+    public PokemonTrainer getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
+    public void setPlayer(PokemonTrainer player) {
         this.player = player;
+    }
+
+    public double getMovement() {
+        return movement;
+    }
+
+    public void setMovement(double movement) {
+        this.movement = movement;
     }
 
     public ArrayList<GameObject> getGameObjects() {

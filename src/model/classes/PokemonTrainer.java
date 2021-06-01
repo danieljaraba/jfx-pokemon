@@ -1,10 +1,11 @@
 package model.classes;
 
 import model.abstractClasses.GameCharacter;
+import model.interfaces.Tradable;
 
 import java.util.ArrayList;
 
-public class PokemonTrainer extends GameCharacter {
+public class PokemonTrainer extends GameCharacter implements Tradable {
 
     private double x;
     private double y;
@@ -13,13 +14,13 @@ public class PokemonTrainer extends GameCharacter {
     private int coins;
     private Bag trainersBag;
 
-    public PokemonTrainer(double x, double y, String name, ArrayList<String> gymMedals, int coins, Bag trainersBag, String imgURL) {
+    public PokemonTrainer(double x, double y, String name, Bag trainersBag, String imgURL) {
         super(imgURL);
         this.x = x;
         this.y = y;
         this.name = name;
-        this.gymMedals = gymMedals;
-        this.coins = coins;
+        this.gymMedals = new ArrayList<>();
+        this.coins = 5;
         this.trainersBag = trainersBag;
     }
 

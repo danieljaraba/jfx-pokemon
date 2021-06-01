@@ -10,8 +10,8 @@ public class Bag extends StoreObject {
     private ArrayList<Pokeball> pokeballs;
     private Pokedex trainnerPokedex;
 
-    public Bag(double price,double space, Pokedex trainnerPokedex) {
-        super(price);
+    public Bag(String name, double price,double space, Pokedex trainnerPokedex) {
+        super(name,price);
         this.space = space;
         pokeballs = new ArrayList<>();
         this.trainnerPokedex = trainnerPokedex;

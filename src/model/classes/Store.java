@@ -12,6 +12,17 @@ public class Store {
         this.storeItems = storeItems;
     }
 
+    public boolean sellItem(int money, String name){
+        boolean ret = false;
+        for(StoreObject storeObject : storeItems){
+            if ((storeObject.getName().equals(name)) && (money >= storeObject.getPrice())) {
+                ret = true;
+                break;
+            }
+        }
+        return ret;
+    }
+
     public ArrayList<StoreObject> getStoreItems() {
         return storeItems;
     }

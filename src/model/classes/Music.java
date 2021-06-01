@@ -9,7 +9,6 @@ public class Music {
 
     AudioClip sound;
     public void sound() {
-
         sound = java.applet.Applet.newAudioClip(getClass().getResource("/music/retro.wav"));
         sound.play();
     }

@@ -1,5 +1,6 @@
 package model.classes;
 
+import model.abstractClasses.Pokemon;
 import model.abstractClasses.StoreObject;
 
 import java.util.ArrayList;

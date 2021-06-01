@@ -1,8 +1,10 @@
-package model.classes;
+package model.abstractClasses;
 
+import model.classes.Attack;
+import model.interfaces.Autoplaying;
 import model.interfaces.Battle;
 
-public class Pokemon implements Battle {
+public abstract class Pokemon implements Battle, Autoplaying {
 
     private String img;
     private String name;

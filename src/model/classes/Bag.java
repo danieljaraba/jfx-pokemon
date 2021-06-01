@@ -1,10 +1,11 @@
 package model.classes;
 
 import model.abstractClasses.StoreObject;
+import model.interfaces.Tradable;
 
 import java.util.ArrayList;
 
-public class Bag extends StoreObject {
+public class Bag extends StoreObject  implements Tradable {
 
     private double space;
     private ArrayList<Pokeball> pokeballs;

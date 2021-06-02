@@ -12,11 +12,11 @@ public class Store {
         this.storeItems = storeItems;
     }
 
-    public boolean sellItem(int money, String name){
-        boolean ret = false;
+    public StoreObject sellItem(int money, String name){
+        StoreObject ret = null;
         for(StoreObject storeObject : storeItems){
             if ((storeObject.getName().equals(name)) && (money >= storeObject.getPrice())) {
-                ret = true;
+                ret = storeObject;
                 break;
             }
         }

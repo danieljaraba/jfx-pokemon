@@ -12,7 +12,7 @@ public class Store implements Serializable {
     public Store(ArrayList<StoreObject> storeItems) {
         this.storeItems = storeItems;
     }
-
+    //Connect with gui (Dialog pane)
     public StoreObject sellItem(int money, String name){
         StoreObject ret = null;
         for(StoreObject storeObject : storeItems){

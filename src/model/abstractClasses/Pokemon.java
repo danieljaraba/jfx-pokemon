@@ -27,6 +27,19 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
         this.type = type;
         this.pokemonAttacks = pokemonAttacks;
     }
+    /*multipliers:
+    health, defense,attack + 0.1
+    level++
+    */
+    public void levelUp(){
+        level++;
+        health = health+(health*0.1);
+        for(Attack attack : pokemonAttacks){
+            attack.setDamage(attack.getDamage()+(attack.getDamage()*0.1));
+            attack.setDefense(attack.getDefense()+(attack.getDefense() * 0.1));
+            attack.setPp(attack.getPp()+2);
+        }
+    }
 
     public String getImg() {
         return img;

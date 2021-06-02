@@ -17,4 +17,9 @@ public class ElectricPokemon extends Pokemon {
     public void setVoltage(double voltage) {
         this.voltage = voltage;
     }
+
+    @Override
+    public String toString(){
+        return super.toString()+";"+voltage;
+    }
 }

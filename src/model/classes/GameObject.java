@@ -1,6 +1,8 @@
 package model.classes;
 
-public class GameObject {
+import java.io.Serializable;
+
+public class GameObject  implements Serializable {
 
     private double x1;
     private double x2;

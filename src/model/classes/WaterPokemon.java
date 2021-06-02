@@ -16,4 +16,9 @@ public class WaterPokemon extends Pokemon {
     public void setFeedable(boolean feedable) {
         this.feedable = feedable;
     }
+
+    @Override
+    public String toString(){
+        return super.toString()+";"+feedable;
+    }
 }

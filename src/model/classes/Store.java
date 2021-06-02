@@ -2,9 +2,10 @@ package model.classes;
 
 import model.abstractClasses.StoreObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Store {
+public class Store implements Serializable {
 
     private ArrayList<StoreObject> storeItems;
 

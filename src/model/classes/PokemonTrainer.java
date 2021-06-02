@@ -1,11 +1,9 @@
 package model.classes;
 
 import model.abstractClasses.GameCharacter;
-import model.interfaces.Tradable;
-
 import java.util.ArrayList;
 
-public class PokemonTrainer extends GameCharacter implements Tradable {
+public class PokemonTrainer extends GameCharacter {
 
     private double x;
     private double y;
@@ -71,4 +69,5 @@ public class PokemonTrainer extends GameCharacter implements Tradable {
     public void setTrainersBag(Bag trainersBag) {
         this.trainersBag = trainersBag;
     }
+
 }

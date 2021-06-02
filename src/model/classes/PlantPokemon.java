@@ -16,4 +16,8 @@ public class PlantPokemon extends Pokemon {
     public void setFlowers(int flowers) {
         this.flowers = flowers;
     }
+    @Override
+    public String toString(){
+        return super.toString()+";"+flowers;
+    }
 }

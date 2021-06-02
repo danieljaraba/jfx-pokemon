@@ -17,4 +17,9 @@ public class PsiquicPokemon extends Pokemon {
     public void setMindReader(boolean mindReader) {
         this.mindReader = mindReader;
     }
+
+    @Override
+    public String toString(){
+        return super.toString()+";"+mindReader;
+    }
 }

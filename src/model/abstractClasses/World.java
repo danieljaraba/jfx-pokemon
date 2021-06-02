@@ -1,6 +1,8 @@
 package model.abstractClasses;
 
-public abstract class World {
+import java.io.Serializable;
+
+public abstract class World implements Serializable {
 
     private double height;
     private double width;
@@ -10,5 +12,17 @@ public abstract class World {
         this.height = height;
         this.width = width;
         this.wildPokemons = wildPokemons;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public int getWildPokemons() {
+        return wildPokemons;
     }
 }

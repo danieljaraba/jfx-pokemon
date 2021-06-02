@@ -10,8 +10,8 @@ public class Pokedex extends StoreObject {
     private Pokemon[] pokemons;
     private ArrayList<Pokeball> currentPokemons;
 
-    public Pokedex(double price) {
-        super(price);
+    public Pokedex(String name,double price) {
+        super(name,price);
     }
 
     public Pokemon[] getPokemons() {

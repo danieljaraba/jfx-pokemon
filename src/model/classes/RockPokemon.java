@@ -17,4 +17,9 @@ public class RockPokemon extends Pokemon {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString(){
+        return super.toString()+";"+weight;
+    }
 }

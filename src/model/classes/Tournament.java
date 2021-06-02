@@ -1,11 +1,12 @@
 package model.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import model.interfaces.Autoplaying;
 import thread.PokemonTrainnerThread;
 
-public class Tournament implements Autoplaying {
+public class Tournament implements Autoplaying , Serializable {
 
     private ArrayList<PokemonTrainer> participants;
     private PokemonTrainnerThread thread;

@@ -1,10 +1,12 @@
 package model.classes;
 
 import model.abstractClasses.StoreObject;
+import model.interfaces.Tradable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Bag extends StoreObject {
+public class Bag extends StoreObject  implements Tradable , Serializable {
 
     private double space;
     private ArrayList<Pokeball> pokeballs;
@@ -40,4 +42,6 @@ public class Bag extends StoreObject {
     public void setTrainnerPokedex(Pokedex trainnerPokedex) {
         this.trainnerPokedex = trainnerPokedex;
     }
+
+
 }

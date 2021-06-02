@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.classes.Game;
 import model.classes.Village;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class MasterGUI {
 
     private Village[] villages;
     private Village current;
+    private Game curentGame;
     public final static double STEP = 8;
     int down = 0;
     int up = 0;
@@ -42,6 +44,7 @@ public class MasterGUI {
      */
     public MasterGUI() {
         villages = new Village[4];
+        curentGame = new Game();
         //por el momento todos los pueblos tienen el mismo tamaño
         for (int i = 0; i <villages.length ; i++) {
             villages[i] = new Village(34,45,10,"pueblo: "+(i+1), 5);
@@ -227,6 +230,8 @@ public class MasterGUI {
         Parent village1 = fxmlLoader.load();
         borderPane.setCenter(village1);
         current = villages[0];
+        curentGame.setCurrentTrainer(current.getPlayer());
+        curentGame.setCurrentVillage(current);
         village1.requestFocus();
 
     }
@@ -321,6 +326,7 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[0];
+                   curentGame.setCurrentVillage(current);
                    village1.requestFocus();
                }else if(result.get().equals("pueblo: 2")){
                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village2.fxml"));
@@ -328,6 +334,7 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[1];
+                   curentGame.setCurrentVillage(current);
                    village1.requestFocus();
 
                }else if(result.get().equals("pueblo: 3")){
@@ -336,6 +343,7 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[2];
+                   curentGame.setCurrentVillage(current);
                    village1.requestFocus();
 
                }else {
@@ -344,6 +352,7 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[3];
+                   curentGame.setCurrentVillage(current);
                    village1.requestFocus();
 
                }
@@ -443,6 +452,7 @@ public class MasterGUI {
     //Getters and Setters.
 
     public BorderPane getBorderPane() {
+
         return borderPane;
     }
 

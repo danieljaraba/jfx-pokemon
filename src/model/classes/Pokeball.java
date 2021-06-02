@@ -1,9 +1,12 @@
 package model.classes;
 
+import model.abstractClasses.Pokemon;
 import model.abstractClasses.StoreObject;
 import model.interfaces.Tradable;
 
-public class Pokeball extends StoreObject implements Tradable {
+
+
+public class Pokeball extends StoreObject implements Tradable{
 
     private Pokemon pokemon;
 

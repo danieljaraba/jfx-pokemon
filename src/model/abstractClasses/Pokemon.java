@@ -1,8 +1,12 @@
-package model.classes;
+package model.abstractClasses;
 
+import model.classes.Attack;
+import model.interfaces.Autoplaying;
 import model.interfaces.Battle;
 
-public class Pokemon implements Battle {
+import java.io.Serializable;
+
+public abstract class Pokemon implements Battle, Autoplaying, Serializable {
 
     private String img;
     private String name;
@@ -86,5 +90,14 @@ public class Pokemon implements Battle {
 
     public void setPokemonAttacks(Attack[] pokemonAttacks) {
         this.pokemonAttacks = pokemonAttacks;
+    }
+
+
+    public String toString() {
+        StringBuilder out = new StringBuilder(img + ";" + name + ";" + exp + ";" + level + ";" + health + ";" + hasOwner + ";" + type);
+        for (int i = 0; i <pokemonAttacks.length ; i++) {
+            out.append(pokemonAttacks[i].getName()).append(";").append(pokemonAttacks[i].getDamage()).append(";").append(pokemonAttacks[i].getDefense()).append(";").append(pokemonAttacks[i].getPp());
+        }
+        return out.toString();
     }
 }

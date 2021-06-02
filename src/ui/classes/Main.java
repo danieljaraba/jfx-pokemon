@@ -49,8 +49,8 @@ public class Main extends Application {
         Parent loginPane = fxmlLoader1.load();
         masterGUI.getBorderPane().setCenter(loginPane);
 
-        MusicThread x = new MusicThread();
-        x.start();
+        //MusicThread x = new MusicThread();
+       // x.start();
 
 
     }

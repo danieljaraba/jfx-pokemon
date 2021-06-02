@@ -74,6 +74,7 @@ public class Village extends World {
         }
     }
 
+
     public void setName(String name) {
         this.name = name;
     }

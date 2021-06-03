@@ -13,16 +13,18 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
     private double exp;
     private int level;
     private double health;
+    private double baseDefense;
     private boolean hasOwner;
     private String type;
     private Attack[] pokemonAttacks;
 
-    public Pokemon(String img, String name, double exp, int level, double health, boolean hasOwner, String type, Attack[] pokemonAttacks) {
+    public Pokemon(String img, String name, double exp, int level, double health, double baseDefense, boolean hasOwner, String type, Attack[] pokemonAttacks) {
         this.img = img;
         this.name = name;
         this.exp = exp;
         this.level = level;
         this.health = health;
+        this.baseDefense = baseDefense;
         this.hasOwner = hasOwner;
         this.type = type;
         this.pokemonAttacks = pokemonAttacks;

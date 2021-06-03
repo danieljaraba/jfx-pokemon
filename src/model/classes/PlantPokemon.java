@@ -4,8 +4,8 @@ import model.abstractClasses.Pokemon;
 
 public class PlantPokemon extends Pokemon {
     private int flowers;
-    public PlantPokemon(String img, String name, double exp, int level, double health, boolean hasOwner, String type, Attack[] pokemonAttacks, int flowers) {
-        super(img, name, exp, level, health, hasOwner, type, pokemonAttacks);
+    public PlantPokemon(String img, String name, double exp, int level, double health, double baseDefense, boolean hasOwner, String type, Attack[] pokemonAttacks, int flowers) {
+        super(img, name, exp, level, health,baseDefense, hasOwner, type, pokemonAttacks);
         this.flowers = flowers;
     }
 

@@ -10,6 +10,7 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
 
     private String img;
     private String name;
+    private String perName;
     private double exp;
     private int level;
     private double health;
@@ -21,6 +22,7 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
     public Pokemon(String img, String name, double exp, int level, double health, double baseDefense, boolean hasOwner, String type, Attack[] pokemonAttacks) {
         this.img = img;
         this.name = name;
+        this.perName = name;
         this.exp = exp;
         this.level = level;
         this.health = health;
@@ -107,6 +109,21 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
         this.pokemonAttacks = pokemonAttacks;
     }
 
+    public String getPerName() {
+        return perName;
+    }
+
+    public void setPerName(String perName) {
+        this.perName = perName;
+    }
+
+    public double getBaseDefense() {
+        return baseDefense;
+    }
+
+    public void setBaseDefense(double baseDefense) {
+        this.baseDefense = baseDefense;
+    }
 
     public String toString() {
         StringBuilder out = new StringBuilder(img + ";" + name + ";" + exp + ";" + level + ";" + health + ";" + hasOwner + ";" + type);

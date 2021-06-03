@@ -1,5 +1,6 @@
 package ui.classes;
 
+import com.jfoenix.controls.JFXSpinner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,11 @@ public class MasterGUI {
     private BorderPane borderPane;
     @FXML
     private ImageView imgPlayerAllVillages;
+
+
+    @FXML
+    private JFXSpinner spinnerLoadGame;
+
 
     private Village[] villages;
     private Village current;
@@ -431,6 +437,71 @@ public class MasterGUI {
         fxmlLoader.setController(this);
         Parent tournament = fxmlLoader.load();
         borderPane.setCenter(tournament);
+    }
+
+    @FXML
+    public void btLoadPreviousGameLoadGame(ActionEvent event) throws IOException {
+        spinnerLoadGame.setVisible(true);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose your past game");
+        fileChooser.setInitialDirectory(new File("data/serializableFiles/games_saved"));
+        File f = fileChooser.showOpenDialog(borderPane.getScene().getWindow());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (f!=null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Loading Game");
+            try {
+                //el nuevo juego llama al anterior
+                curentGame = curentGame.loadPreviousGame(f.getAbsolutePath());
+                alert.setContentText("Game loaded successfully");
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                alert.setContentText("Something went wrong");
+            }
+            alert.showAndWait();
+            String currentVillage = curentGame.getCurrentVillage().getName();
+            switch (currentVillage){
+                case "pueblo: 1":FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
+                    fxmlLoader.setController(this);
+                    Parent village1 = fxmlLoader.load();
+                    borderPane.setCenter(village1);
+                    current = villages[0];
+                    curentGame.setCurrentVillage(current);
+                    village1.requestFocus();
+                    break;
+                case "pueblo: 2": FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("../villages/village2.fxml"));
+                    fxmlLoader2.setController(this);
+                    Parent village2 = fxmlLoader2.load();
+                    borderPane.setCenter(village2);
+                    current = villages[1];
+                    curentGame.setCurrentVillage(current);
+                    village2.requestFocus();
+                    break;
+
+                case "pueblo: 3":  FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("../villages/village3.fxml"));
+                    fxmlLoader3.setController(this);
+                    Parent village3 = fxmlLoader3.load();
+                    borderPane.setCenter(village3);
+                    current = villages[2];
+                    curentGame.setCurrentVillage(current);
+                    village3.requestFocus();
+                    break;
+
+                case "pueblo: 4":   FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("../villages/village4.fxml"));
+                    fxmlLoader4.setController(this);
+                    Parent village4 = fxmlLoader4.load();
+                    borderPane.setCenter(village4);
+                    current = villages[3];
+                    curentGame.setCurrentVillage(current);
+                    village4.requestFocus();
+                    break;
+            }
+
+        }
     }
 
 

@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="43.0" layoutY="200.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('/img/wallpaper/portada.jpg'); -fx-background-size: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,7 +25,7 @@
             </ImageView>
             <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackLoadGamePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackCredits" stylesheets="@../../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#btToBackLoadGamePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackCredits" stylesheets="@../../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
                      <ripplerFill>
                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                            <stops>
@@ -51,11 +51,27 @@
                   <Font name="System Bold Italic" size="72.0" />
                </font>
             </Label>
-            <JFXSpinner layoutX="629.0" layoutY="254.0" prefHeight="115.0" prefWidth="120.0">
+            <JFXSpinner fx:id="spinnerLoadGame" layoutX="629.0" layoutY="254.0" prefHeight="115.0" prefWidth="120.0" visible="false">
                <cursor>
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
             </JFXSpinner>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="205.0" layoutY="240.0" onAction="#btLoadPreviousGameLoadGame" prefHeight="60.0" prefWidth="182.0" styleClass="buttonLoadMyGame" stylesheets="@../../../style/Style.css" text="Load my game" textAlignment="CENTER" textFill="WHITE">
+               <ripplerFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
          </children></Pane>
    </children>
 </AnchorPane>

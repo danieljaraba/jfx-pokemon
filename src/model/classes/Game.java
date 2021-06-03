@@ -41,17 +41,15 @@ public class Game implements Serializable{
     }
 
     //file chooser no mamen ya estoy muy viejo para pensar otra cosa
-    public boolean loadPreviousGame(String fileName) throws IOException, ClassNotFoundException {
+    public Game loadPreviousGame(String fileName) throws IOException, ClassNotFoundException {
         File f = new File(fileName);
-        boolean loaded = false;
+        Game lastGame = null;
         if(f.exists()){
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-            currentTrainer = (PokemonTrainer) ois.readObject();
-            currentVillage = (Village)ois.readObject();
-            ois.close();
-            loaded = true;
+             lastGame = (Game) ois.readObject();
+             ois.close();
         }
-        return loaded;
+        return lastGame;
     }
 
     public PokemonTrainer getCurrentTrainer() {

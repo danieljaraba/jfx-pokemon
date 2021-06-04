@@ -187,7 +187,7 @@ public class PokemonCreatorThread extends Thread{
         imgs.add("img/pokemon/pokemon_sprites/59.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Blastoise.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Squirtle.gif_.gif");
-        imgs.add("img/pokemon/pokemon_sprites/Venusaur.gif_.gif\"");
+        imgs.add("img/pokemon/pokemon_sprites/Venusaur.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Grovyle.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Onix.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Geodude.gif_.gif");

@@ -59,6 +59,7 @@ public class Village extends World {
         boolean touch = false;
         for(int i = 0; i<gameObjects.size() && !touch; i++){
             touch = gameObjects.get(i).isNear(player.getX(), player.getY()+movement);
+
         }
 
         if(!touch){
@@ -75,6 +76,18 @@ public class Village extends World {
         if(!touch){
             player.setX(player.getX() - movement);
         }
+    }
+
+    public Boolean isInPokemonArea(PokemonTrainer currentTrainer){
+        boolean is = false;
+        for (int i = 0; i <gameObjects.size() && !is ; i++) {
+            if(gameObjects.get(i).isNear(currentTrainer.getX()+movement,currentTrainer.getY())&& gameObjects.get(i).isTransferable()){
+                System.out.println("Pokemon area");
+                is = true;
+            }
+        }
+
+        return is;
     }
 
 

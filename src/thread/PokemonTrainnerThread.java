@@ -1,7 +1,16 @@
 package thread;
 
-import model.classes.Village;
+import model.abstractClasses.GameCharacter;
 
-public class PokemonTrainnerThread extends Thread{
 
+public class PokemonTrainnerThread extends GameCharacter implements Runnable {
+
+    public PokemonTrainnerThread(String imgURL) {
+        super(imgURL);
+    }
+
+    @Override
+    public void run() {
+
+    }
 }

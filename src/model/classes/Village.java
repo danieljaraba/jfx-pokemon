@@ -1,5 +1,6 @@
 package model.classes;
 
+import model.abstractClasses.Pokemon;
 import model.abstractClasses.World;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Village extends World {
     private ArrayList<GameObject> gameObjects;
     private boolean isTouched;
     private double movement;
+    private Pokemon [] localPokemons;
 
     public Village(double height, double width, int wildPokemons, String name, double movement) {
         super(height, width, wildPokemons);
@@ -19,6 +21,7 @@ public class Village extends World {
         this.gameObjects = new ArrayList<>();
         this.isTouched = false;
         this.movement = movement;
+        localPokemons = new Pokemon[3];
     }
 
     public String getName() {
@@ -109,5 +112,9 @@ public class Village extends World {
 
     public void setTouched(boolean touched) {
         isTouched = touched;
+    }
+
+    public Pokemon[] getLocalPokemons() {
+        return localPokemons;
     }
 }

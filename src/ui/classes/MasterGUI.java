@@ -1,5 +1,7 @@
 package ui.classes;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXSpinner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -35,6 +38,32 @@ public class MasterGUI {
 
     @FXML
     private JFXSpinner spinnerLoadGame;
+
+    //estos atributos van a cambiar en todas las battallas salvajes
+    //se pueden utilizar tambien en las pantallas del torneo
+    @FXML
+    private ImageView imgPlayerWildBattle;
+
+    @FXML
+    private ImageView imgPokemonWildBattle;
+
+    @FXML
+    private JFXButton btFigthWildBattle;
+
+    @FXML
+    private JFXButton btLeaveWildBattle;
+
+    @FXML
+    private Label lbBattletext1WildBattle;
+
+    @FXML
+    private Label lbPokemonNameWildBattle;
+
+    @FXML
+    private Label lbBattletext2WildBattle;
+
+    @FXML
+    private JFXComboBox<String> comboPokemonattaks;
 
 
     private Village[] villages;
@@ -423,7 +452,7 @@ public class MasterGUI {
     @FXML
     //metodo temporal
     public void battle(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/battleExampleBeta.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildBattle.fxml"));
         fxmlLoader.setController(this);
         Parent battle = fxmlLoader.load();
         borderPane.setCenter(battle);
@@ -475,7 +504,7 @@ public class MasterGUI {
             alert.showAndWait();
             String currentVillage = curentGame.getCurrentVillage().getName();
             switch (currentVillage){
-                case "pueblo: 1":FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
+                case "pueblo: 1": FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
                     fxmlLoader.setController(this);
                     Parent village1 = fxmlLoader.load();
                     borderPane.setCenter(village1);
@@ -537,7 +566,6 @@ public class MasterGUI {
     //Getters and Setters.
 
     public BorderPane getBorderPane() {
-
         return borderPane;
     }
 

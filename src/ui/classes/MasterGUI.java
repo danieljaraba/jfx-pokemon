@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.classes.Game;
 import model.classes.Village;
+import thread.PokemonCreatorThread;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class MasterGUI {
         curentGame = new Game();
         //por el momento todos los pueblos tienen el mismo tamaño
         for (int i = 0; i <villages.length ; i++) {
-            villages[i] = new Village(34,45,10,"pueblo: "+(i+1), 5);
+            villages[i] = new Village(34,45,3,"pueblo: "+(i+1), 5);
             System.out.println(villages[i].getName()); //validacion
         }
 
@@ -78,8 +79,12 @@ public class MasterGUI {
         villages[0].addObject(465,605,610,690, false);
         villages[0].addObject(840,990,615,695, false);
         villages[0].addObject(1165,1305,610,690, false);
+        PokemonCreatorThread pct = new PokemonCreatorThread(villages);
+        pct.start();
 
     }
+
+
 
 
 
@@ -243,6 +248,7 @@ public class MasterGUI {
         curentGame.setCurrentTrainer(current.getPlayer());
         curentGame.setCurrentVillage(current);
         village1.requestFocus();
+
 
     }
 
@@ -408,6 +414,10 @@ public class MasterGUI {
             change = true;
         }
         return change;
+    }
+
+    public void createPokemons(){
+
     }
 
     @FXML

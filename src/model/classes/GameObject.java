@@ -10,6 +10,7 @@ public class GameObject  implements Serializable {
     private double y2;
     private boolean transferable;
 
+
     public GameObject(double x1, double x2, double y1, double y2, boolean transferable, double nearConst){
         this.x1 = x1 + nearConst;
         this.y1 = y1 + nearConst;

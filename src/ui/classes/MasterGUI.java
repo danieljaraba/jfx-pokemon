@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -381,6 +382,20 @@ public class MasterGUI {
         System.out.println(event.getCode());
 
 
+        if (event.getCode() == KeyCode.ESCAPE){
+            List<String> choices = new ArrayList<>();
+            choices.add("Save my game");
+            choices.add("Back to menu");
+            choices.add("See the tutorial again");
+
+            ChoiceDialog<String> dialog = new ChoiceDialog<>(null, choices);
+            dialog.setTitle("Choice an option");
+            dialog.setHeaderText("What do you want to do?");
+            dialog.setContentText("Choose an action: ");
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(this::makeElection);
+        }
+
         if(event.getCode() == KeyCode.UP){
             moveUp();
             up++;
@@ -497,7 +512,43 @@ public class MasterGUI {
             }
         }
 
+    }
 
+    public void makeElection(String election){
+        switch (election){
+            case "Save my game": TextInputDialog dialog = new TextInputDialog("walter");
+                dialog.setTitle("Save a game");
+                dialog.setHeaderText(null);
+                dialog.setContentText("Please enter a name for saving this game:");
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent()){
+                    try {
+                        curentGame.saveGame(result.get());
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Game saved successfully");
+                        alert.showAndWait();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case "Back to menu":  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
+                fxmlLoader.setController(this);
+                Parent toBackMenuPane = null;
+                try {
+                    toBackMenuPane = fxmlLoader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                borderPane.setCenter(toBackMenuPane);
+                break;
+            default:
+                System.out.println("Para que muestres el tuto kchon");
+                break;
+        }
 
     }
 

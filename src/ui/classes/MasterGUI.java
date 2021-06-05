@@ -62,23 +62,23 @@ public class MasterGUI {
             System.out.println(villages[i].getName()); //validacion
         }
 
-        villages[0].addObject(110,250,35,115, false);
-        villages[0].addObject(420,570,30,90, false);
-        villages[0].addObject(810,950,35,115, false);
-        villages[0].addObject(1120,1270,35,115, false);
-        villages[0].addObject(140,290,215,295, false);
-        villages[0].addObject(465,605,210,290, false);
-        villages[0].addObject(840,990,215,295, false);
-        villages[0].addObject(1165,1305,210,290, false);
+        villages[0].addObject(110,250,35,115, true, false);
+        villages[0].addObject(420,570,30,90, false, false);
+        villages[0].addObject(810,950,35,115, false, false);
+        villages[0].addObject(1120,1270,35,115, false, false);
+        villages[0].addObject(140,290,215,295, false, false);
+        villages[0].addObject(465,605,210,290, false, false);
+        villages[0].addObject(840,990,215,295, false, false);
+        villages[0].addObject(1165,1305,210,290, false, false);
 
-        villages[0].addObject(110,250,435,515, false);
-        villages[0].addObject(420,570,430,490, false);
-        villages[0].addObject(810,950,435,515, false);
-        villages[0].addObject(1120,1270,435,515, false);
-        villages[0].addObject(140,290,615,695, false);
-        villages[0].addObject(465,605,610,690, false);
-        villages[0].addObject(840,990,615,695, false);
-        villages[0].addObject(1165,1305,610,690, false);
+        villages[0].addObject(110,250,435,515, false, false);
+        villages[0].addObject(420,570,430,490, false, false);
+        villages[0].addObject(810,950,435,515, false, false);
+        villages[0].addObject(1120,1270,435,515, false, false);
+        villages[0].addObject(140,290,615,695, false, false);
+        villages[0].addObject(465,605,610,690, false, false);
+        villages[0].addObject(840,990,615,695, false, false);
+        villages[0].addObject(1165,1305,610,690, false, false);
         PokemonCreatorThread pct = new PokemonCreatorThread(villages);
         pct.start();
 
@@ -379,30 +379,118 @@ public class MasterGUI {
 
     }
 
-    public void moveLeft(){
-        current.moveLeft();
+    public void moveLeft() throws IOException {
+        String var = current.moveLeft();
         imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
+        if(!var.equals("")){
+            moveOption(var);
+        }
     }
 
 
 
-    public void moveRight() {
-        current.moveRight();
+    public void moveRight() throws IOException {
+        String var = current.moveRight();
         imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
+        if(!var.equals("")){
+            moveOption(var);
+        }
     }
 
 
 
-    public void moveUp(){
-        current.moveUp();
+    public void moveUp() throws IOException {
+        String var = current.moveUp();
         imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
-
+        if(!var.equals("")){
+            moveOption(var);
+        }
     }
 
-    public void moveDown(){
-        current.moveDown();
+    public void moveDown() throws IOException {
+        String var = current.moveDown();
         imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
+        if(!var.equals("")){
+            moveOption(var);
+        }
+    }
 
+    public void moveOption(String var) throws IOException {
+        switch (var){
+            case "Method":
+                moveVillage();
+            break;
+        }
+    }
+
+    public void moveVillage() throws IOException {
+        List<String> choices = new ArrayList<>();
+        String check = current.getName();
+        switch (check){
+            case "pueblo: 1": choices.add("pueblo: 2");
+                choices.add("pueblo: 3");
+                choices.add("pueblo: 4");
+                break;
+            case "pueblo: 2":choices.add("pueblo: 1");
+                choices.add("pueblo: 3");
+                choices.add("pueblo: 4");
+                break;
+
+            case "pueblo: 3": choices.add("pueblo: 1");
+                choices.add("pueblo: 2");
+                choices.add("pueblo: 4");
+                break;
+
+            case "pueblo: 4":  choices.add("pueblo: 1");
+                choices.add("pueblo: 2");
+                choices.add("pueblo: 3");
+                break;
+        }
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(null, choices);
+        dialog.setTitle("Where to go?");
+        dialog.setHeaderText("Look, make a choice");
+        dialog.setContentText("Choose your destiny:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            if (result.get().equals("pueblo: 1")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[0];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+            }else if(result.get().equals("pueblo: 2")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village2.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[1];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+
+            }else if(result.get().equals("pueblo: 3")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village3.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[2];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+
+            }else {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village4.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[3];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+
+            }
+        }
     }
 
     public boolean checkPosition(){

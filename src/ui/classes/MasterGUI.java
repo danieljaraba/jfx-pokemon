@@ -307,8 +307,11 @@ public class MasterGUI {
             moveUp();
             up++;
             imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_1.png"));
+            //.setImage(new Image("/img/character/girl_up_1.png"));
             if(up%2==0){
                 imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_2.png"));
+                //imgPlayerAllVillages.setImage(new Image("/img/character/girl_up_2.png"));
+
             }
             //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_rest.png"));
 

@@ -13,7 +13,7 @@ public class Game implements Serializable{
 
 
 
-    //Para archivo de texto plano SOLO PARA POKEMONS SALVAJES
+    //Para archivo de texto plano SOLO PARA POKEMONS
     public static final String PATH_FIRE_POKEMON_TXT = "data/plainTextFiles/pokemonsData/FIRE.txt";
     public static final String PATH_WATER_POKEMON_TXT = "data/plainTextFiles/pokemonsData/WATER.txt";
     public static final String PATH_PLANT_POKEMON_TXT = "data/plainTextFiles/pokemonsData/PLANT.txt";
@@ -51,6 +51,8 @@ public class Game implements Serializable{
         }
         return lastGame;
     }
+
+
 
     public PokemonTrainer getCurrentTrainer() {
         return currentTrainer;

@@ -74,6 +74,8 @@ public class MasterGUI {
     int up = 0;
     int left = 0;
     int right = 0;
+    private double lasPositionX;
+    private double lasPositionY;
 
 
 
@@ -116,26 +118,30 @@ public class MasterGUI {
 
 
     public void addPokemonObjects(){
-        for (int i = 0; i < villages.length ; i++) {
-            String villageName = villages[i].getName();
-            switch (villageName){
-                case "pueblo: 1": villages[i].addObject(565.0,710.0, 330.0,375.0,true);
-                                  villages[i].addObject(630.0 ,760.0,25.0,100.0,true);
-                                  villages[i].addObject(1275.0,1350.0,540.0 ,580.0,true);
+        for (Village village : villages) {
+            String villageName = village.getName();
+            switch (villageName) {
+                case "pueblo: 1":
+                    village.addObject(565.0, 710.0, 330.0, 375.0, true);
+                    village.addObject(630.0, 760.0, 25.0, 100.0, true);
+                    village.addObject(1275.0, 1350.0, 540.0, 580.0, true);
                     break;
-                case "pueblo: 2":villages[i].addObject(850.0,930.0,95.0,125.0,true);
-                    villages[i].addObject(1135.0,1220.0, 425.0,465.0,true);
-                    villages[i].addObject(500.0,575.0,-25.0,10.0,true);
-                    break;
-
-                case "pueblo: 3":villages[i].addObject(690.0,785.0,30.0,60.0,true);
-                    villages[i].addObject(1130.0,1245.0,40.0, 75.0,true);
-                    villages[i].addObject( 800.0,910.0,815.0,575.0,true);
+                case "pueblo: 2":
+                    village.addObject(850.0, 930.0, 95.0, 125.0, true);
+                    village.addObject(1135.0, 1220.0, 425.0, 465.0, true);
+                    village.addObject(1155.0, 1245.0, 235.0, 275.0, true);
                     break;
 
-                case "pueblo: 4":villages[i].addObject(960.0,930.0,95.0,125.0,true);
-                      villages[i].addObject(435.0,505.0,575.0,605.0,true);
-                    villages[i].addObject(1100.0,1175.0,505.0,540.0,true);
+                case "pueblo: 3":
+                    village.addObject(690.0, 785.0, 30.0, 60.0, true);
+                    village.addObject(1130.0, 1245.0, 40.0, 75.0, true);
+                    village.addObject(405.0, 485.0, 275.0, 305.0, true);
+                    break;
+
+                case "pueblo: 4":
+                    village.addObject( 1100.0, 1175.0, 505.0, 545.0, true);
+                    village.addObject(435.0, 505.0, 575.0, 605.0, true);
+                    village.addObject(945.0, 1020.0, 210.0, 255.0, true);
                     break;
 
             }
@@ -259,6 +265,8 @@ public class MasterGUI {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
                 fxmlLoader.setController(this);
                 Parent village1 = fxmlLoader.load();
+                imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
+                imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
                 borderPane.setCenter(village1);
                 current = villages[0];
                 curentGame.setCurrentVillage(current);
@@ -269,6 +277,8 @@ public class MasterGUI {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village2.fxml"));
                 fxmlLoader.setController(this);
                 Parent village1 = fxmlLoader.load();
+                imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
+                imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
                 borderPane.setCenter(village1);
                 current = villages[1];
                 curentGame.setCurrentVillage(current);
@@ -280,6 +290,8 @@ public class MasterGUI {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village3.fxml"));
                 fxmlLoader.setController(this);
                 Parent village1 = fxmlLoader.load();
+                imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
+                imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
                 borderPane.setCenter(village1);
                 current = villages[2];
                 curentGame.setCurrentVillage(current);
@@ -291,6 +303,8 @@ public class MasterGUI {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village4.fxml"));
                 fxmlLoader.setController(this);
                 Parent village1 = fxmlLoader.load();
+                imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
+                imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
                 borderPane.setCenter(village1);
                 current = villages[3];
                 curentGame.setCurrentVillage(current);
@@ -541,9 +555,7 @@ public class MasterGUI {
         return change;
     }
 
-    public void createPokemons(){
 
-    }
 
     @FXML
     //metodo temporal
@@ -642,6 +654,9 @@ public class MasterGUI {
     public void pokemonZone(){
         System.out.println(current.isInPokemonArea(current.getPlayer()));
         if(current.isInPokemonArea(current.getPlayer())){
+            lasPositionX = current.getPlayer().getX();
+            lasPositionY = current.getPlayer().getY();
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildBattle.fxml"));
             fxmlLoader.setController(this);
             int ramdomPokemon = (int) (Math.random()*2)+1;

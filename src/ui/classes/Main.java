@@ -49,8 +49,8 @@ public class Main extends Application {
         Parent loginPane = fxmlLoader1.load();
         masterGUI.getBorderPane().setCenter(loginPane);
 
-        MusicThread musicPokemon = new MusicThread();
-        musicPokemon.start();
+        //MusicThread musicPokemon = new MusicThread();
+        //musicPokemon.start();
 
 
 

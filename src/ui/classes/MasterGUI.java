@@ -2,7 +2,10 @@ package ui.classes;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXSpinner;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,13 +15,13 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.classes.Game;
 import model.classes.Village;
+import thread.MusicThread;
 import thread.PokemonCreatorThread;
 
 import java.io.File;
@@ -34,6 +37,10 @@ public class MasterGUI {
     private BorderPane borderPane;
     @FXML
     private ImageView imgPlayerAllVillages;
+
+    @FXML
+    private JFXSlider sldMusicVolumenOptions;
+
 
 
     @FXML
@@ -76,6 +83,8 @@ public class MasterGUI {
     int right = 0;
     private double lasPositionX;
     private double lasPositionY;
+    private MusicThread musicThread;
+    private PokemonCreatorThread pct;
 
 
 
@@ -110,9 +119,17 @@ public class MasterGUI {
         villages[0].addObject(465,605,610,690, false);
         villages[0].addObject(840,990,615,695, false);
         villages[0].addObject(1165,1305,610,690, false);
-        PokemonCreatorThread pct = new PokemonCreatorThread(villages);
+        pct = new PokemonCreatorThread(villages);
         pct.start();
         addPokemonObjects();
+
+        musicThread = new MusicThread();
+        musicThread.start();
+        try {
+            musicThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -329,6 +346,17 @@ public class MasterGUI {
         Parent toBackMenuPane = fxmlLoader.load();
 
         borderPane.setCenter(toBackMenuPane);
+    }
+
+    @FXML
+    public void setMusicVolumen(MouseEvent event){
+        System.out.println("Holam");
+        double volumeValue = sldMusicVolumenOptions.getValue();
+       musicThread.getPokemonMusic().getPlayer().setVolume(volumeValue/100);
+
+
+
+
     }
 
     /**

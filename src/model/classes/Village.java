@@ -105,6 +105,18 @@ public class Village extends World {
         return action;
     }
 
+    public Boolean isInPokemonArea(PokemonTrainer currentTrainer){
+        boolean is = false;
+        for (int i = 0; i <gameObjects.size() && !is ; i++) {
+            if(gameObjects.get(i).isNear(currentTrainer.getX()+movement,currentTrainer.getY())&& gameObjects.get(i).isTransferable()){
+                System.out.println("Pokemon area");
+                is = true;
+            }
+        }
+
+        return is;
+    }
+
 
     public void setName(String name) {
         this.name = name;

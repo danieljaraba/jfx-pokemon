@@ -71,6 +71,12 @@
     -fx-border-width: 0px 0px 0px 5px;
 }
 
+.buttonToBackAdventure:hover{
+    -fx-background-color: GRAY;
+    -fx-border-color: RED;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
 
 .buttonNewGame {
     -fx-border-radius: 40px;
@@ -189,6 +195,15 @@
     -fx-background-color: #1D1B20;
     -fx-background-radius: 40px;
 }
+
+.buttonToBackAdventure{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
+
 /*.pane {
     -fx-background-color: RED;
     -fx-background-image: url('/src/img/villages/viilage1.png');

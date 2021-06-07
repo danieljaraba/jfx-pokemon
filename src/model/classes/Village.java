@@ -30,54 +30,81 @@ public class Village extends World {
         return name;
     }
 
-    public void addObject(double x1, double x2, double y1, double y2, boolean transferable){
-        GameObject obj = new GameObject(x1, x2, y1, y2, transferable, 10);
+    public void addObject(double x1, double x2, double y1, double y2, boolean transferable, boolean pokemon){
+        GameObject obj = new GameObject(x1, x2, y1, y2, transferable, 10, pokemon);
         gameObjects.add(obj);
     }
 
-    public void moveRight(){
+    public String moveRight(){
         boolean touch = false;
+        String action = "";
         for(int i = 0; i<gameObjects.size() && !touch; i++){
             touch = gameObjects.get(i).isNear(player.getX()+movement, player.getY());
+            if(touch){
+                if(gameObjects.get(i).isTransferable()){
+                    action = gameObjects.get(i).executeOption();
+                }
+            }
         }
 
         if(!touch){
             player.setX(player.getX() + movement);
         }
+        return action;
     }
 
-    public void moveUp(){
+    public String moveUp(){
         boolean touch = false;
+        String action = "";
         for(int i = 0; i<gameObjects.size() && !touch; i++){
             touch = gameObjects.get(i).isNear(player.getX(), player.getY()-movement);
+            if(touch){
+                if(gameObjects.get(i).isTransferable()){
+                    action = gameObjects.get(i).executeOption();
+                }
+            }
         }
 
         if(!touch){
             player.setY(player.getY()-movement);
         }
+        return action;
     }
 
-    public void moveDown(){
+    public String moveDown(){
         boolean touch = false;
+        String action = "";
         for(int i = 0; i<gameObjects.size() && !touch; i++){
             touch = gameObjects.get(i).isNear(player.getX(), player.getY()+movement);
-
+            if(touch){
+                if(gameObjects.get(i).isTransferable()){
+                    action = gameObjects.get(i).executeOption();
+                }
+            }
         }
 
         if(!touch){
             player.setY(player.getY()+movement);
         }
+        return action;
     }
 
-    public void moveLeft(){
+    public String moveLeft(){
         boolean touch = false;
+        String action = "";
         for(int i = 0; i<gameObjects.size() && !touch; i++){
             touch = gameObjects.get(i).isNear(player.getX()-movement, player.getY());
+            if(touch){
+                if(gameObjects.get(i).isTransferable()){
+                    action = gameObjects.get(i).executeOption();
+                }
+            }
         }
 
         if(!touch){
             player.setX(player.getX() - movement);
         }
+        return action;
     }
 
     public Boolean isInPokemonArea(PokemonTrainer currentTrainer){

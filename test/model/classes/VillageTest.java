@@ -6,6 +6,11 @@ class VillageTest {
 
     private Village village;
 
+    public void setupScenary1(){
+        //PokemonTrainer player = new PokemonTrainer(50,50,"Pedro",);
+        //village = new Village("Village 1", );
+    }
+
     @org.junit.jupiter.api.Test
     void moveRight() {
     }

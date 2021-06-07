@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="43.0" layoutY="200.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('/img/wallpaper/portada.jpg'); -fx-background-size: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="350.0" layoutX="150.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/wallpaper/titleDark.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="40.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" onAction="#btToBackAdventurePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackAdventure" stylesheets="@../../../style/Style.css" text="Back To Menu" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <ripplerFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </ripplerFill>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+               <effect>
+                  <Glow />
+               </effect>
+            </VBox>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="620.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/character/Protagonistas_RZ.gif" />
+               </image>
+            </ImageView>
+            <VBox layoutX="1150.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
+               <children>
+                  <JFXButton alignment="CENTER" onAction="#btStartAdventurePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackAdventure" stylesheets="@../../../style/Style.css" text="Start!!" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <ripplerFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </ripplerFill>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+               <effect>
+                  <Glow />
+               </effect>
+            </VBox>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="120.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/character/emerald_down_rest.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="340.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/character/girl_down_rest.png" />
+               </image>
+            </ImageView>
+            <JFXRadioButton layoutX="141.0" layoutY="400.0" text="BOY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="rbCharacterAdventurePane" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton layoutX="356.0" layoutY="400.0" text="GIRL" textFill="WHITE" toggleGroup="$rbCharacterAdventurePane">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </JFXRadioButton>
+            <JFXColorPicker fx:id="colorPickerAdventurePane" layoutX="564.0" layoutY="482.0" onAction="#cpchangeColorAdveturePane" />
+            <JFXTextField fx:id="tfNameCharacterAdventurePane" focusColor="BLUE" labelFloat="true" layoutX="336.0" layoutY="480.0" promptText="Name" unFocusColor="RED">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="105.0" layoutY="190.0" text="Choose your character:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="114.0" layoutY="480.0" text="What is your name?:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </children>
+</AnchorPane>

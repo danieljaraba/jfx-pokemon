@@ -6,14 +6,12 @@ import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXSpinner;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -72,6 +70,16 @@ public class MasterGUI {
 
     @FXML
     private JFXComboBox<String> comboPokemonattaks;
+
+    @FXML
+    private ToggleGroup rbCharacterAdventurePane;
+
+    @FXML
+    private JFXColorPicker colorPickerAdventurePane;
+
+    @FXML
+    private JFXTextField tfNameCharacterAdventurePane;
+
 
 
     private Village[] villages;
@@ -392,6 +400,16 @@ public class MasterGUI {
 
     @FXML
     public void btnAdventureNewGame(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Adventure.fxml"));
+        fxmlLoader.setController(this);
+        Parent adveturePane = fxmlLoader.load();
+
+        borderPane.setCenter(adveturePane);
+
+    }
+
+    @FXML
+    public void btStartAdventurePane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
         fxmlLoader.setController(this);
         Parent village1 = fxmlLoader.load();
@@ -400,8 +418,15 @@ public class MasterGUI {
         curentGame.setCurrentTrainer(current.getPlayer());
         curentGame.setCurrentVillage(current);
         village1.requestFocus();
+    }
 
+    @FXML
+    public void btToBackAdventurePane(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/NewGame.fxml"));
+        fxmlLoader.setController(this);
+        Parent toBackNewGamePane = fxmlLoader.load();
 
+        borderPane.setCenter(toBackNewGamePane);
     }
 
     //metodo funciona en todas las pantallas que sean un mapa
@@ -428,8 +453,11 @@ public class MasterGUI {
             moveUp();
             up++;
             imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_1.png"));
+            //.setImage(new Image("/img/character/girl_up_1.png"));
             if(up%2==0){
                 imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_2.png"));
+                //imgPlayerAllVillages.setImage(new Image("/img/character/girl_up_2.png"));
+
             }
             //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_rest.png"));
 
@@ -755,6 +783,11 @@ public class MasterGUI {
             }
 
         }
+    }
+
+    @FXML
+    public void cpchangeColorAdveturePane(ActionEvent event) {
+
     }
 
     //Getters and Setters.

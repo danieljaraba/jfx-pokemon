@@ -2,7 +2,9 @@ package model.abstractClasses;
 
 import model.interfaces.Autoplaying;
 
-public abstract class GameCharacter implements Autoplaying {
+import java.io.Serializable;
+
+public abstract class GameCharacter implements Autoplaying,Serializable {
 
     private String img;
 
@@ -10,5 +12,7 @@ public abstract class GameCharacter implements Autoplaying {
         this.img = imgURL;
     }
 
-
+    public String getImg() {
+        return img;
+    }
 }

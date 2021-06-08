@@ -1,12 +1,15 @@
 package model.classes;
 
-public class GameObject {
+import java.io.Serializable;
+
+public class GameObject  implements Serializable {
 
     private double x1;
     private double x2;
     private double y1;
     private double y2;
     private boolean transferable;
+
 
     public GameObject(double x1, double x2, double y1, double y2, boolean transferable, double nearConst){
         this.x1 = x1 + nearConst;

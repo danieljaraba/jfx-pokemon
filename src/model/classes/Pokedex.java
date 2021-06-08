@@ -1,5 +1,6 @@
 package model.classes;
 
+import model.abstractClasses.Pokemon;
 import model.abstractClasses.StoreObject;
 
 import java.util.ArrayList;
@@ -7,10 +8,27 @@ import java.util.ArrayList;
 public class Pokedex extends StoreObject {
 
     private Pokemon[] pokemons;
-    private ArrayList<Pokeball> currentPokemons;
+    private ArrayList<Pokemon> currentPokemons;
 
-    public Pokedex(double price) {
-        super(price);
+    public Pokedex(String name,double price) {
+        super(name,price);
+    }
+
+    //When see a new pokemon confirm if its already seen before
+    public void addPokemonToSeenPokemons(String pokemonOriginalName){
+        boolean found = false;
+        for(Pokemon pokemon : currentPokemons){
+            if(pokemon.getName().equals(pokemonOriginalName)){
+                found = true;
+            }
+        }
+        if(!found){
+            for(Pokemon pokemon : pokemons){
+                if(pokemon.getName().equals(pokemonOriginalName)){
+                    currentPokemons.add(pokemon);
+                }
+            }
+        }
     }
 
     public Pokemon[] getPokemons() {
@@ -21,11 +39,11 @@ public class Pokedex extends StoreObject {
         this.pokemons = pokemons;
     }
 
-    public ArrayList<Pokeball> getCurrentPokemons() {
+    public ArrayList<Pokemon> getCurrentPokemons() {
         return currentPokemons;
     }
 
-    public void setCurrentPokemons(ArrayList<Pokeball> currentPokemons) {
+    public void setCurrentPokemons(ArrayList<Pokemon> currentPokemons) {
         this.currentPokemons = currentPokemons;
     }
 }

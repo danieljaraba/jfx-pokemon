@@ -7,21 +7,16 @@ public class MusicThread extends Thread{
 
 
     public MusicThread(){
-        super();
-        pokemonMusic = new Music();
+        pokemonMusic = new Music("src/music/tyler-herro-instrumental.mp3");
     }
 
 
     @Override
     public void run(){
-        try {
-            pokemonMusic.sound();
-            Thread.sleep(100 * 1000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-
-
+       pokemonMusic.init();
     }
 
+    public Music getPokemonMusic() {
+        return pokemonMusic;
+    }
 }

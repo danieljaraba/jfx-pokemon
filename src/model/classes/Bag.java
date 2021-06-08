@@ -23,8 +23,19 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
     }
 
     public void sortUsedPokeballsByPokemonName(){
-        Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
-        usedPokeballs.sort(pokemonOrderByName);
+        for(int i = 0; i < usedPokeballs.size(); i++){
+            Pokeball min = usedPokeballs.get(i);
+            for( int j = i+1; j < usedPokeballs.size(); j++){
+                if(usedPokeballs.get(j).getPokemon().getName().compareToIgnoreCase(min.getPokemon().getName()) < 0){
+                    Pokeball temp = usedPokeballs.get(j);
+                    usedPokeballs.set(j,min);
+                    min = temp;
+                }
+            }
+            usedPokeballs.set(i,min);
+        }
+        //Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
+        //usedPokeballs.sort(pokemonOrderByName);
     }
 
     public double getSpace() {

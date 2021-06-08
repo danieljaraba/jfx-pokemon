@@ -15,7 +15,12 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.classes.Game;
@@ -80,6 +85,13 @@ public class MasterGUI {
     @FXML
     private JFXTextField tfNameCharacterAdventurePane;
 
+    @FXML
+    private JFXRadioButton rbBoyCharacterAdventurePane;
+
+    @FXML
+    private JFXRadioButton rbGirlCharacterAdventurePane;
+
+
 
 
     private Village[] villages;
@@ -90,6 +102,7 @@ public class MasterGUI {
     int up = 0;
     int left = 0;
     int right = 0;
+    private String imgURL = "";
     private double lasPositionX;
     private double lasPositionY;
     private MusicThread musicThread;
@@ -106,32 +119,9 @@ public class MasterGUI {
         villages = new Village[4];
         curentGame = new Game();
         //por el momento todos los pueblos tienen el mismo tamaño
-        for (int i = 0; i <villages.length ; i++) {
-            villages[i] = new Village(34,45,3,"pueblo: "+(i+1), 5);
-            System.out.println(villages[i].getName()); //validacion
-        }
 
-        villages[0].addObject(110,250,35,115, false);
-        villages[0].addObject(420,570,30,90, false);
-        villages[0].addObject(810,950,35,115, false);
-        villages[0].addObject(1120,1270,35,115, false);
-        villages[0].addObject(140,290,215,295, false);
-        villages[0].addObject(465,605,210,290, false);
-        villages[0].addObject(840,990,215,295, false);
-        villages[0].addObject(1165,1305,210,290, false);
 
-        villages[0].addObject(110,250,435,515, false);
-        villages[0].addObject(420,570,430,490, false);
-        villages[0].addObject(810,950,435,515, false);
-        villages[0].addObject(1120,1270,435,515, false);
-        villages[0].addObject(140,290,615,695, false);
-        villages[0].addObject(465,605,610,690, false);
-        villages[0].addObject(840,990,615,695, false);
-        villages[0].addObject(1165,1305,610,690, false);
-        pct = new PokemonCreatorThread(villages);
-        pct.start();
-        addPokemonObjects();
-
+/*
         musicThread = new MusicThread();
         musicThread.start();
         try {
@@ -139,6 +129,37 @@ public class MasterGUI {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+*/
+    }
+
+    public void startGameAdventurePane(String nameCharacter,String imgURL){
+        for (int i = 0; i <villages.length ; i++) {
+            villages[i] = new Village(34,45,3,"pueblo: "+(i+1), 5,nameCharacter,imgURL);
+            System.out.println(villages[i].getName()); //validacion
+        }
+
+        villages[0].addObject(110,250,35,115, true, false);
+        villages[0].addObject(420,570,30,90, false, false);
+        villages[0].addObject(810,950,35,115, false, false);
+        villages[0].addObject(1120,1270,35,115, false, false);
+        villages[0].addObject(140,290,215,295, false, false);
+        villages[0].addObject(465,605,210,290, false, false);
+        villages[0].addObject(840,990,215,295, false, false);
+        villages[0].addObject(1165,1305,210,290, false, false);
+
+        villages[0].addObject(110,250,435,515, false, false);
+        villages[0].addObject(420,570,430,490, false, false);
+        villages[0].addObject(810,950,435,515, false, false);
+        villages[0].addObject(1120,1270,435,515, false, false);
+        villages[0].addObject(140,290,615,695, false, false);
+        villages[0].addObject(465,605,610,690, false, false);
+        villages[0].addObject(840,990,615,695, false, false);
+        villages[0].addObject(1165,1305,610,690, false, false);
+
+        addPokemonObjects();
+
+        pct = new PokemonCreatorThread(villages);
+        pct.start();
 
     }
 
@@ -148,26 +169,26 @@ public class MasterGUI {
             String villageName = village.getName();
             switch (villageName) {
                 case "pueblo: 1":
-                    village.addObject(565.0, 710.0, 330.0, 375.0, true);
-                    village.addObject(630.0, 760.0, 25.0, 100.0, true);
-                    village.addObject(1275.0, 1350.0, 540.0, 580.0, true);
+                    village.addObject(565.0, 710.0, 330.0, 375.0, true, true);
+                    village.addObject(630.0, 760.0, 25.0, 100.0, true, true);
+                    village.addObject(1275.0, 1350.0, 540.0, 580.0, true, true);
                     break;
                 case "pueblo: 2":
-                    village.addObject(850.0, 930.0, 95.0, 125.0, true);
-                    village.addObject(1135.0, 1220.0, 425.0, 465.0, true);
-                    village.addObject(1155.0, 1245.0, 235.0, 275.0, true);
+                    village.addObject(850.0, 930.0, 95.0, 125.0, true, true);
+                    village.addObject(1135.0, 1220.0, 425.0, 465.0, true, true);
+                    village.addObject(1155.0, 1245.0, 235.0, 275.0, true, true);
                     break;
 
                 case "pueblo: 3":
-                    village.addObject(690.0, 785.0, 30.0, 60.0, true);
-                    village.addObject(1130.0, 1245.0, 40.0, 75.0, true);
-                    village.addObject(405.0, 485.0, 275.0, 305.0, true);
+                    village.addObject(690.0, 785.0, 30.0, 60.0, true, true);
+                    village.addObject(1130.0, 1245.0, 40.0, 75.0, true, true);
+                    village.addObject(405.0, 485.0, 275.0, 305.0, true, true);
                     break;
 
                 case "pueblo: 4":
-                    village.addObject( 1100.0, 1175.0, 505.0, 545.0, true);
-                    village.addObject(435.0, 505.0, 575.0, 605.0, true);
-                    village.addObject(945.0, 1020.0, 210.0, 255.0, true);
+                    village.addObject( 1100.0, 1175.0, 505.0, 545.0, true, true);
+                    village.addObject(435.0, 505.0, 575.0, 605.0, true, true);
+                    village.addObject(945.0, 1020.0, 210.0, 255.0, true, true);
                     break;
 
             }
@@ -293,6 +314,12 @@ public class MasterGUI {
                 Parent village1 = fxmlLoader.load();
                 imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
                 imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
+                if(imgURL.equals("BOY")){
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+                }else{
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+                }
                 borderPane.setCenter(village1);
                 current = villages[0];
                 curentGame.setCurrentVillage(current);
@@ -305,6 +332,12 @@ public class MasterGUI {
                 Parent village1 = fxmlLoader.load();
                 imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
                 imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
+                if(imgURL.equals("BOY")){
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+                }else{
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+                }
                 borderPane.setCenter(village1);
                 current = villages[1];
                 curentGame.setCurrentVillage(current);
@@ -318,6 +351,12 @@ public class MasterGUI {
                 Parent village1 = fxmlLoader.load();
                 imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
                 imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
+                if(imgURL.equals("BOY")){
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+                }else{
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+                }
                 borderPane.setCenter(village1);
                 current = villages[2];
                 curentGame.setCurrentVillage(current);
@@ -331,6 +370,12 @@ public class MasterGUI {
                 Parent village1 = fxmlLoader.load();
                 imgPlayerAllVillages.setLayoutX(lasPositionX-current.getMovement());
                 imgPlayerAllVillages.setLayoutY(lasPositionY-current.getMovement());
+                if(imgURL.equals("BOY")){
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+                }else{
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+                }
                 borderPane.setCenter(village1);
                 current = villages[3];
                 curentGame.setCurrentVillage(current);
@@ -408,16 +453,45 @@ public class MasterGUI {
 
     }
 
+
+
     @FXML
     public void btStartAdventurePane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
         fxmlLoader.setController(this);
         Parent village1 = fxmlLoader.load();
-        borderPane.setCenter(village1);
-        current = villages[0];
-        curentGame.setCurrentTrainer(current.getPlayer());
-        curentGame.setCurrentVillage(current);
-        village1.requestFocus();
+
+
+
+        String nameCharacter = tfNameCharacterAdventurePane.getText();
+
+
+        if(rbBoyCharacterAdventurePane.isSelected()){
+            imgURL = "BOY";
+            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+        }else if(rbGirlCharacterAdventurePane.isSelected()){
+            imgURL = "GIRL";
+            imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+        }
+
+
+        if(!tfNameCharacterAdventurePane.getText().equals("") && (rbGirlCharacterAdventurePane.isSelected() || rbBoyCharacterAdventurePane.isSelected())) {
+            borderPane.setCenter(village1);
+            startGameAdventurePane(nameCharacter, imgURL);
+            current = villages[0];
+            curentGame.setCurrentTrainer(current.getPlayer());
+            curentGame.setCurrentVillage(current);
+
+            village1.requestFocus();
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("LOOK");
+            alert.setContentText("Write your name or choose your character. Please!");
+
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -452,12 +526,17 @@ public class MasterGUI {
         if(event.getCode() == KeyCode.UP){
             moveUp();
             up++;
-            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_1.png"));
-            //.setImage(new Image("/img/character/girl_up_1.png"));
+            if(imgURL.equals("BOY")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_1.png"));
+            }else if(imgURL.equals("GIRL")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/girl_up_1.png"));
+            }
             if(up%2==0){
-                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_2.png"));
-                //imgPlayerAllVillages.setImage(new Image("/img/character/girl_up_2.png"));
-
+                if(imgURL.equals("BOY")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_2.png"));
+                }else if(imgURL.equals("GIRL")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_up_2.png"));
+                }
             }
             //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_rest.png"));
 
@@ -466,12 +545,19 @@ public class MasterGUI {
         if(event.getCode() == KeyCode.DOWN){
             moveDown();
             down++;
-            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_1.png"));
-            if(down%2==0) {
-                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_2.png"));
-
+            if(imgURL.equals("BOY")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_1.png"));
+            }else if(imgURL.equals("GIRL")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_1.png"));
             }
-            //Permanecer quieto despues de moverse (seria buena idea hacerlo con hilos cada cierto tiempo)
+            if(down%2==0){
+                if(imgURL.equals("BOY")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_2.png"));
+                }else if(imgURL.equals("GIRL")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_2.png"));
+                }
+            }
+            //Permanecer quieto despues de moverse (seria buena idea hacerlo con hilos cada cierto tiempo) o cuando dejer de oprimir la tecla
             //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
 
 
@@ -479,9 +565,17 @@ public class MasterGUI {
         if(event.getCode() == KeyCode.LEFT){
             moveLeft();
             left++;
-            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_1.png"));
+            if(imgURL.equals("BOY")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_1.png"));
+            }else if(imgURL.equals("GIRL")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/girl_left_1.png"));
+            }
             if(left%2==0){
-                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_2.png"));
+                if(imgURL.equals("BOY")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_2.png"));
+                }else if(imgURL.equals("GIRL")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_left_2.png"));
+                }
             }
             //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_left_rest.png"));
 
@@ -490,9 +584,17 @@ public class MasterGUI {
         if(event.getCode() == KeyCode.RIGHT){
             moveRight();
             right++;
-            imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_1.png"));
+            if(imgURL.equals("BOY")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_1.png"));
+            }else if(imgURL.equals("GIRL")) {
+                imgPlayerAllVillages.setImage(new Image("/img/character/girl_right_1.png"));
+            }
             if(right%2==0){
-                imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_2.png"));
+                if(imgURL.equals("BOY")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_2.png"));
+                }else if(imgURL.equals("GIRL")) {
+                    imgPlayerAllVillages.setImage(new Image("/img/character/girl_right_2.png"));
+                }
             }
             //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_right_rest.png"));
 
@@ -543,6 +645,12 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[1];
+                   if(imgURL.equals("BOY")){
+                       imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+                   }else{
+                       imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+                   }
                    curentGame.setCurrentVillage(current);
                    village1.requestFocus();
 
@@ -552,6 +660,12 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[2];
+                   if(imgURL.equals("BOY")){
+                       imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+                   }else{
+                       imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+                   }
                    curentGame.setCurrentVillage(current);
                    village1.requestFocus();
 
@@ -561,6 +675,12 @@ public class MasterGUI {
                    Parent village1 = fxmlLoader.load();
                    borderPane.setCenter(village1);
                    current = villages[3];
+                   if(imgURL.equals("BOY")){
+                       imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
+                   }else{
+                       imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
+
+                   }
                    curentGame.setCurrentVillage(current);
                    village1.requestFocus();
 
@@ -608,47 +728,124 @@ public class MasterGUI {
 
     }
 
-    public void moveLeft(){
-        current.moveLeft();
+    public void moveLeft() throws IOException {
+        String var = current.moveLeft();
         imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
-        System.out.println("current x: "+imgPlayerAllVillages.getLayoutX());
-        System.out.println("current y: "+imgPlayerAllVillages.getLayoutY());
-        pokemonZone();
-
+        if(!var.equals("")){
+            moveOption(var);
+        }
     }
 
 
 
-    public void moveRight() {
-        current.moveRight();
+    public void moveRight() throws IOException {
+        String var = current.moveRight();
         imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
-        System.out.println("current x: "+imgPlayerAllVillages.getLayoutX());
-        System.out.println("current y: "+imgPlayerAllVillages.getLayoutY());
-        pokemonZone();
 
-
-
-    }
-
-
-
-    public void moveUp(){
-        current.moveUp();
-        imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
-        System.out.println("current x: "+imgPlayerAllVillages.getLayoutX());
-        System.out.println("current y: "+imgPlayerAllVillages.getLayoutY());
-        pokemonZone();
-
+        if(!var.equals("")){
+            moveOption(var);
+        }
 
     }
 
-    public void moveDown(){
-        current.moveDown();
-        imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
-        System.out.println("current x: "+imgPlayerAllVillages.getLayoutX());
-        System.out.println("current y: "+imgPlayerAllVillages.getLayoutY());
-        pokemonZone();
 
+
+    public void moveUp() throws IOException {
+        String var = current.moveUp();
+        imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
+        if(!var.equals("")){
+            moveOption(var);
+        }
+
+    }
+
+    public void moveDown() throws IOException {
+        String var = current.moveDown();
+        imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
+        if(!var.equals("")){
+            moveOption(var);
+        }
+    }
+
+    public void moveOption(String var) throws IOException {
+        switch (var){
+            case "Method":
+                moveVillage();
+            break;
+            case "Pokemon":
+                pokemonZone();
+            break;
+        }
+    }
+
+    public void moveVillage() throws IOException {
+        List<String> choices = new ArrayList<>();
+        String check = current.getName();
+        switch (check){
+            case "pueblo: 1": choices.add("pueblo: 2");
+                choices.add("pueblo: 3");
+                choices.add("pueblo: 4");
+                break;
+            case "pueblo: 2":choices.add("pueblo: 1");
+                choices.add("pueblo: 3");
+                choices.add("pueblo: 4");
+                break;
+
+            case "pueblo: 3": choices.add("pueblo: 1");
+                choices.add("pueblo: 2");
+                choices.add("pueblo: 4");
+                break;
+
+            case "pueblo: 4":  choices.add("pueblo: 1");
+                choices.add("pueblo: 2");
+                choices.add("pueblo: 3");
+                break;
+        }
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(null, choices);
+        dialog.setTitle("Where to go?");
+        dialog.setHeaderText("Look, make a choice");
+        dialog.setContentText("Choose your destiny:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            if (result.get().equals("pueblo: 1")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[0];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+            }else if(result.get().equals("pueblo: 2")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village2.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[1];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+
+            }else if(result.get().equals("pueblo: 3")){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village3.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[2];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+
+            }else {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village4.fxml"));
+                fxmlLoader.setController(this);
+                Parent village1 = fxmlLoader.load();
+                borderPane.setCenter(village1);
+                current = villages[3];
+                curentGame.setCurrentVillage(current);
+                village1.requestFocus();
+
+            }
+        }
     }
 
     public boolean checkPosition(){
@@ -759,36 +956,63 @@ public class MasterGUI {
     }
 
     public void pokemonZone(){
-        System.out.println(current.isInPokemonArea(current.getPlayer()));
-        if(current.isInPokemonArea(current.getPlayer())){
-            lasPositionX = current.getPlayer().getX();
-            lasPositionY = current.getPlayer().getY();
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildBattle.fxml"));
-            fxmlLoader.setController(this);
-            int ramdomPokemon = (int) (Math.random()*2)+1;
-            try {
-                Parent battle = fxmlLoader.load();
-                borderPane.setCenter(battle);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                imgPokemonWildBattle.setImage(new Image(current.getLocalPokemons()[ramdomPokemon].getImg()));
-                lbPokemonNameWildBattle.setText(current.getLocalPokemons()[ramdomPokemon].getName());
-            }catch (IndexOutOfBoundsException ideo){
-                System.out.println("Maldito ramdom");
-                imgPokemonWildBattle.setImage(new Image(current.getLocalPokemons()[2].getImg()));
-                lbPokemonNameWildBattle.setText(current.getLocalPokemons()[2].getName());
-            }
-
+        lasPositionX = imgPlayerAllVillages.getLayoutX();
+        lasPositionY = imgPlayerAllVillages.getLayoutY();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildBattle.fxml"));
+        fxmlLoader.setController(this);
+        int ramdomPokemon = (int) (Math.random()*2)+1;
+        try {
+            Parent battle = fxmlLoader.load();
+            borderPane.setCenter(battle);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            imgPokemonWildBattle.setImage(new Image(current.getLocalPokemons()[ramdomPokemon].getImg()));
+            lbPokemonNameWildBattle.setText(current.getLocalPokemons()[ramdomPokemon].getName());
+        }catch (IndexOutOfBoundsException ideo){
+            System.out.println("Maldito ramdom");
+            imgPokemonWildBattle.setImage(new Image(current.getLocalPokemons()[2].getImg()));
+            lbPokemonNameWildBattle.setText(current.getLocalPokemons()[2].getName());
         }
     }
 
+
     @FXML
     public void cpchangeColorAdveturePane(ActionEvent event) {
+            Color c = colorPickerAdventurePane.getValue();
+            String colorstring = toRGBCode(c);
+
+
+
+            if(rbGirlCharacterAdventurePane.isSelected() || rbBoyCharacterAdventurePane.isSelected()) {
+                tfNameCharacterAdventurePane.setStyle("-fx-text-inner-color: "+colorstring+";");
+                rbBoyCharacterAdventurePane.setStyle("-jfx-selected-color: " + colorstring + ";");
+                rbGirlCharacterAdventurePane.setStyle("-jfx-selected-color: " + colorstring + ";");
+            }else{
+                colorPickerAdventurePane.setValue(Color.WHITE);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText("Look!!");
+                alert.setContentText("Choose your character!");
+
+                alert.showAndWait();
+            }
+
+
+
 
     }
+
+    public String toRGBCode( Color color )
+    {
+        return String.format( "#%02X%02X%02X",
+                (int)( color.getRed() * 255 ),
+                (int)( color.getGreen() * 255 ),
+                (int)( color.getBlue() * 255 ) );
+    }
+
 
     //Getters and Setters.
 

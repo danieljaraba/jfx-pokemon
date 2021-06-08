@@ -6,6 +6,7 @@ jfx-pokemon.iml
 .settings/*
 .classpath
 .project
+
 #Bin files
 bin/*
-.class/*
+.class

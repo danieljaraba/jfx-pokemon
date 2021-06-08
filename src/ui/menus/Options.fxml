@@ -47,7 +47,7 @@
                   <Glow />
                </effect>
             </VBox>
-            <JFXSlider layoutX="580.0" layoutY="264.0" prefHeight="30.0" prefWidth="160.0">
+            <JFXSlider fx:id="sldMusicVolumenOptions" layoutX="580.0" layoutY="264.0" onDragDetected="#setMusicVolumen" prefHeight="30.0" prefWidth="160.0">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor></JFXSlider>

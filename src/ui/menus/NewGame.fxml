@@ -74,22 +74,6 @@
                         </RadialGradient>
                      </ripplerFill>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#battle" prefHeight="40.0" prefWidth="128.0" styleClass="buttonAdventureNewGame" stylesheets="@../../../style/Style.css" text="Wild battle" textAlignment="CENTER" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="System Bold Italic" size="14.0" />
-                     </font>
-                     <ripplerFill>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </ripplerFill>
-                  </JFXButton>
                </children>
                <effect>
                   <Glow />

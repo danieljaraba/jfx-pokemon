@@ -15,7 +15,7 @@
          <children>
             <ImageView fx:id="imgPlayerWildBattle" fitHeight="159.0" fitWidth="144.0" layoutX="55.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../img/battles/emerald_battle_1.png" />
+                  <Image url="@../../img/character/emerald_battle_1.png" />
                </image>
             </ImageView>
             <ImageView fx:id="imgPokemonWildBattle" fitHeight="119.0" fitWidth="164.0" layoutX="415.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
@@ -29,7 +29,7 @@
                   <Font name="Open Sans Semibold" size="23.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btLeaveWildBattle" layoutX="432.0" layoutY="297.0" prefHeight="42.0" prefWidth="106.0" text="LEAVE" textFill="#f5f0f0">
+            <JFXButton fx:id="btLeaveWildBattle" layoutX="432.0" layoutY="297.0" onAction="#btLeaveWildBattle" prefHeight="42.0" prefWidth="106.0" text="LEAVE" textFill="#f5f0f0">
                <font>
                   <Font name="Open Sans Semibold" size="22.0" />
                </font>
@@ -49,7 +49,7 @@
                   <Font name="Open Sans Semibold Italic" size="24.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="comboPokemonattaks" layoutX="337.0" layoutY="310.0" prefHeight="26.0" prefWidth="201.0" promptText="Choose an attack" visible="false" />
+            <JFXComboBox fx:id="comboPokemonattaks" layoutX="336.0" layoutY="344.0" prefHeight="26.0" prefWidth="201.0" promptText="Choose an attack" visible="false" />
          </children>
       </Pane>
    </children>

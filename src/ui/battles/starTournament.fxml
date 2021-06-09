@@ -9,16 +9,16 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: url('/img/battles/EUb_zboXQAMlXEn.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: url('/img/battles/EUb_zboXQAMlXEn.jpg'); -fx-background-size: 100%100%;" AnchorPane.leftAnchor="-100.0" AnchorPane.rightAnchor="-100.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.leftAnchor="-100.0" AnchorPane.rightAnchor="-100.0">
          <children>
             <ImageView fitHeight="134.0" fitWidth="145.0" layoutX="145.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/battles/INTERNATIONAL-LOGO-FINAL.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="413.0" layoutY="497.0" styleClass="buttonResumeTournament" stylesheets="@../../../style/Style.css" text="Participate" textFill="#f2f2f2f7">
+            <JFXButton layoutX="413.0" layoutY="497.0" onAction="#loadVersusScreen" styleClass="buttonResumeTournament" stylesheets="@../../../style/Style.css" text="Participate" textFill="#f2f2f2f7">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>

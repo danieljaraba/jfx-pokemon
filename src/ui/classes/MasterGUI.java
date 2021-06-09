@@ -870,26 +870,20 @@ public class MasterGUI {
 
     @FXML
     public void btTournamentNewGame(ActionEvent event) throws IOException {
-      /*  if(current == null){
+       if(current == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("So sorry");
             alert.setHeaderText("There's a problem");
             alert.setContentText("You must set a character first \n So let's go to a new adventure");
             alert.showAndWait();
         }else {
+           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/starTournament.fxml"));
+           fxmlLoader.setController(this);
+           Parent tournament = fxmlLoader.load();
+           tournament.requestFocus();
+           borderPane.setCenter(tournament);
 
         }
-
-       */
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/starTournament.fxml"));
-        fxmlLoader.setController(this);
-        Parent tournament = fxmlLoader.load();
-        tournament.requestFocus();
-        borderPane.setCenter(tournament);
-
-
-
     }
 
 

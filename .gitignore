@@ -9,4 +9,4 @@ jfx-pokemon.iml
 
 #Bin files
 bin/*
-.class
+.class/*

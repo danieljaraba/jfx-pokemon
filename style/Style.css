@@ -204,7 +204,21 @@
     -fx-background-radius: 40px;
 }
 
+.buttonParticipateTournament:hover{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
 
+.buttonResumeTournament{
+    -fx-border-radius: 40px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-color: #EFB810;
+    -fx-background-color: #1D1B20;
+    -fx-background-radius: 40px;
+}
 
 
 

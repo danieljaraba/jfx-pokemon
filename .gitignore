@@ -9,4 +9,8 @@ jfx-pokemon.iml
 
 #Bin files
 bin/*
+<<<<<<< HEAD
 .class/*
+=======
+.class/*
+>>>>>>> gui

@@ -87,7 +87,7 @@
                   <Image url="@../../img/character/girl_down_rest.png" />
                </image>
             </ImageView>
-            <JFXRadioButton layoutX="141.0" layoutY="400.0" text="BOY" textFill="WHITE">
+            <JFXRadioButton fx:id="rbBoyCharacterAdventurePane" layoutX="141.0" layoutY="400.0" text="BOY" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -95,13 +95,13 @@
                   <ToggleGroup fx:id="rbCharacterAdventurePane" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton layoutX="356.0" layoutY="400.0" text="GIRL" textFill="WHITE" toggleGroup="$rbCharacterAdventurePane">
+            <JFXRadioButton fx:id="rbGirlCharacterAdventurePane" layoutX="356.0" layoutY="400.0" text="GIRL" textFill="WHITE" toggleGroup="$rbCharacterAdventurePane">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </JFXRadioButton>
             <JFXColorPicker fx:id="colorPickerAdventurePane" layoutX="564.0" layoutY="482.0" onAction="#cpchangeColorAdveturePane" />
-            <JFXTextField fx:id="tfNameCharacterAdventurePane" focusColor="BLUE" labelFloat="true" layoutX="336.0" layoutY="480.0" promptText="Name" unFocusColor="RED">
+            <JFXTextField fx:id="tfNameCharacterAdventurePane" focusColor="BLUE" labelFloat="true" layoutX="336.0" layoutY="480.0" promptText="Name" styleClass="n" stylesheets="@../../../style/Style.css" unFocusColor="RED">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>

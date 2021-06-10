@@ -16,11 +16,10 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="paneAdventurePane" layoutX="43.0" layoutY="200.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('/img/wallpaper/portada.jpg'); -fx-background-size: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="43.0" layoutY="200.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('/img/wallpaper/portada.jpg'); -fx-background-size: 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="300.0" fitWidth="350.0" layoutX="150.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,7 +56,7 @@
             </ImageView>
             <VBox layoutX="1150.0" layoutY="580.0" prefHeight="60.0" prefWidth="165.0">
                <children>
-                  <JFXButton fx:id="btStrartAventurePaneVisible" alignment="CENTER" onAction="#btStartAdventurePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackAdventure" stylesheets="@../../../style/Style.css" text="Start!!" textFill="WHITE">
+                  <JFXButton alignment="CENTER" onAction="#btStartAdventurePane" prefHeight="90.0" prefWidth="335.0" styleClass="buttonToBackAdventure" stylesheets="@../../../style/Style.css" text="Start!!" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
@@ -129,78 +128,5 @@
                </font>
             </Label>
          </children></Pane>
-      <TextFlow fx:id="tflTutorialPane" layoutX="210.0" layoutY="430.0" lineSpacing="10.0" prefHeight="205.0" prefWidth="1000.0" styleClass="tutorialText" stylesheets="@../../../style/Style.css" textAlignment="JUSTIFY" visible="false" />
-      <ImageView fx:id="imgFlatTutorialPane" fitHeight="182.0" fitWidth="600.0" layoutX="373.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../img/icon/grass_battle_grass_2.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="imgTeacherTutorialPane" fitHeight="221.0" fitWidth="175.0" layoutX="632.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../img/character/trainers_Battle/teacher.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="imgVPokemonTutorialPane" fitHeight="150.0" fitWidth="200.0" layoutX="514.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../img/pokemon/pokemon_sprites/Psyduck.gif" />
-         </image>
-      </ImageView>
-      <JFXRadioButton fx:id="rbBulbasaurTutorialPane" contentDisplay="TOP" layoutX="280.0" layoutY="230.0" text="Bulbasaur" textAlignment="CENTER" textFill="WHITE" visible="false">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/pokemon/pokemon_sprites/Bulbasaur.gif" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-         <toggleGroup>
-            <ToggleGroup fx:id="tgPokemonsTutorial" />
-         </toggleGroup>
-      </JFXRadioButton>
-      <JFXRadioButton fx:id="rbCharmanderTutorialPanel" contentDisplay="TOP" layoutX="580.0" layoutY="230.0" text="Charmander" textAlignment="CENTER" textFill="WHITE" visible="false">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/pokemon/pokemon_sprites/Charmander.gif" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-         <toggleGroup>
-            <ToggleGroup fx:id="tgPokemonsTutorial" />
-         </toggleGroup>
-      </JFXRadioButton>
-      <JFXRadioButton fx:id="rbSquirtleTutorialPane" contentDisplay="TOP" layoutX="880.0" layoutY="230.0" text="Squirtle" textAlignment="CENTER" textFill="WHITE" visible="false">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/pokemon/pokemon_sprites/Squirtle.gif" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-         <toggleGroup>
-            <ToggleGroup fx:id="tgPokemonsTutorial" />
-         </toggleGroup>
-      </JFXRadioButton>
    </children>
 </AnchorPane>

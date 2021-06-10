@@ -122,11 +122,7 @@ public class MasterGUI {
     private JFXRadioButton rbSquirtleTutorialPane;
 
     @FXML
-    private Pane paneAdventurePane;
-
-    @FXML
-    private JFXButton btStrartAventurePaneVisible;
-
+    private JFXButton btContinueTutorialPane;
 
 
 
@@ -487,7 +483,9 @@ public class MasterGUI {
         fxmlLoader.setController(this);
         Parent adveturePane = fxmlLoader.load();
 
+
         borderPane.setCenter(adveturePane);
+
 
 
     }
@@ -496,22 +494,65 @@ public class MasterGUI {
 
 
 
+
+
+
     @FXML
     public void btStartAdventurePane(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Tutorial.fxml"));
+        fxmlLoader.setController(this);
+        Parent tutorial = fxmlLoader.load();
+
+        borderPane.setCenter(tutorial);
+        tutorial.requestFocus();
+
+
+        String nameCharacter = tfNameCharacterAdventurePane.getText();
+
+        if(!tfNameCharacterAdventurePane.getText().equals("") && (rbGirlCharacterAdventurePane.isSelected() || rbBoyCharacterAdventurePane.isSelected())){
+
+            tflTutorialPane.setVisible(true);
+            imgFlatTutorialPane.setVisible(true);
+            imgTeacherTutorialPane.setVisible(true);
+            Text text1 = new Text("Hi! Sorry to keep you waiting! ");
+            text1.setFont(textEdit);
+            Text textName = new Text(nameCharacter);
+            textName.setFont(textEdit);
+            textName.setEffect(new Glow(5.0));
+            textName.setFill(colorPickerAdventurePane.getValue());
+            Text text2 = new Text(". Welcome to the world of POKEMON! My name is Reyes, but everyone calls me the POKEMON PROFESSOR. \n");
+            text2.setFont(textEdit);
+            Text text3 = new Text("                                     PRESS SPACE!");
+            text3.setFont(textEdit);
+            text3.setFill(colorPickerAdventurePane.getValue());
+            text3.setEffect(new Glow(5.0));
+
+            tflTutorialPane.getChildren().addAll(text1,textName,text2,text3);
+
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("LOOK");
+            alert.setContentText("Write your name or choose your character. Please!");
+
+            alert.showAndWait();
+        }
+    }
+
+
+
+    @FXML
+    public void btContinueTutorialPane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
         fxmlLoader.setController(this);
         Parent village1 = fxmlLoader.load();
 
-        //Tutorial Pane
-
-        FXMLLoader fxmlLoaderTutorial = new FXMLLoader(getClass().getResource("../menus/Tutorial.fxml"));
-        fxmlLoaderTutorial.setController(this);
-        Parent tutorial = fxmlLoaderTutorial.load();
-
 
 
         String nameCharacter = tfNameCharacterAdventurePane.getText();
-        String nameColor = tfNameCharacterAdventurePane.getStyle();
+        Color c = colorPickerAdventurePane.getValue();
+        String colorCharacter = toRGBCode(c);
+
 
         if(rbBoyCharacterAdventurePane.isSelected()){
             imgURL = "BOY";
@@ -524,46 +565,15 @@ public class MasterGUI {
 
 
         if(!tfNameCharacterAdventurePane.getText().equals("") && (rbGirlCharacterAdventurePane.isSelected() || rbBoyCharacterAdventurePane.isSelected())) {
-
-            borderPane.setCenter(tutorial);
-            tutorial.requestFocus();
-
-            imgFlatTutorialPane.setVisible(true);
-            imgTeacherTutorialPane.setVisible(true);
-            Text text1 = new Text("Hi! Sorry to keep you waiting! ");
-            text1.setFont(textEdit);
-            Text textName = new Text(nameCharacter);
-            textName.setFont(textEdit);
-            textName.setEffect(new Glow(5.0));
-            textName.setFill(colorPickerAdventurePane.getValue());
-            Text text2 = new Text(". Welcome to the world of POKÉMON! My name is Reyes, but everyone calls me the PÓKEMON PROFESSOR. \n");
-            text2.setFont(textEdit);
-            Text text3 = new Text("                                     PRESS SPACE!");
-            text3.setFont(textEdit);
-            text3.setFill(colorPickerAdventurePane.getValue());
-            text3.setEffect(new Glow(5.0));
-
-            tflTutorialPane.getChildren().addAll(text1,textName,text2,text3);
-
-
-            System.out.println(rbCharmanderTutorialPanel.isSelected());
-            if(rbSquirtleTutorialPane.isSelected() || rbBulbasaurTutorialPane.isSelected() || rbCharmanderTutorialPanel.isPressed()){
-
-                startGameAdventurePane(nameCharacter, imgURL,nameColor);
+            borderPane.setCenter(village1);
+            startGameAdventurePane(nameCharacter, imgURL,colorCharacter);
             current = villages[0];
             curentGame.setCurrentTrainer(current.getPlayer());
             curentGame.setCurrentVillage(current);
 
-            village1.requestFocus();
-            borderPane.setCenter(village1);
-            }
-        }else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText("LOOK");
-            alert.setContentText("Write your name or choose your character. Please!");
+            System.out.println(current.getPlayer().getName());
 
-            alert.showAndWait();
+            village1.requestFocus();
         }
     }
 
@@ -579,16 +589,15 @@ public class MasterGUI {
     @FXML
     public void moveSpaceTutorialPane(KeyEvent event) throws IOException {
         String msg = "";
+        System.out.println(event.getCode());
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
-        fxmlLoader.setController(this);
-        Parent village1 = fxmlLoader.load();
+
 
         if(event.getCode() == KeyCode.SPACE){
 
             switch (num) {
-                case 1:  Text text4 = new Text("This is what we call a \"POKÉMON\" this world is widely inhabited by" +
-                        " creatures known as POKÉMON. We humans live alongside POKÉMON, at times as friendly playmates, and" +
+                case 1:  Text text4 = new Text("This is what we call a \"POKEMON\" this world is widely inhabited by" +
+                        " creatures known as POKEMON. We humans live alongside POKEMON, at times as friendly playmates, and" +
                         " at times as cooperative workmates.");
                     text4.setFont(textEdit);
                     tflTutorialPane.getChildren().setAll();
@@ -619,7 +628,7 @@ public class MasterGUI {
                     num +=1;
                     break;
                 case 5: Text text8 = new Text("Your very own adventure is about to unfold. Take courage, and leap into the " +
-                        "world of POKÉMON where dreams, adventure, and friendships await.");
+                        "world of POKEMON where dreams, adventure, and friendships await.");
                     text8.setFont(textEdit);
                     tflTutorialPane.getChildren().setAll();
                     tflTutorialPane.getChildren().addAll(text8);
@@ -641,6 +650,7 @@ public class MasterGUI {
                     rbSquirtleTutorialPane.setVisible(true);
                     rbSquirtleTutorialPane.setStyle("-jfx-selected-color: " + colorstring + ";");
                     num = 0;
+                    btContinueTutorialPane.setVisible(true);
                     break;
                 default: msg = "DIOSSSS :(";
                     break;

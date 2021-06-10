@@ -22,6 +22,8 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         this.trainnerPokedex = trainnerPokedex;
     }
 
+
+
     public void sortUsedPokeballsByPokemonName(){
         Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
         usedPokeballs.sort(pokemonOrderByName);

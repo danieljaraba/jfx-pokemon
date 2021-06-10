@@ -8,15 +8,17 @@ public class PokemonTrainer extends GameCharacter {
     private double x;
     private double y;
     private String name;
+    private String nameColor;
     private ArrayList<String> gymMedals;
     private int coins;
     private Bag trainersBag;
 
-    public PokemonTrainer(double x, double y, String name, Bag trainersBag, String imgURL) {
+    public PokemonTrainer(double x, double y, String name, Bag trainersBag, String imgURL, String nameColor) {
         super(imgURL);
         this.x = x;
         this.y = y;
         this.name = name;
+        this.nameColor = nameColor;
         this.gymMedals = new ArrayList<>();
         this.coins = 5;
         this.trainersBag = trainersBag;
@@ -70,4 +72,11 @@ public class PokemonTrainer extends GameCharacter {
         this.trainersBag = trainersBag;
     }
 
+    public String getNameColor() {
+        return nameColor;
+    }
+
+    public void setNameColor(String nameColor) {
+        this.nameColor = nameColor;
+    }
 }

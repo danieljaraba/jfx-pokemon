@@ -14,15 +14,17 @@ public class Village extends World {
     private double movement;
     private Pokemon [] localPokemons;
 
-    public Village(double height, double width, int wildPokemons, String name, double movement) {
+    public Village(double height, double width, int wildPokemons, String name, double movement,String nameCharacter,String imgURL,String nameColor) {
         super(height, width, wildPokemons);
         this.name = name;
-        this.player = new PokemonTrainer(50, 50,"pedro",null,"img/character/emerald_down_rest.png" );
+        this.player = new PokemonTrainer(50, 50,nameCharacter,new Bag("",0.0,20.0,new Pokedex("",0.0)),imgURL,nameColor);
         this.gameObjects = new ArrayList<>();
         this.isTouched = false;
         this.movement = movement;
         localPokemons = new Pokemon[3];
     }
+
+
 
     public String getName() {
         return name;

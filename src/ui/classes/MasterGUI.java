@@ -31,6 +31,9 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.classes.*;
+import model.classes.Game;
+import model.classes.Village;
+import thread.LoadBattleThread;
 import thread.MusicThread;
 import thread.PokemonCreatorThread;
 
@@ -122,6 +125,10 @@ public class MasterGUI {
 
     @FXML
     private JFXButton btContinueTutorialPane;
+
+    @FXML
+    private Label lbTrainerNameTournamentBattle;
+
 
 
 
@@ -1053,30 +1060,22 @@ public class MasterGUI {
 
     @FXML
     public void btTournamentNewGame(ActionEvent event) throws IOException {
-        if(current == null){
+       if(current == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("So sorry");
             alert.setHeaderText("There's a problem");
             alert.setContentText("You must set a character first \n So let's go to a new adventure");
             alert.showAndWait();
         }else {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/starTournament.fxml"));
-            fxmlLoader.setController(this);
-            Parent tournament = fxmlLoader.load();
-            borderPane.setCenter(tournament);
+           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/starTournament.fxml"));
+           fxmlLoader.setController(this);
+           Parent tournament = fxmlLoader.load();
+           tournament.requestFocus();
+           borderPane.setCenter(tournament);
+
         }
-
-
     }
 
-    @FXML
-    //metodo temporal tambien
-    public void btExit(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/NewGame.fxml"));
-        fxmlLoader.setController(this);
-        Parent tournament = fxmlLoader.load();
-        borderPane.setCenter(tournament);
-    }
 
     @FXML
     public void btLoadPreviousGameLoadGame(ActionEvent event) throws IOException {
@@ -1170,9 +1169,6 @@ public class MasterGUI {
     public void cpchangeColorAdveturePane(ActionEvent event) {
             Color c = colorPickerAdventurePane.getValue();
             String colorstring = toRGBCode(c);
-
-
-
             if(rbGirlCharacterAdventurePane.isSelected() || rbBoyCharacterAdventurePane.isSelected()) {
                 tfNameCharacterAdventurePane.setStyle("-fx-text-inner-color: "+colorstring+";");
                 rbBoyCharacterAdventurePane.setStyle("-jfx-selected-color: " + colorstring + ";");
@@ -1197,6 +1193,49 @@ public class MasterGUI {
                 (int)( color.getRed() * 255 ),
                 (int)( color.getGreen() * 255 ),
                 (int)( color.getBlue() * 255 ) );
+    }
+
+    @FXML
+    public void loadVersusScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/versusScreen.fxml"));
+        fxmlLoader.setController(this);
+        Parent tournament = fxmlLoader.load();
+        borderPane.setCenter(tournament);
+        LoadBattleThread lbt = new LoadBattleThread(this);
+        lbt.start();
+
+
+
+    }
+
+    public void loadBattleTournament() throws IOException {
+        FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("../battles/tournamentBattle.fxml"));
+        fxmlLoader2.setController(this);
+        Parent battleTournament = fxmlLoader2.load();
+        borderPane.setCenter(battleTournament);
+    }
+
+    @FXML
+    public void btLeaveTournamentBattle(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to leve this battle?");
+        ButtonType buttonTypeOne = new ButtonType("Yes");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeCancel);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()){
+            if (result.get() == buttonTypeOne){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/starTournament.fxml"));
+                fxmlLoader.setController(this);
+                Parent tournament = fxmlLoader.load();
+                tournament.requestFocus();
+                borderPane.setCenter(tournament);
+            }
+        }
+
+
     }
 
 

@@ -593,16 +593,16 @@ public class MasterGUI {
                 Attack[] grovlyeAttacks = new Attack[4];
                 grovlyeAttacks[0] = new Attack("Leaf bladde",70,35,30);
                 grovlyeAttacks[1] = new Attack("Bullet seed",10,5,10);
-                current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new FirePokemon(
-                        "","Bulbasaur", 100,1 , 200,50, true, "Plant", grovlyeAttacks
+                current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new PlantPokemon(
+                        "","Bulbasaur", 100,1 , 200,50, true, "Plant", grovlyeAttacks, 10
                 )));
 
             }else{
                 Attack[] blastoideAttacks = new Attack[4];
                 blastoideAttacks[0] = new Attack("Water gun",40,20,25);
                 blastoideAttacks[1] = new Attack("Bubble",20,10,30);
-                current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new FirePokemon(
-                        "","Squirtle", 100,1 , 200,50, true, "Water", blastoideAttacks
+                current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new WaterPokemon(
+                        "","Squirtle", 100,1 , 200,50, true, "Water", blastoideAttacks, true
                 )));
             }
             System.out.println(current.getPlayer().getTrainersBag().getUsedPokeballs().get(0).getPokemon().getName());

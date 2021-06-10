@@ -124,17 +124,20 @@ public class MasterGUI {
         curentGame = new Game();
         //por el momento todos los pueblos tienen el mismo tamaño
 
-
-/*
         musicThread = new MusicThread();
-        musicThread.start();
         try {
+            musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-*/
+
+
+
+
+
     }
+
 
     public void startGameAdventurePane(String nameCharacter,String imgURL){
         for (int i = 0; i <villages.length ; i++) {
@@ -215,10 +218,7 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Credits.fxml"));
         fxmlLoader.setController(this);
         Parent creditsPane = fxmlLoader.load();
-
         borderPane.setCenter(creditsPane);
-
-
     }
 
     /**
@@ -230,7 +230,6 @@ public class MasterGUI {
     public void btExitMenu(ActionEvent event) {
         Stage stage = (Stage) borderPane.getScene().getWindow();
         stage.close();
-
     }
 
     /**
@@ -244,8 +243,8 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/LoadGame.fxml"));
         fxmlLoader.setController(this);
         Parent loadGamePane = fxmlLoader.load();
-
         borderPane.setCenter(loadGamePane);
+
     }
 
     /**
@@ -359,13 +358,11 @@ public class MasterGUI {
                     imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
                 }else{
                     imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
-
                 }
                 borderPane.setCenter(village1);
                 current = villages[2];
                 curentGame.setCurrentVillage(current);
                 village1.requestFocus();
-
                 break;
             }
             default: {
@@ -402,7 +399,6 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
-
         borderPane.setCenter(toBackMenuPane);
     }
 
@@ -410,11 +406,17 @@ public class MasterGUI {
     public void setMusicVolumen(MouseEvent event){
         System.out.println("Holam");
         double volumeValue = sldMusicVolumenOptions.getValue();
-       musicThread.getPokemonMusic().getPlayer().setVolume(volumeValue/100);
+        if (musicThread==null){
+            System.out.println("algopaso");
+        }else if(musicThread.getPokemonMusic()==null) {
+            System.out.println("algopaso music");
 
+        }else if(musicThread.getPokemonMusic().getPlayer() == null){
+            System.out.println("algopaso player");
 
-
-
+        }else {
+            musicThread.getPokemonMusic().getPlayer().setVolume(volumeValue / 100);
+        }
     }
 
     /**
@@ -511,9 +513,8 @@ public class MasterGUI {
     @FXML
     public void moveCharacter(KeyEvent event) throws IOException {
         System.out.println(event.getCode());
-
-
         if (event.getCode() == KeyCode.ESCAPE){
+
             List<String> choices = new ArrayList<>();
             choices.add("Save my game");
             choices.add("Back to menu");
@@ -542,7 +543,6 @@ public class MasterGUI {
                     }
                 }
                 //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_rest.png"));
-
             }
 
             if (event.getCode() == KeyCode.DOWN) {
@@ -565,6 +565,7 @@ public class MasterGUI {
 
 
             }
+
             if (event.getCode() == KeyCode.LEFT) {
                 moveLeft();
                 left++;
@@ -1055,6 +1056,10 @@ public class MasterGUI {
 
     public BorderPane getBorderPane() {
         return borderPane;
+    }
+
+    public MusicThread getMusicThread() {
+        return musicThread;
     }
 
     public void setBorderPane(BorderPane borderPane) {

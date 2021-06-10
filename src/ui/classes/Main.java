@@ -1,10 +1,12 @@
 package ui.classes;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import thread.MusicThread;
 
 
@@ -43,6 +45,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("POKÉMON");
         primaryStage.show();
+
 
         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader1.setController(masterGUI);

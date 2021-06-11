@@ -34,10 +34,4 @@ public class Music {
 
 
 
-    /**
-    AudioClip sound;
-    public void sound() {
-
-    }
-     **/
 }

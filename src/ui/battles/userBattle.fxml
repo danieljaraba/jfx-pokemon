@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('/img/battles/grass_battle.png');" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="2.0" layoutY="-5.0" prefHeight="410.0" prefWidth="600.0" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-5.0">
+         <children>
+            <ImageView fx:id="imgUserUserBattle" fitHeight="159.0" fitWidth="144.0" layoutX="45.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/pokemon/pokemon_back_sprites/4.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgAttackerUserBattle" fitHeight="119.0" fitWidth="164.0" layoutX="415.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="147.0" fitWidth="600.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/battles/battle_box.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="31.0" layoutY="303.0" prefHeight="17.0" prefWidth="330.0" text="Select an attack:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="29.0" layoutY="332.0" onAction="#btAttack1UserBattle" prefHeight="17.0" prefWidth="266.0" text="Attack 1" />
+            <JFXButton layoutX="29.0" layoutY="357.0" onAction="#btAttack3UserBattle" prefHeight="17.0" prefWidth="266.0" text="Attack 3" />
+            <JFXButton layoutX="313.0" layoutY="332.0" onAction="#btAttack2UserBattle" prefHeight="17.0" prefWidth="266.0" text="Attack 2" />
+            <JFXButton layoutX="313.0" layoutY="357.0" onAction="#btAttack4UserBattle" prefHeight="17.0" prefWidth="266.0" text="Attack 4" />
+            <Label fx:id="lbUserHealthUserBattle" layoutX="14.0" layoutY="172.0" prefHeight="27.0" prefWidth="266.0" text="Health:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbAttackerHealthUserBattle" layoutX="317.0" layoutY="14.0" prefHeight="27.0" prefWidth="266.0" text="Health:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

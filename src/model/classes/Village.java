@@ -16,6 +16,7 @@ public class Village extends World {
     private boolean isTouched;
     private double movement;
     private Pokemon [] localPokemons;
+    private PokemonBattle activeBattle;
 
     /**
      * Instantiates a new Village.
@@ -32,7 +33,7 @@ public class Village extends World {
     public Village(double height, double width, int wildPokemons, String name, double movement,String nameCharacter,String imgURL,String nameColor) {
         super(height, width, wildPokemons);
         this.name = name;
-        this.player = new PokemonTrainer(50, 50,nameCharacter,new Bag("",0.0,20.0,new Pokedex("",0.0)),imgURL,nameColor);
+        this.player = new PokemonTrainer(200, 200,nameCharacter,new Bag("",0.0,20.0,new Pokedex("",0.0)),imgURL,nameColor);
         this.gameObjects = new ArrayList<>();
         this.isTouched = false;
         this.movement = movement;
@@ -174,6 +175,31 @@ public class Village extends World {
         return is;
     }
 
+    public int searchPokemonIndex(String name){
+        int index = 0;
+        for(int i = 0; i<player.getTrainersBag().getUsedPokeballs().size(); i++){
+            if(player.getTrainersBag().getUsedPokeballs().get(i).getPokemon().getName().equals(name)){
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public void startBattle(Pokemon attacker, Pokemon user, PokemonTrainer trainer){
+        this.activeBattle = new PokemonBattle(attacker, user, trainer);
+    }
+
+    public void setLocalPokemons(Pokemon[] localPokemons) {
+        this.localPokemons = localPokemons;
+    }
+
+    public PokemonBattle getActiveBattle() {
+        return activeBattle;
+    }
+
+    public void setActiveBattle(PokemonBattle activeBattle) {
+        this.activeBattle = activeBattle;
+    }
 
     /**
      * Sets name.

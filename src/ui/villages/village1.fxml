@@ -8,7 +8,7 @@
    <children>
       <Pane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: url('/img/villages/viilage1.png'); -fx-background-size: 50% 50%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-100.0" AnchorPane.rightAnchor="-100.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="imgPlayerAllVillages" fitHeight="50.0" fitWidth="50.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgPlayerAllVillages" fitHeight="50.0" fitWidth="50.0" layoutX="200.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

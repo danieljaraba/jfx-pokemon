@@ -1,8 +1,9 @@
 package model.classes;
 
 import model.abstractClasses.Pokemon;
+import model.interfaces.Battle;
 
-public class PokemonBattle {
+public class PokemonBattle implements Battle {
 
     private Pokemon attacker;
     private Pokemon user;
@@ -16,6 +17,15 @@ public class PokemonBattle {
         this.attacker = attacker;
         this.user = user;
         this.trainer = trainer;
+        this.atkHealth = attacker.getHealth();
+        this.defHealth = user.getHealth();
+        this.atkMana = 100;
+        this.defMana = 100;
+    }
+
+    public PokemonBattle(Pokemon attacker, Pokemon user) {
+        this.attacker = attacker;
+        this.user = user;
         this.atkHealth = attacker.getHealth();
         this.defHealth = user.getHealth();
         this.atkMana = 100;

@@ -6,7 +6,7 @@ import model.interfaces.Battle;
 
 import java.io.Serializable;
 
-public abstract class Pokemon implements Battle, Autoplaying, Serializable {
+public abstract class Pokemon implements Serializable {
 
     private String img;
     private String name;
@@ -18,6 +18,7 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
     private boolean hasOwner;
     private String type;
     private Attack[] pokemonAttacks;
+    private double atkMana;
 
     public Pokemon(String img, String name, double exp, int level, double health, double baseDefense, boolean hasOwner, String type, Attack[] pokemonAttacks) {
         this.img = img;
@@ -30,6 +31,7 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
         this.hasOwner = hasOwner;
         this.type = type;
         this.pokemonAttacks = pokemonAttacks;
+        atkMana = 100;
     }
     /*multipliers:
     health, defense,attack + 0.1
@@ -132,4 +134,8 @@ public abstract class Pokemon implements Battle, Autoplaying, Serializable {
         }
         return out.toString();
     }
+
+
+
+
 }

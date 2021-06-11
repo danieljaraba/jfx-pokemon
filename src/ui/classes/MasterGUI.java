@@ -33,10 +33,7 @@ import model.abstractClasses.Pokemon;
 import model.classes.*;
 import model.classes.Game;
 import model.classes.Village;
-import thread.LoadBattleThread;
-import thread.MusicThread;
-import thread.PokemonCreatorThread;
-import thread.StartBattleThread;
+import thread.*;
 
 
 public class MasterGUI {
@@ -164,6 +161,7 @@ public class MasterGUI {
     @FXML
     private Label lbAttackerHealthWildAttack;
 
+    private PokemonBattleThread pokemonBattleThread;
     private Village[] villages;
     private Village current;
     private Game curentGame;
@@ -191,12 +189,14 @@ public class MasterGUI {
         villages = new Village[4];
         curentGame = new Game();
         musicThread = new MusicThread();
-        try {
+       /* try {
             musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
+
 
     }
 
@@ -1146,7 +1146,7 @@ public class MasterGUI {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        thread.run();
+        thread.start();
     }
 
     public void startBattle(){
@@ -1190,7 +1190,7 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(2);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-        changeAttackerScreen();
+       changeAttackerScreen();
     }
 
     @FXML
@@ -1209,6 +1209,7 @@ public class MasterGUI {
         changeAttackerScreen();
     }
 
+
     public void changeAttackerScreen(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildAttack.fxml"));
         fxmlLoader.setController(this);
@@ -1222,6 +1223,25 @@ public class MasterGUI {
         imgAttackerWildAttack.setImage(new Image(attacker.getImg()));
         lbUserHealthWildAttack.setText("Health: "+ current.getActiveBattle().getDefHealth());
         lbAttackerHealthWildAttack.setText("Health: "+ current.getActiveBattle().getAtkHealth());
+        enemysTourn(current.getActiveBattle().getAtkHealth(), current.getActiveBattle().getDefHealth());
+
+    }
+
+    public void enemysTourn(double atkHealth, double defHealth){
+        pokemonBattleThread = new PokemonBattleThread(new PokemonBattle(userPokemon,attacker),this,defHealth,atkHealth);
+        pokemonBattleThread.start();
+        ResumeBattleThread rbt = new ResumeBattleThread(this);
+        rbt.start();
+    }
+
+    public void updateGui(String update,double atkHealth, double defHealth ){
+        System.out.println("Salud del enemigo: "+atkHealth);
+        System.out.println("Salud del pendejo jugador: "+defHealth);
+        lbUserHealthWildAttack.setText("Health: "+defHealth);
+        lbAttackerHealthWildAttack.setText("Health: "+ atkHealth);
+        current.getActiveBattle().setDefHealth(defHealth);
+        current.getActiveBattle().setAtkHealth(atkHealth);
+       // lbAttackWildAttack.setText("Attacker uses "+update);
     }
 
 

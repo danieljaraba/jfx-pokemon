@@ -184,7 +184,7 @@ public class PokemonCreatorThread extends Thread{
 
     public void setImages(){
         imgs.add("img/pokemon/pokemon_sprites/Charizard.gif_.gif");
-        imgs.add("img/pokemon/pokemon_sprites/59.gif_.gif");
+        imgs.add("img/pokemon/pokemon_sprites/Arcanine.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Blastoise.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Squirtle.gif_.gif");
         imgs.add("img/pokemon/pokemon_sprites/Venusaur.gif_.gif");

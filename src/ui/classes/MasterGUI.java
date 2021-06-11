@@ -615,9 +615,6 @@ public class MasterGUI {
     public void moveSpaceTutorialPane(KeyEvent event) throws IOException {
         String msg = "";
         System.out.println(event.getCode());
-
-
-
         if(event.getCode() == KeyCode.SPACE){
 
             switch (num) {
@@ -674,7 +671,7 @@ public class MasterGUI {
                     rbCharmanderTutorialPanel.setStyle("-jfx-selected-color: " + colorstring + ";");
                     rbSquirtleTutorialPane.setVisible(true);
                     rbSquirtleTutorialPane.setStyle("-jfx-selected-color: " + colorstring + ";");
-                    num = 0;
+                    num = 1;
                     btContinueTutorialPane.setVisible(true);
                     break;
                 default: msg = "DIOSSSS :(";
@@ -694,7 +691,7 @@ public class MasterGUI {
             List<String> choices = new ArrayList<>();
             choices.add("Save my game");
             choices.add("Back to menu");
-            choices.add("See the tutorial again");
+
 
             ChoiceDialog<String> dialog = new ChoiceDialog<>(null, choices);
             dialog.setTitle("Choice an option");
@@ -702,7 +699,7 @@ public class MasterGUI {
             dialog.setContentText("Choose an action: ");
             Optional<String> result = dialog.showAndWait();
             result.ifPresent(this::makeElection);
-        } else {
+        } else if(event.getCode()!= KeyCode.SPACE){
             if (event.getCode() == KeyCode.UP) {
                 moveUp();
                 up++;

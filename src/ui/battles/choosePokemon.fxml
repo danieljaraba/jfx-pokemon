@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('/img/battles/grass_battle.png');" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="-3.0" prefHeight="410.0" prefWidth="600.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-3.0">
+         <children>
+            <ImageView fx:id="imgPlayerChoosePokemon" fitHeight="159.0" fitWidth="144.0" layoutX="55.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/character/emerald_battle_1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgPokemonChoosePokemon" fitHeight="119.0" fitWidth="164.0" layoutX="415.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="147.0" fitWidth="600.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/battles/battle_box.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbBattletext1ChoosePokemon" layoutX="31.0" layoutY="303.0" prefHeight="35.0" prefWidth="302.0" text="Choose a pokemon to fight">
+               <font>
+                  <Font name="Open Sans Semibold Italic" size="24.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cbPokemonChoosePokemonWild" focusColor="WHITE" layoutX="354.0" layoutY="308.0" prefHeight="26.0" prefWidth="201.0" />
+            <JFXButton layoutX="55.0" layoutY="345.0" onAction="#btFightChoosePokemon" prefHeight="25.0" prefWidth="125.0" text="FIGHT" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

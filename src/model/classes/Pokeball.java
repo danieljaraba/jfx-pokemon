@@ -13,6 +13,10 @@ public class Pokeball extends StoreObject implements Tradable{
     public Pokeball(String name,double price) {
         super(name,price);
     }
+    public Pokeball(String name, double price, Pokemon pokemon){
+        super(name,price);
+        this.pokemon = pokemon;
+    }
 
     public Pokemon getPokemon() {
         return pokemon;

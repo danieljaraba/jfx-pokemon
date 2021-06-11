@@ -13,17 +13,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.effect.Bloom;
+import javafx.scene.effect.Glow;
+import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.classes.*;
 import model.classes.Game;
 import model.classes.Village;
 import thread.LoadBattleThread;
@@ -46,8 +54,6 @@ public class MasterGUI {
 
     @FXML
     private JFXSlider sldMusicVolumenOptions;
-
-
 
     @FXML
     private JFXSpinner spinnerLoadGame;
@@ -100,6 +106,33 @@ public class MasterGUI {
     private ImageView imgPokemonChoosePokemon;
 
     @FXML
+    private TextFlow tflTutorialPane;
+
+    @FXML
+    private ImageView imgFlatTutorialPane;
+
+    @FXML
+    private ImageView imgTeacherTutorialPane;
+
+    @FXML
+    private ImageView imgVPokemonTutorialPane;
+
+    @FXML
+    private JFXRadioButton rbBulbasaurTutorialPane;
+
+    @FXML
+    private ToggleGroup tgPokemonsTutorial;
+
+    @FXML
+    private JFXRadioButton rbCharmanderTutorialPanel;
+
+    @FXML
+    private JFXRadioButton rbSquirtleTutorialPane;
+
+    @FXML
+    private JFXButton btContinueTutorialPane;
+
+    @FXML
     private Label lbTrainerNameTournamentBattle;
 
 
@@ -114,15 +147,17 @@ public class MasterGUI {
     private Village current;
     private Game curentGame;
     public final static double STEP = 8;
-    int down = 0;
-    int up = 0;
-    int left = 0;
-    int right = 0;
+    private int down = 0;
+    private int up = 0;
+    private int left = 0;
+    private int right = 0;
+    private int num = 1;
     private String imgURL = "";
     private double lasPositionX;
     private double lasPositionY;
     private MusicThread musicThread;
     private PokemonCreatorThread pct;
+    private Font textEdit = Font.font("Comic Sans",FontPosture.ITALIC, 30);
 
 
 
@@ -148,13 +183,14 @@ public class MasterGUI {
 */
     }
 
-    public void startGameAdventurePane(String nameCharacter,String imgURL){
+    public void startGameAdventurePane(String nameCharacter,String imgURL,String nameColor){
         for (int i = 0; i <villages.length ; i++) {
-            villages[i] = new Village(34,45,3,"pueblo: "+(i+1), 5,nameCharacter,imgURL);
+            villages[i] = new Village(34,45,3,"pueblo: "+(i+1), 5,nameCharacter,imgURL,nameColor);
             villages[i].addObject(-30, -15, -45, 800, false, false);
             villages[i].addObject(-30, 1400, -85, -45, false, false);
             villages[i].addObject(1370, 1400, -45, 800, false, false);
             villages[i].addObject(-30, 1400, 750, 770, false, false);
+
             System.out.println(villages[i].getName()); //validacion
         }
 
@@ -473,14 +509,66 @@ public class MasterGUI {
         fxmlLoader.setController(this);
         Parent adveturePane = fxmlLoader.load();
 
+
         borderPane.setCenter(adveturePane);
+
+
 
     }
 
 
 
+
+
+
+
+
     @FXML
     public void btStartAdventurePane(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Tutorial.fxml"));
+        fxmlLoader.setController(this);
+        Parent tutorial = fxmlLoader.load();
+
+        borderPane.setCenter(tutorial);
+        tutorial.requestFocus();
+
+
+        String nameCharacter = tfNameCharacterAdventurePane.getText();
+
+        if(!tfNameCharacterAdventurePane.getText().equals("") && (rbGirlCharacterAdventurePane.isSelected() || rbBoyCharacterAdventurePane.isSelected())){
+
+            tflTutorialPane.setVisible(true);
+            imgFlatTutorialPane.setVisible(true);
+            imgTeacherTutorialPane.setVisible(true);
+            Text text1 = new Text("Hi! Sorry to keep you waiting! ");
+            text1.setFont(textEdit);
+            Text textName = new Text(nameCharacter);
+            textName.setFont(textEdit);
+            textName.setEffect(new Glow(5.0));
+            textName.setFill(colorPickerAdventurePane.getValue());
+            Text text2 = new Text(". Welcome to the world of POKEMON! My name is Reyes, but everyone calls me the POKEMON PROFESSOR. \n");
+            text2.setFont(textEdit);
+            Text text3 = new Text("                                     PRESS SPACE!");
+            text3.setFont(textEdit);
+            text3.setFill(colorPickerAdventurePane.getValue());
+            text3.setEffect(new Glow(5.0));
+
+            tflTutorialPane.getChildren().addAll(text1,textName,text2,text3);
+
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("LOOK");
+            alert.setContentText("Write your name or choose your character. Please!");
+
+            alert.showAndWait();
+        }
+    }
+
+
+
+    @FXML
+    public void btContinueTutorialPane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
         fxmlLoader.setController(this);
         Parent village1 = fxmlLoader.load();
@@ -488,6 +576,8 @@ public class MasterGUI {
 
 
         String nameCharacter = tfNameCharacterAdventurePane.getText();
+        Color c = colorPickerAdventurePane.getValue();
+        String colorCharacter = toRGBCode(c);
 
 
         if(rbBoyCharacterAdventurePane.isSelected()){
@@ -500,22 +590,46 @@ public class MasterGUI {
         }
 
 
+
+
         if(!tfNameCharacterAdventurePane.getText().equals("") && (rbGirlCharacterAdventurePane.isSelected() || rbBoyCharacterAdventurePane.isSelected())) {
             borderPane.setCenter(village1);
-            startGameAdventurePane(nameCharacter, imgURL);
+            startGameAdventurePane(nameCharacter, imgURL,colorCharacter);
             current = villages[0];
             curentGame.setCurrentTrainer(current.getPlayer());
             curentGame.setCurrentVillage(current);
 
-            village1.requestFocus();
-        }else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText("LOOK");
-            alert.setContentText("Write your name or choose your character. Please!");
+            System.out.println(current.getPlayer().getName());
 
-            alert.showAndWait();
+            if(rbCharmanderTutorialPanel.isSelected()){
+                Attack[] charizadAttak = new Attack[4];
+                charizadAttak[0] = new Attack("Dragon Rage",40,20,10);
+                charizadAttak[1] = new Attack("Fire spin",35,18,15);
+                current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new FirePokemon(
+                        "","Charmander", 100,1 , 200,50, true, "Fire", charizadAttak
+                )));
+            }else if(rbBulbasaurTutorialPane.isSelected()){
+                Attack[] grovlyeAttacks = new Attack[4];
+                grovlyeAttacks[0] = new Attack("Leaf bladde",70,35,30);
+                grovlyeAttacks[1] = new Attack("Bullet seed",10,5,10);
+                current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new PlantPokemon(
+                        "","Bulbasaur", 100,1 , 200,50, true, "Plant", grovlyeAttacks, 10
+                )));
+
+            }else{
+                Attack[] blastoideAttacks = new Attack[4];
+                blastoideAttacks[0] = new Attack("Water gun",40,20,25);
+                blastoideAttacks[1] = new Attack("Bubble",20,10,30);
+                current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new WaterPokemon(
+                        "","Squirtle", 100,1 , 200,50, true, "Water", blastoideAttacks, true
+                )));
+            }
+            System.out.println(current.getPlayer().getTrainersBag().getUsedPokeballs().get(0).getPokemon().getName());
+
+            village1.requestFocus();
         }
+
+
     }
 
     @FXML
@@ -527,10 +641,85 @@ public class MasterGUI {
         borderPane.setCenter(toBackNewGamePane);
     }
 
+    @FXML
+    public void moveSpaceTutorialPane(KeyEvent event) throws IOException {
+        String msg = "";
+        System.out.println(event.getCode());
+
+
+
+        if(event.getCode() == KeyCode.SPACE){
+
+            switch (num) {
+                case 1:  Text text4 = new Text("This is what we call a \"POKEMON\" this world is widely inhabited by" +
+                        " creatures known as POKEMON. We humans live alongside POKEMON, at times as friendly playmates, and" +
+                        " at times as cooperative workmates.");
+                    text4.setFont(textEdit);
+                    tflTutorialPane.getChildren().setAll();
+                    tflTutorialPane.getChildren().addAll(text4);
+                    imgVPokemonTutorialPane.setVisible(true);
+
+                    num +=1;
+                    break;
+                case 2:  Text text5 = new Text("And sometimes, we band together and battle others like us. But hey, you need" +
+                        " to know some things: Move your character with the arrows on your computer (↑ ← ↓ →).");
+                    text5.setFont(textEdit);
+                    tflTutorialPane.getChildren().setAll();
+                    tflTutorialPane.getChildren().addAll(text5);
+
+                    num +=1;
+                    break;
+                case 3:  Text text6 = new Text("You also have the possibility to press \"ESC\" to save your progress or return " +
+                        "to the menu.");
+                    text6.setFont(textEdit);
+                    tflTutorialPane.getChildren().setAll();
+                    tflTutorialPane.getChildren().addAll(text6);
+                    num +=1;
+                    break;
+                case 4: Text text7 = new Text("All right, are you ready?");
+                    text7.setFont(textEdit);
+                    tflTutorialPane.getChildren().setAll();
+                    tflTutorialPane.getChildren().addAll(text7);
+                    num +=1;
+                    break;
+                case 5: Text text8 = new Text("Your very own adventure is about to unfold. Take courage, and leap into the " +
+                        "world of POKEMON where dreams, adventure, and friendships await.");
+                    text8.setFont(textEdit);
+                    tflTutorialPane.getChildren().setAll();
+                    tflTutorialPane.getChildren().addAll(text8);
+                    num +=1;
+                    break;
+                case 6:  Text text9 = new Text("Well, first choose your little adventure friend!");
+                    text9.setFont(textEdit);
+                    tflTutorialPane.getChildren().setAll();
+                    tflTutorialPane.getChildren().addAll(text9);
+                    Color c = colorPickerAdventurePane.getValue();
+                    String colorstring = toRGBCode(c);
+                    imgTeacherTutorialPane.setVisible(false);
+                    imgFlatTutorialPane.setVisible(false);
+                    imgVPokemonTutorialPane.setVisible(false);
+                    rbBulbasaurTutorialPane.setVisible(true);
+                    rbBulbasaurTutorialPane.setStyle("-jfx-selected-color: " + colorstring + ";");
+                    rbCharmanderTutorialPanel.setVisible(true);
+                    rbCharmanderTutorialPanel.setStyle("-jfx-selected-color: " + colorstring + ";");
+                    rbSquirtleTutorialPane.setVisible(true);
+                    rbSquirtleTutorialPane.setStyle("-jfx-selected-color: " + colorstring + ";");
+                    num = 0;
+                    btContinueTutorialPane.setVisible(true);
+                    break;
+                default: msg = "DIOSSSS :(";
+                    break;
+            }
+
+        }
+    }
+
+
     //metodo funciona en todas las pantallas que sean un mapa
     @FXML
     public void moveCharacter(KeyEvent event) throws IOException {
         System.out.println(event.getCode());
+
 
 
         if (event.getCode() == KeyCode.ESCAPE){
@@ -545,7 +734,7 @@ public class MasterGUI {
             dialog.setContentText("Choose an action: ");
             Optional<String> result = dialog.showAndWait();
             result.ifPresent(this::makeElection);
-        }else {
+        } else {
             if (event.getCode() == KeyCode.UP) {
                 moveUp();
                 up++;
@@ -906,8 +1095,10 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/choosePokemon.fxml"));
         fxmlLoader.setController(this);
         ArrayList<String> items = new ArrayList<>();
-        //for(int i = 0; i<current.getPlayer())
-        //cbPokemonChoosePokemon.setItems();
+        for(int i = 0; i<current.getPlayer().getTrainersBag().getUsedPokeballs().size(); i++){
+            items.add(current.getPlayer().getTrainersBag().getUsedPokeballs().get(i).getPokemon().getName());
+        }
+        cbPokemonChoosePokemon.setItems((ObservableList<String>) items);
         try {
             Parent battle = fxmlLoader.load();
             borderPane.setCenter(battle);
@@ -954,8 +1145,6 @@ public class MasterGUI {
 
                 alert.showAndWait();
             }
-
-
 
 
     }
@@ -1010,6 +1199,9 @@ public class MasterGUI {
 
 
     }
+
+
+
 
 
     //Getters and Setters.

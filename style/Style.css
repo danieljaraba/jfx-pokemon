@@ -221,12 +221,14 @@
 }
 
 .tutorialText{
-    -fx-border-radius: 40px;
-    -fx-border-width: 10px 10px 10px 10px;
+    -fx-border-radius: 20px;
+    -fx-border-width: 8px 8px 8px 8px;
     -fx-border-color: #00EC93;
     -fx-background-color: #ffffff;
     -fx-background-radius: 40px;
 }
+
+
 
 
 

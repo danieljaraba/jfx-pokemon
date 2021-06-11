@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VillageTest {
 
     private Village village;
-    PokemonTrainer player;
+    private PokemonTrainer player;
 
     public void setupScenary1(){
         player = new PokemonTrainer(50,50,"Pedro",

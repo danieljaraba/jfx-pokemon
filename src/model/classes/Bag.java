@@ -6,7 +6,6 @@ import model.interfaces.Tradable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * The type Bag.
@@ -34,6 +33,12 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         this.trainnerPokedex = trainnerPokedex;
     }
 
+    /**
+     * Save captured pokemon boolean.
+     *
+     * @param pokemon the pokemon
+     * @return the boolean
+     */
     public boolean saveCapturedPokemon(Pokemon pokemon){
         if(!emptyPokeballs.isEmpty()){
             int canCapture = (int)(Math.random()*6);
@@ -50,6 +55,74 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
             return false;
         }
     }
+
+    /**
+     * Sort used pokeballs by level.
+     */
+    public void sortUsedPokeballsByLevel(){
+        ArrayList<Pokeball> copy = usedPokeballs;
+        boolean changed = true;
+        for(int i = 1; i < copy.size() && changed; i++){
+            changed = false;
+            for(int j = 0; j < copy.size() -i; j++){
+                if(copy.get(j).getPokemon().getLevel() > copy.get(j+1).getPokemon().getLevel()){
+                    changed = true;
+                    Pokeball temp = copy.get(j);
+                    copy.set(j, copy.remove(j+1));
+                    copy.set(j+1, temp);
+                }
+            }
+        }
+    }
+
+    public Pokeball foundPokemonByLevel(ArrayList<Pokeball> used, int level){
+        Pokeball ret = null;
+        int first = used.get(0).getPokemon().getLevel();
+        int last = used.get(used.size()-1).getPokemon().getLevel();
+        int mid = ( first + last)/2;
+        while( first <= last ){
+            if ( used.get(mid).getPokemon().getLevel() < level ){
+                first = mid + 1;
+            }else if ( used.get(mid).getPokemon().getLevel() == level ){
+                //System.out.println("Element is found at index: " + mid);
+                ret = used.get(mid);
+                break;
+            }else{
+                last = mid - 1;
+            }
+            mid = (first + last)/2;
+        }
+        if ( first > last ){
+            return null;
+        }else{
+            return ret;
+        }
+    }
+
+    public Pokeball foundPokemonByHealth(ArrayList<Pokeball> used, int health){
+        Pokeball ret = null;
+        int first = (int)used.get(0).getPokemon().getHealth();
+        int last = (int)used.get(used.size()-1).getPokemon().getHealth();
+        int mid = ( first + last)/2;
+        while( first <= last ){
+            if ( used.get(mid).getPokemon().getLevel() < health){
+                first = mid + 1;
+            }else if ( used.get(mid).getPokemon().getHealth() == health){
+                //System.out.println("Element is found at index: " + mid);
+                ret = used.get(mid);
+                break;
+            }else{
+                last = mid - 1;
+            }
+            mid = (first + last)/2;
+        }
+        if ( first > last ){
+            return null;
+        }else{
+            return ret;
+        }
+    }
+
 
     /**
      * Sort used pokeballs by pokemon name.

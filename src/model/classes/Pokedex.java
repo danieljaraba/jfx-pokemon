@@ -2,6 +2,7 @@ package model.classes;
 
 import model.abstractClasses.Pokemon;
 import model.abstractClasses.StoreObject;
+import model.ownImplementation.MeLinkedList;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class Pokedex extends StoreObject {
 
     private Pokemon[] pokemons;
-    private ArrayList<Pokemon> currentPokemons;
+    private MeLinkedList<Pokemon> currentPokemons;
 
     /**
      * Instantiates a new Pokedex.
@@ -21,7 +22,7 @@ public class Pokedex extends StoreObject {
      */
     public Pokedex(String name,double price) {
         super(name,price);
-        currentPokemons = new ArrayList<>();
+        currentPokemons = new MeLinkedList<>();
         pokemons = new Pokemon[18];
     }
 
@@ -33,8 +34,8 @@ public class Pokedex extends StoreObject {
 //When see a new pokemon confirm if its already seen before
     public void addPokemonToSeenPokemons(String pokemonOriginalName){
         boolean found = false;
-        for(Pokemon pokemon : currentPokemons){
-            if(pokemon.getName().equals(pokemonOriginalName)){
+        for(int i = 0; i < currentPokemons.size(); i++){
+            if(currentPokemons.get(i).getName().equals(pokemonOriginalName)){
                 found = true;
             }
         }
@@ -70,7 +71,7 @@ public class Pokedex extends StoreObject {
      *
      * @return the current pokemons
      */
-    public ArrayList<Pokemon> getCurrentPokemons() {
+    public MeLinkedList<Pokemon> getCurrentPokemons() {
         return currentPokemons;
     }
 
@@ -79,7 +80,7 @@ public class Pokedex extends StoreObject {
      *
      * @param currentPokemons the current pokemons
      */
-    public void setCurrentPokemons(ArrayList<Pokemon> currentPokemons) {
+    public void setCurrentPokemons(MeLinkedList<Pokemon> currentPokemons) {
         this.currentPokemons = currentPokemons;
     }
 }

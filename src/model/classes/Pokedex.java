@@ -22,7 +22,7 @@ public class Pokedex extends StoreObject {
      */
     public Pokedex(String name,double price) {
         super(name,price);
-        currentPokemons = new ArrayList<>();
+        currentPokemons = new MeLinkedList<>();
         pokemons = new Pokemon[18];
     }
 
@@ -71,7 +71,7 @@ public class Pokedex extends StoreObject {
      *
      * @return the current pokemons
      */
-    public ArrayList<Pokemon> getCurrentPokemons() {
+    public MeLinkedList<Pokemon> getCurrentPokemons() {
         return currentPokemons;
     }
 
@@ -80,7 +80,7 @@ public class Pokedex extends StoreObject {
      *
      * @param currentPokemons the current pokemons
      */
-    public void setCurrentPokemons(ArrayList<Pokemon> currentPokemons) {
+    public void setCurrentPokemons(MeLinkedList<Pokemon> currentPokemons) {
         this.currentPokemons = currentPokemons;
     }
 }

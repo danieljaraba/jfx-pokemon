@@ -13,6 +13,7 @@ public class Village extends World {
     private boolean isTouched;
     private double movement;
     private Pokemon [] localPokemons;
+    private PokemonBattle activeBattle;
 
     public Village(double height, double width, int wildPokemons, String name, double movement,String nameCharacter,String imgURL,String nameColor) {
         super(height, width, wildPokemons);
@@ -119,6 +120,31 @@ public class Village extends World {
         return is;
     }
 
+    public int searchPokemonIndex(String name){
+        int index = 0;
+        for(int i = 0; i<player.getTrainersBag().getUsedPokeballs().size(); i++){
+            if(player.getTrainersBag().getUsedPokeballs().get(i).getPokemon().getName().equals(name)){
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public void startBattle(Pokemon attacker, Pokemon user, PokemonTrainer trainer){
+        this.activeBattle = new PokemonBattle(attacker, user, trainer);
+    }
+
+    public void setLocalPokemons(Pokemon[] localPokemons) {
+        this.localPokemons = localPokemons;
+    }
+
+    public PokemonBattle getActiveBattle() {
+        return activeBattle;
+    }
+
+    public void setActiveBattle(PokemonBattle activeBattle) {
+        this.activeBattle = activeBattle;
+    }
 
     public void setName(String name) {
         this.name = name;

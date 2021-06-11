@@ -29,13 +29,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import model.abstractClasses.Pokemon;
 import model.classes.*;
 import model.classes.Game;
 import model.classes.Village;
 import thread.LoadBattleThread;
 import thread.MusicThread;
 import thread.PokemonCreatorThread;
-
+import thread.StartBattleThread;
 
 
 public class MasterGUI {
@@ -134,8 +135,34 @@ public class MasterGUI {
     private Label lbBattletext1ChoosePokemon;
 
     @FXML
-    private JFXComboBox<String> cbPokemonChoosePokemon;
+    private JFXComboBox<String> cbPokemonChoosePokemonWild;
 
+    @FXML
+    private ImageView imgUserUserBattle;
+
+    @FXML
+    private ImageView imgAttackerUserBattle;
+
+    @FXML
+    private Label lbUserHealthUserBattle;
+
+    @FXML
+    private Label lbAttackerHealthUserBattle;
+
+    @FXML
+    private ImageView imgUserWildAttack;
+
+    @FXML
+    private ImageView imgAttackerWildAttack;
+
+    @FXML
+    private Label lbAttackWildAttack;
+
+    @FXML
+    private Label lbUserHealthWildAttack;
+
+    @FXML
+    private Label lbAttackerHealthWildAttack;
 
     private Village[] villages;
     private Village current;
@@ -152,6 +179,8 @@ public class MasterGUI {
     private MusicThread musicThread;
     private PokemonCreatorThread pct;
     private Font textEdit = Font.font("Comic Sans",FontPosture.ITALIC, 30);
+    private Pokemon attacker;
+    private Pokemon userPokemon;
 
 
 
@@ -576,14 +605,14 @@ public class MasterGUI {
                 charizadAttak[0] = new Attack("Dragon Rage",40,20,10);
                 charizadAttak[1] = new Attack("Fire spin",35,18,15);
                 current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new FirePokemon(
-                        "","Charmander", 100,1 , 200,50, true, "Fire", charizadAttak
+                        "/img/pokemon/pokemon_back_sprites/4.png","Charmander", 100,1 , 200,50, true, "Fire", charizadAttak
                 )));
             }else if(rbBulbasaurTutorialPane.isSelected()){
                 Attack[] grovlyeAttacks = new Attack[4];
                 grovlyeAttacks[0] = new Attack("Leaf bladde",70,35,30);
                 grovlyeAttacks[1] = new Attack("Bullet seed",10,5,10);
                 current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new PlantPokemon(
-                        "","Bulbasaur", 100,1 , 200,50, true, "Plant", grovlyeAttacks, 10
+                        "/img/pokemon/pokemon_back_sprites/Bulbasaur.png","Bulbasaur", 100,1 , 200,50, true, "Plant", grovlyeAttacks, 10
                 )));
 
             }else{
@@ -591,7 +620,7 @@ public class MasterGUI {
                 blastoideAttacks[0] = new Attack("Water gun",40,20,25);
                 blastoideAttacks[1] = new Attack("Bubble",20,10,30);
                 current.getPlayer().getTrainersBag().getUsedPokeballs().add(new Pokeball("",0, new WaterPokemon(
-                        "","Squirtle", 100,1 , 200,50, true, "Water", blastoideAttacks, true
+                        "/img/pokemon/pokemon_back_sprites/Squirtle_back.png","Squirtle", 100,1 , 200,50, true, "Water", blastoideAttacks, true
                 )));
             }
             System.out.println(current.getPlayer().getTrainersBag().getUsedPokeballs().get(0).getPokemon().getName());
@@ -1047,7 +1076,8 @@ public class MasterGUI {
             e.printStackTrace();
         }
         try {
-            imgPokemonWildBattle.setImage(new Image(current.getLocalPokemons()[ramdomPokemon].getImg()));
+            attacker = current.getLocalPokemons()[ramdomPokemon];
+            imgPokemonWildBattle.setImage(new Image(attacker.getImg()));
             lbPokemonNameWildBattle.setText(current.getLocalPokemons()[ramdomPokemon].getName());
         }catch (IndexOutOfBoundsException ideo){
             System.out.println("Maldito ramdom");
@@ -1059,22 +1089,48 @@ public class MasterGUI {
     public void choosePokemon(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/choosePokemon.fxml"));
         fxmlLoader.setController(this);
-        ArrayList<String> items = new ArrayList<>();
-        for(int i = 0; i<current.getPlayer().getTrainersBag().getUsedPokeballs().size(); i++){
-            items.add(current.getPlayer().getTrainersBag().getUsedPokeballs().get(i).getPokemon().getName());
-        }
-        //cbPokemonChoosePokemon.setItems((ObservableList<String>) items);
         try {
             Parent battle = fxmlLoader.load();
             borderPane.setCenter(battle);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        imgPokemonChoosePokemon.setImage(imgPokemonWildBattle.getImage());
+        ArrayList<String> items = new ArrayList<>();
+        for(int i = 0; i<current.getPlayer().getTrainersBag().getUsedPokeballs().size(); i++){
+            cbPokemonChoosePokemonWild.getItems().add(current.getPlayer().getTrainersBag().getUsedPokeballs().get(i).getPokemon().getName());
+        }
     }
 
     @FXML
     void btFightChoosePokemon(ActionEvent event) {
         changeChoosePokemon("img/battles/emerald_battle_gif2.gif", 158, 201, 31, 126);
+        userPokemon = current.getPlayer().getTrainersBag().getUsedPokeballs().get(
+                current.searchPokemonIndex(cbPokemonChoosePokemonWild.getSelectionModel().getSelectedItem().toString())
+        ).getPokemon();
+        current.startBattle(attacker, userPokemon , current.getPlayer());
+        StartBattleThread thread = new StartBattleThread(this);
+        try {
+            Thread.sleep(400);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        thread.run();
+    }
+
+    public void startBattle(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/userBattle.fxml"));
+        fxmlLoader.setController(this);
+        try {
+            Parent battle = fxmlLoader.load();
+            borderPane.setCenter(battle);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgUserUserBattle.setImage(new Image(userPokemon.getImg()));
+        imgAttackerUserBattle.setImage(new Image(attacker.getImg()));
+        lbUserHealthUserBattle.setText("Health: "+ current.getActiveBattle().getDefHealth());
+        lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
     }
 
     public void changeChoosePokemon(String url, double fitHeight, double fitWidth, double x, double y){
@@ -1088,7 +1144,53 @@ public class MasterGUI {
     @FXML
     void btFightWildBattle(ActionEvent event) {
         choosePokemon();
-        System.out.println("Cambia de pantalla pri");
+    }
+
+    @FXML
+    void btAttack1UserBattle(ActionEvent event) {
+        current.getActiveBattle().userAttack(1);
+        lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
+        System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
+        changeAttackerScreen();
+    }
+
+    @FXML
+    void btAttack2UserBattle(ActionEvent event) {
+        current.getActiveBattle().userAttack(2);
+        lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
+        System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
+        changeAttackerScreen();
+    }
+
+    @FXML
+    void btAttack3UserBattle(ActionEvent event) {
+        current.getActiveBattle().userAttack(3);
+        lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
+        System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
+        changeAttackerScreen();
+    }
+
+    @FXML
+    void btAttack4UserBattle(ActionEvent event) {
+        current.getActiveBattle().userAttack(4);
+        lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
+        System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
+        changeAttackerScreen();
+    }
+
+    public void changeAttackerScreen(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildAttack.fxml"));
+        fxmlLoader.setController(this);
+        try {
+            Parent battle = fxmlLoader.load();
+            borderPane.setCenter(battle);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgUserWildAttack.setImage(new Image(userPokemon.getImg()));
+        imgAttackerWildAttack.setImage(new Image(attacker.getImg()));
+        lbUserHealthWildAttack.setText("Health: "+ current.getActiveBattle().getDefHealth());
+        lbAttackerHealthWildAttack.setText("Health: "+ current.getActiveBattle().getAtkHealth());
     }
 
 

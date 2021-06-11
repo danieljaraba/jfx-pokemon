@@ -29,7 +29,7 @@
                   <Font name="Open Sans Semibold Italic" size="24.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="cbPokemonChoosePokemon" focusColor="WHITE" layoutX="354.0" layoutY="308.0" prefHeight="26.0" prefWidth="201.0" />
+            <JFXComboBox fx:id="cbPokemonChoosePokemonWild" focusColor="WHITE" layoutX="354.0" layoutY="308.0" prefHeight="26.0" prefWidth="201.0" />
             <JFXButton layoutX="55.0" layoutY="345.0" onAction="#btFightChoosePokemon" prefHeight="25.0" prefWidth="125.0" text="FIGHT" textFill="WHITE">
                <font>
                   <Font size="23.0" />

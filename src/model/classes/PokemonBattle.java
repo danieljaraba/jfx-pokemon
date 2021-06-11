@@ -137,4 +137,60 @@ public class PokemonBattle {
             return false;
         }
     }
+
+    public Pokemon getAttacker() {
+        return attacker;
+    }
+
+    public void setAttacker(Pokemon attacker) {
+        this.attacker = attacker;
+    }
+
+    public Pokemon getUser() {
+        return user;
+    }
+
+    public void setUser(Pokemon user) {
+        this.user = user;
+    }
+
+    public PokemonTrainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(PokemonTrainer trainer) {
+        this.trainer = trainer;
+    }
+
+    public double getAtkHealth() {
+        return atkHealth;
+    }
+
+    public void setAtkHealth(double atkHealth) {
+        this.atkHealth = atkHealth;
+    }
+
+    public double getDefHealth() {
+        return defHealth;
+    }
+
+    public void setDefHealth(double defHealth) {
+        this.defHealth = defHealth;
+    }
+
+    public double getAtkMana() {
+        return atkMana;
+    }
+
+    public void setAtkMana(double atkMana) {
+        this.atkMana = atkMana;
+    }
+
+    public double getDefMana() {
+        return defMana;
+    }
+
+    public void setDefMana(double defMana) {
+        this.defMana = defMana;
+    }
 }

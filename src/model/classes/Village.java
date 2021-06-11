@@ -33,7 +33,7 @@ public class Village extends World {
     public Village(double height, double width, int wildPokemons, String name, double movement,String nameCharacter,String imgURL,String nameColor) {
         super(height, width, wildPokemons);
         this.name = name;
-        this.player = new PokemonTrainer(200, 200,nameCharacter,new Bag("",0.0,20.0,new Pokedex("",0.0)),imgURL,nameColor);
+        this.player = new PokemonTrainer(370, 225,nameCharacter,new Bag("",0.0,20.0,new Pokedex("",0.0)),imgURL,nameColor);
         this.gameObjects = new ArrayList<>();
         this.isTouched = false;
         this.movement = movement;

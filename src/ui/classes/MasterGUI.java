@@ -203,7 +203,7 @@ public class MasterGUI {
 
     public void startGameAdventurePane(String nameCharacter,String imgURL,String nameColor){
         for (int i = 0; i <villages.length ; i++) {
-            villages[i] = new Village(34,45,3,"pueblo: "+(i+1), 5,nameCharacter,imgURL,nameColor);
+            villages[i] = new Village(370,225,3,"pueblo: "+(i+1), 5,nameCharacter,imgURL,nameColor);
 
             villages[i].addObject(-30, -15, -45, 800, false, false);
             villages[i].addObject(-30, 1400, -85, -45, false, false);
@@ -234,6 +234,37 @@ public class MasterGUI {
         villages[0].addObject(-15,45,-50,150, false, false);
         villages[0].addObject(50,115,-50,30, false, false);
         villages[0].addObject(115,250,-50,-5, false, false);
+
+        villages[1].addObject(205,485,5,70,false,false);
+        villages[1].addObject(0,175,15,615,false,false);
+        villages[1].addObject(180,425,115,160,false,false);
+        villages[1].addObject(180,420,365,365,false,false);
+        villages[1].addObject(420,420,325,360,false,false);
+        villages[1].addObject(425,515,315,335,false,false);
+        villages[1].addObject(515,670,340,340,false,false);
+        villages[1].addObject(670,670,285,340,false,false);
+        villages[1].addObject(680,890,275,275,false,false);
+        villages[1].addObject(895,895,275,415,false,false);
+        villages[1].addObject(550,910,420,420,false,false);
+        villages[1].addObject(560,560,420,535,false,false);
+        villages[1].addObject(955,955,275,455,false,false);
+        villages[1].addObject(635,960,450,450,false,false);
+        villages[1].addObject(625,625,455,535,false,false);
+        villages[1].addObject(565,625,535,535,false,false);
+        villages[1].addObject(970,1100,270,270,false,false);
+
+        villages[2].addObject(220,665,205,205,false,false);
+        villages[2].addObject(220,220,205,285,false,false);
+        villages[2].addObject(220,245,285,285,false,false);
+        villages[2].addObject(235,235,300,450,false,false);
+        villages[2].addObject(765,765,220,620,false,false);
+        villages[2].addObject(890,1065,40,40,false,false);
+        villages[2].addObject(845,1065,105,105,false,false);
+        villages[2].addObject(365,610,240,240,false,false);
+
+        villages[3].addObject(275,275,210,280,false,false);
+        villages[3].addObject(280,275,355,540,false,false);
+        villages[3].addObject(275,1060,555,555,false,false);
 
         addPokemonObjects();
 

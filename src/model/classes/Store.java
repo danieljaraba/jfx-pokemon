@@ -1,9 +1,11 @@
 package model.classes;
 
+import exception.IsSaledException;
+import exception.NotTrabableException;
 import model.abstractClasses.StoreObject;
+import model.interfaces.Tradable;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Store implements Serializable {
 
@@ -12,14 +14,26 @@ public class Store implements Serializable {
 
     public Store(StoreObject storeItems) {
         this.storeItems = storeItems;
+
     }
     //Connect with gui (Dialog pane)
-    public StoreObject sellItem(int money, String name){
+    public StoreObject sellItem(double money, String name) throws NotTrabableException, IsSaledException {
         return sellItem(storeItems,money,name);
     }
-    private StoreObject sellItem(StoreObject storeItems,int money, String name){
+    private StoreObject sellItem(StoreObject storeItems,double money, String name) throws NotTrabableException, IsSaledException {
         if (storeItems!=null &&(storeItems.getName().equals(name)) && (money >= storeItems.getPrice())) {
-            return storeItems;
+            if(storeItems instanceof Tradable && !storeItems.isSaled() ){
+                storeItems.setSaled(true);
+                return storeItems;
+            }else if (storeItems.isSaled()){
+                throw new IsSaledException();
+            }else {
+                throw new NotTrabableException();
+
+            }
+
+        }else if(storeItems==null){
+            return null;
         }else{
             return sellItem(storeItems.getNext(),money,name);
         }
@@ -42,7 +56,7 @@ public class Store implements Serializable {
         return storeItems;
     }
 
-    /**
+    /*
      *  for(StoreObject storeObject : storeItems){
      *             if ((storeObject.getName().equals(name)) && (money >= storeObject.getPrice())) {
      *                 ret = storeObject;

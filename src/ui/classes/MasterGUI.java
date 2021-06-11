@@ -1066,7 +1066,7 @@ public class MasterGUI {
         for(int i = 0; i<current.getPlayer().getTrainersBag().getUsedPokeballs().size(); i++){
             items.add(current.getPlayer().getTrainersBag().getUsedPokeballs().get(i).getPokemon().getName());
         }
-        cbPokemonChoosePokemon.setItems((ObservableList<String>) items);
+        //cbPokemonChoosePokemon.setItems((ObservableList<String>) items);
         try {
             Parent battle = fxmlLoader.load();
             borderPane.setCenter(battle);

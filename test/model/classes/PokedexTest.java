@@ -8,5 +8,6 @@ class PokedexTest {
 
     @Test
     void addPokemonToSeenPokemons() {
+
     }
 }

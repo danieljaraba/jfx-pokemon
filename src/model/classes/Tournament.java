@@ -10,6 +10,7 @@ public class Tournament implements Autoplaying , Serializable {
 
     private ArrayList<PokemonTrainer> participants;
     private PokemonTrainnerThread thread;
+    private PokemonTrainer rootTrainer;
 
     public Tournament(ArrayList<PokemonTrainer> participants, PokemonTrainnerThread thread) {
         this.participants = participants;
@@ -28,7 +29,11 @@ public class Tournament implements Autoplaying , Serializable {
         return thread;
     }
 
-    public void setThread(PokemonTrainnerThread thread) {
-        this.thread = thread;
+    public PokemonTrainer getRootTrainer() {
+        return rootTrainer;
+    }
+
+    public void setRootTrainer(PokemonTrainer rootTrainer) {
+        this.rootTrainer = rootTrainer;
     }
 }

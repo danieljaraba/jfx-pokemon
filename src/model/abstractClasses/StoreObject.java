@@ -7,6 +7,7 @@ public abstract class StoreObject implements Serializable {
     private String name;
     private double price;
     private boolean saled;
+    private StoreObject next;
 
     public StoreObject(String name,double price){
         this.name = name;
@@ -36,5 +37,13 @@ public abstract class StoreObject implements Serializable {
 
     public void setSaled(boolean saled) {
         this.saled = saled;
+    }
+
+    public StoreObject getNext() {
+        return next;
+    }
+
+    public void setNext(StoreObject next) {
+        this.next = next;
     }
 }

@@ -1,14 +1,6 @@
 package model.classes;
 import java.io.*;
 
-
-
-/**
- * The type Game.
- * Esta clase quedaria mejor como clase principal del modelo en lugar de village ¿?
- * Esta clase la uso para cargar y guardar los archivos
- * La idea es repartir responsabilidades en esta clase para que no quede  todas las cosas en la clase gui
- */
 public class Game implements Serializable{
 
 
@@ -26,6 +18,7 @@ public class Game implements Serializable{
     private static final String FILE_EXTENSION = ".poke";
     private PokemonTrainer currentTrainer;
     private Village currentVillage;
+    private Game next;
 
 
     public Game(){
@@ -70,5 +63,13 @@ public class Game implements Serializable{
 
     public void setCurrentVillage(Village currentVillage) {
         this.currentVillage = currentVillage;
+    }
+
+    public Game getNext() {
+        return next;
+    }
+
+    public void setNext(Game next) {
+        this.next = next;
     }
 }

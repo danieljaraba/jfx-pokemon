@@ -11,4 +11,8 @@ class GameObjectTest {
     @Test
     void isNear() {
     }
+
+    @Test
+    void executeOption() {
+    }
 }

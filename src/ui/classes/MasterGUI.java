@@ -1169,7 +1169,7 @@ public class MasterGUI {
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
         changeAttackerScreen();
     }
-
+//I
     @FXML
     void btAttack4UserBattle(ActionEvent event) {
         current.getActiveBattle().userAttack(4);

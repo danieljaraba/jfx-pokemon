@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VillageTest {
 
     private Village village;
-    PokemonTrainer player;
+    private PokemonTrainer player;
 
     public void setupScenary1(){
         player = new PokemonTrainer(50,50,"Pedro",
@@ -19,7 +19,7 @@ class VillageTest {
     @org.junit.jupiter.api.Test
     void moveRight() {
         setupScenary1();
-        double xAxisPosition = player.getX();
+        double xAxisPosition = village.getPlayer().getX();
         village.moveRight();
         assertTrue(village.getPlayer().getX() > xAxisPosition);
     }
@@ -27,7 +27,7 @@ class VillageTest {
     @org.junit.jupiter.api.Test
     void moveUp() {
         setupScenary1();
-        double yAxisPosition = player.getY();
+        double yAxisPosition = village.getPlayer().getY();
         village.moveUp();
         assertTrue(village.getPlayer().getY() < yAxisPosition);
     }
@@ -35,7 +35,7 @@ class VillageTest {
     @org.junit.jupiter.api.Test
     void moveDown() {
         setupScenary1();
-        double yAxisPosition = player.getY();
+        double yAxisPosition = village.getPlayer().getY();
         village.moveDown();
         assertTrue(village.getPlayer().getY() > yAxisPosition);
     }
@@ -43,13 +43,14 @@ class VillageTest {
     @org.junit.jupiter.api.Test
     void moveLeft() {
         setupScenary1();
-        double xAxisPosition = player.getX();
+        double xAxisPosition = village.getPlayer().getX();
         village.moveLeft();
         assertTrue(village.getPlayer().getX() < xAxisPosition);
     }
 
     @Test
     void addObject() {
+        setupScenary1();
         double x1 = 10;
         double x2 = 20;
         double y1 = 10;

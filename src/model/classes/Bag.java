@@ -1,5 +1,6 @@
 package model.classes;
 
+import model.abstractClasses.Pokemon;
 import model.abstractClasses.StoreObject;
 import model.interfaces.Tradable;
 
@@ -33,6 +34,22 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         this.trainnerPokedex = trainnerPokedex;
     }
 
+    public boolean saveCapturedPokemon(Pokemon pokemon){
+        if(!emptyPokeballs.isEmpty()){
+            int canCapture = (int)(Math.random()*6);
+            if(canCapture > 1){
+                Pokeball pokeball = emptyPokeballs.remove(emptyPokeballs.size()-1);
+                pokeball.setPokemon(pokemon);
+                usedPokeballs.add(pokeball);
+                return true;
+            }else{
+                emptyPokeballs.remove(getEmptyPokeballs().size()-1);
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 
     /**
      * Sort used pokeballs by pokemon name.

@@ -7,6 +7,9 @@ import model.interfaces.Tradable;
 
 import java.io.Serializable;
 
+/**
+ * The type Store.
+ */
 public class Store implements Serializable {
 
    // private ArrayList<StoreObject> storeItems;
@@ -14,12 +17,14 @@ public class Store implements Serializable {
 
     public Store(StoreObject storeItems) {
         this.storeItems = storeItems;
-
     }
+
+
     //Connect with gui (Dialog pane)
     public StoreObject sellItem(double money, String name) throws NotTrabableException, IsSaledException {
         return sellItem(storeItems,money,name);
     }
+
     private StoreObject sellItem(StoreObject storeItems,double money, String name) throws NotTrabableException, IsSaledException {
         if (storeItems!=null &&(storeItems.getName().equals(name)) && (money >= storeItems.getPrice())) {
             if(storeItems instanceof Tradable && !storeItems.isSaled() ){
@@ -29,9 +34,7 @@ public class Store implements Serializable {
                 throw new IsSaledException();
             }else {
                 throw new NotTrabableException();
-
             }
-
         }else if(storeItems==null){
             return null;
         }else{
@@ -56,14 +59,6 @@ public class Store implements Serializable {
         return storeItems;
     }
 
-    /*
-     *  for(StoreObject storeObject : storeItems){
-     *             if ((storeObject.getName().equals(name)) && (money >= storeObject.getPrice())) {
-     *                 ret = storeObject;
-     *                 break;
-     *             }
-     *         }
-     */
 
 
 }

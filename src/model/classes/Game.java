@@ -1,16 +1,36 @@
 package model.classes;
 import java.io.*;
 
+/**
+ * The type Game.
+ */
 public class Game implements Serializable{
 
 
-
-    //Para archivo de texto plano SOLO PARA POKEMONS
+    /**
+     * The constant PATH_FIRE_POKEMON_TXT.
+     */
+//Para archivo de texto plano SOLO PARA POKEMONS
     public static final String PATH_FIRE_POKEMON_TXT = "data/plainTextFiles/pokemonsData/FIRE.txt";
+    /**
+     * The constant PATH_WATER_POKEMON_TXT.
+     */
     public static final String PATH_WATER_POKEMON_TXT = "data/plainTextFiles/pokemonsData/WATER.txt";
+    /**
+     * The constant PATH_PLANT_POKEMON_TXT.
+     */
     public static final String PATH_PLANT_POKEMON_TXT = "data/plainTextFiles/pokemonsData/PLANT.txt";
+    /**
+     * The constant PATH_ELECTRIC_POKEMON_TXT.
+     */
     public static final String PATH_ELECTRIC_POKEMON_TXT = "data/plainTextFiles/pokemonsData/ELECTRIC.txt";
+    /**
+     * The constant PATH_PSIQUIC_POKEMON_TXT.
+     */
     public static final String PATH_PSIQUIC_POKEMON_TXT = "data/plainTextFiles/pokemonsData/PSIQUIC.txt";
+    /**
+     * The constant PATH_ROCK_POKEMON_TXT.
+     */
     public static final String PATH_ROCK_POKEMON_TXT = "data/plainTextFiles/pokemonsData/ROCK.txt";
 
     //Para archivos serializables
@@ -21,10 +41,19 @@ public class Game implements Serializable{
     private Game next;
 
 
+    /**
+     * Instantiates a new Game.
+     */
     public Game(){
 
     }
 
+    /**
+     * Save game.
+     *
+     * @param gameName the game name
+     * @throws IOException the io exception
+     */
     public void saveGame(String gameName) throws IOException {
         //se supone que crea un archivo de este tipo: partidaDeJaraba.poke
         File savedGameFile = new File(PATH_GAME+"/"+gameName+FILE_EXTENSION);
@@ -33,7 +62,15 @@ public class Game implements Serializable{
         oos.close();
     }
 
-    //file chooser no mamen ya estoy muy viejo para pensar otra cosa
+    /**
+     * Load previous game game.
+     *
+     * @param fileName the file name
+     * @return the game
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
+//file chooser no mamen ya estoy muy viejo para pensar otra cosa
     public Game loadPreviousGame(String fileName) throws IOException, ClassNotFoundException {
         File f = new File(fileName);
         Game lastGame = null;
@@ -46,29 +83,57 @@ public class Game implements Serializable{
     }
 
 
-
+    /**
+     * Gets current trainer.
+     *
+     * @return the current trainer
+     */
     public PokemonTrainer getCurrentTrainer() {
         return currentTrainer;
     }
 
+    /**
+     * Sets current trainer.
+     *
+     * @param currentTrainer the current trainer
+     */
     public void setCurrentTrainer(PokemonTrainer currentTrainer) {
         this.currentTrainer = currentTrainer;
     }
 
 
-
+    /**
+     * Gets current village.
+     *
+     * @return the current village
+     */
     public Village getCurrentVillage() {
         return currentVillage;
     }
 
+    /**
+     * Sets current village.
+     *
+     * @param currentVillage the current village
+     */
     public void setCurrentVillage(Village currentVillage) {
         this.currentVillage = currentVillage;
     }
 
+    /**
+     * Gets next.
+     *
+     * @return the next
+     */
     public Game getNext() {
         return next;
     }
 
+    /**
+     * Sets next.
+     *
+     * @param next the next
+     */
     public void setNext(Game next) {
         this.next = next;
     }

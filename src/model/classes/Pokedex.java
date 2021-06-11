@@ -12,6 +12,8 @@ public class Pokedex extends StoreObject {
 
     public Pokedex(String name,double price) {
         super(name,price);
+        currentPokemons = new ArrayList<>();
+        pokemons = new Pokemon[18];
     }
 
     //When see a new pokemon confirm if its already seen before

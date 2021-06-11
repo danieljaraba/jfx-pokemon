@@ -69,4 +69,15 @@ public class Tournament implements Autoplaying , Serializable {
     public void setThread(PokemonTrainnerThread thread) {
         this.thread = thread;
     }
+
+
+    @Override
+    public void iaPokemon(PokemonBattle pokemon) {
+
+    }
+
+    @Override
+    public void iaTrainner(PokemonTrainer trainer) {
+
+    }
 }

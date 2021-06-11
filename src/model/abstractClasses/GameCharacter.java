@@ -1,10 +1,7 @@
 package model.abstractClasses;
-
-import model.interfaces.Autoplaying;
-
 import java.io.Serializable;
 
-public abstract class GameCharacter implements Autoplaying,Serializable {
+public abstract class GameCharacter implements Serializable {
 
     private String img;
 

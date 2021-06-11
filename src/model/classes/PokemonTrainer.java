@@ -1,6 +1,8 @@
 package model.classes;
 
 import model.abstractClasses.GameCharacter;
+import model.interfaces.Autoplaying;
+
 import java.util.ArrayList;
 
 /**

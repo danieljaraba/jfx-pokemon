@@ -4,8 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXSpinner;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import com.jfoenix.controls.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,24 +11,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.effect.Bloom;
 import javafx.scene.effect.Glow;
-import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import model.classes.*;
 import model.classes.Game;
 import model.classes.Village;
@@ -38,11 +36,7 @@ import thread.LoadBattleThread;
 import thread.MusicThread;
 import thread.PokemonCreatorThread;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+
 
 public class MasterGUI {
     //_______________ A. MAIN PANEL ____________
@@ -161,31 +155,27 @@ public class MasterGUI {
 
 
 
-    //TODO buscar una clase para que sesa la principal del modelo
-    // TODO rangos para cambiar de mapa
     /**
      * Instantiates a new Master gui.
      */
     public MasterGUI() {
         villages = new Village[4];
         curentGame = new Game();
-        //por el momento todos los pueblos tienen el mismo tamaño
-
-
-/*
         musicThread = new MusicThread();
-        musicThread.start();
         try {
+            musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-*/
+
     }
+
 
     public void startGameAdventurePane(String nameCharacter,String imgURL,String nameColor){
         for (int i = 0; i <villages.length ; i++) {
             villages[i] = new Village(34,45,3,"pueblo: "+(i+1), 5,nameCharacter,imgURL,nameColor);
+
             villages[i].addObject(-30, -15, -45, 800, false, false);
             villages[i].addObject(-30, 1400, -85, -45, false, false);
             villages[i].addObject(1370, 1400, -45, 800, false, false);
@@ -271,10 +261,7 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Credits.fxml"));
         fxmlLoader.setController(this);
         Parent creditsPane = fxmlLoader.load();
-
         borderPane.setCenter(creditsPane);
-
-
     }
 
     /**
@@ -286,7 +273,6 @@ public class MasterGUI {
     public void btExitMenu(ActionEvent event) {
         Stage stage = (Stage) borderPane.getScene().getWindow();
         stage.close();
-
     }
 
     /**
@@ -300,8 +286,8 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/LoadGame.fxml"));
         fxmlLoader.setController(this);
         Parent loadGamePane = fxmlLoader.load();
-
         borderPane.setCenter(loadGamePane);
+
     }
 
     /**
@@ -315,7 +301,6 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/NewGame.fxml"));
         fxmlLoader.setController(this);
         Parent newGamePane = fxmlLoader.load();
-
         borderPane.setCenter(newGamePane);
     }
 
@@ -415,13 +400,11 @@ public class MasterGUI {
                     imgPlayerAllVillages.setImage(new Image("/img/character/emerald_down_rest.png"));
                 }else{
                     imgPlayerAllVillages.setImage(new Image("/img/character/girl_down_rest.png"));
-
                 }
                 borderPane.setCenter(village1);
                 current = villages[2];
                 curentGame.setCurrentVillage(current);
                 village1.requestFocus();
-
                 break;
             }
             default: {
@@ -458,7 +441,6 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Menu.fxml"));
         fxmlLoader.setController(this);
         Parent toBackMenuPane = fxmlLoader.load();
-
         borderPane.setCenter(toBackMenuPane);
     }
 
@@ -466,10 +448,7 @@ public class MasterGUI {
     public void setMusicVolumen(MouseEvent event){
         System.out.println("Holam");
         double volumeValue = sldMusicVolumenOptions.getValue();
-       musicThread.getPokemonMusic().getPlayer().setVolume(volumeValue/100);
-
-
-
+        musicThread.getPokemonMusic().getPlayer().setVolume(volumeValue / 100);
 
     }
 
@@ -515,13 +494,6 @@ public class MasterGUI {
 
 
     }
-
-
-
-
-
-
-
 
     @FXML
     public void btStartAdventurePane(ActionEvent event) throws IOException {
@@ -572,9 +544,7 @@ public class MasterGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
         fxmlLoader.setController(this);
         Parent village1 = fxmlLoader.load();
-
-
-
+        current = villages[0];
         String nameCharacter = tfNameCharacterAdventurePane.getText();
         Color c = colorPickerAdventurePane.getValue();
         String colorCharacter = toRGBCode(c);
@@ -719,10 +689,8 @@ public class MasterGUI {
     @FXML
     public void moveCharacter(KeyEvent event) throws IOException {
         System.out.println(event.getCode());
-
-
-
         if (event.getCode() == KeyCode.ESCAPE){
+
             List<String> choices = new ArrayList<>();
             choices.add("Save my game");
             choices.add("Back to menu");
@@ -751,7 +719,6 @@ public class MasterGUI {
                     }
                 }
                 //imgPlayerAllVillages.setImage(new Image("/img/character/emerald_up_rest.png"));
-
             }
 
             if (event.getCode() == KeyCode.DOWN) {
@@ -774,6 +741,7 @@ public class MasterGUI {
 
 
             }
+
             if (event.getCode() == KeyCode.LEFT) {
                 moveLeft();
                 left++;
@@ -1208,6 +1176,10 @@ public class MasterGUI {
 
     public BorderPane getBorderPane() {
         return borderPane;
+    }
+
+    public MusicThread getMusicThread() {
+        return musicThread;
     }
 
     public void setBorderPane(BorderPane borderPane) {

@@ -189,13 +189,13 @@ public class MasterGUI {
         villages = new Village[4];
         curentGame = new Game();
         musicThread = new MusicThread();
-       /* try {
+        try {
             musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        */
+
 
 
     }

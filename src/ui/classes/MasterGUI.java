@@ -594,9 +594,6 @@ public class MasterGUI {
     public void moveSpaceTutorialPane(KeyEvent event) throws IOException {
         String msg = "";
         System.out.println(event.getCode());
-
-
-
         if(event.getCode() == KeyCode.SPACE){
 
             switch (num) {
@@ -681,7 +678,7 @@ public class MasterGUI {
             dialog.setContentText("Choose an action: ");
             Optional<String> result = dialog.showAndWait();
             result.ifPresent(this::makeElection);
-        } else {
+        } else if(event.getCode()!= KeyCode.SPACE){
             if (event.getCode() == KeyCode.UP) {
                 moveUp();
                 up++;

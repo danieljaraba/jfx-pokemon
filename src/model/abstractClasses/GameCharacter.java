@@ -4,7 +4,7 @@ import model.interfaces.Autoplaying;
 
 import java.io.Serializable;
 
-public abstract class GameCharacter implements Autoplaying, Serializable {
+public abstract class GameCharacter implements Autoplaying,Serializable {
 
     private String img;
 

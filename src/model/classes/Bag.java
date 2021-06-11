@@ -6,7 +6,6 @@ import model.interfaces.Tradable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * The type Bag.
@@ -85,6 +84,30 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
             if ( used.get(mid).getPokemon().getLevel() < level ){
                 first = mid + 1;
             }else if ( used.get(mid).getPokemon().getLevel() == level ){
+                //System.out.println("Element is found at index: " + mid);
+                ret = used.get(mid);
+                break;
+            }else{
+                last = mid - 1;
+            }
+            mid = (first + last)/2;
+        }
+        if ( first > last ){
+            return null;
+        }else{
+            return ret;
+        }
+    }
+
+    public Pokeball foundPokemonByHealth(ArrayList<Pokeball> used, int health){
+        Pokeball ret = null;
+        int first = (int)used.get(0).getPokemon().getHealth();
+        int last = (int)used.get(used.size()-1).getPokemon().getHealth();
+        int mid = ( first + last)/2;
+        while( first <= last ){
+            if ( used.get(mid).getPokemon().getLevel() < health){
+                first = mid + 1;
+            }else if ( used.get(mid).getPokemon().getHealth() == health){
                 //System.out.println("Element is found at index: " + mid);
                 ret = used.get(mid);
                 break;

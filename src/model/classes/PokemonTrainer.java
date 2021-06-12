@@ -1,6 +1,7 @@
 package model.classes;
 
 import model.abstractClasses.GameCharacter;
+import model.abstractClasses.Pokemon;
 import model.interfaces.Autoplaying;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class PokemonTrainer extends GameCharacter {
     private PokemonTrainer parentTrainer;
     private PokemonTrainer leftTrainer;
     private PokemonTrainer rigthTrainer;
+    private boolean clashWon;
 
     /**
      * Instantiates a new Pokemon trainer.
@@ -157,6 +159,19 @@ public class PokemonTrainer extends GameCharacter {
      */
     public String getNameColor() {
         return nameColor;
+    }
+
+    public Pokemon getRamdomPokemon(){
+        int ramdom = (int)(Math.random()*(trainersBag.getUsedPokeballs().size()))+1;
+        return trainersBag.getUsedPokeballs().get(ramdom-1).getPokemon();
+    }
+
+    public boolean isClashWon() {
+        return clashWon;
+    }
+
+    public void setClashWon(boolean clashWon) {
+        this.clashWon = clashWon;
     }
 
     /**

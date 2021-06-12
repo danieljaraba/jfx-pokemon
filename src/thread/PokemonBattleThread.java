@@ -19,6 +19,14 @@ public class PokemonBattleThread extends Thread{
         this.defHealth = defHealth;
     }
 
+    public PokemonBattleThread(PokemonBattle pokemonBattle){
+        this.pokemonBattle = pokemonBattle;
+        atkHealth = pokemonBattle.getAtkHealth();
+        defHealth = pokemonBattle.getDefHealth();
+    }
+
+
+
 
     public void run(){
         Platform.runLater(new Thread(() -> {

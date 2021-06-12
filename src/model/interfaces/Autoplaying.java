@@ -1,9 +1,7 @@
 package model.interfaces;
-import model.classes.PokemonBattle;
-import model.classes.PokemonTrainer;
 
+import model.classes.PokemonBattle;
 
 public interface Autoplaying {
-    void iaPokemon(PokemonBattle pokemon);
-    void iaTrainner(PokemonTrainer trainer);
+    void iaTrainner(PokemonBattle iaBattle);
 }

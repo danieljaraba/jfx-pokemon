@@ -98,6 +98,9 @@ public class MasterGUI {
     private ImageView imgPokemonChoosePokemon;
 
     @FXML
+    private ImageView imgTrainerTournamentBattle;
+
+    @FXML
     private TextFlow tflTutorialPane;
 
     @FXML
@@ -1284,14 +1287,15 @@ public class MasterGUI {
         LoadBattleThread lbt = new LoadBattleThread(this);
         lbt.start();
 
-
-
     }
 
     public void loadBattleTournament() throws IOException {
         FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("../battles/tournamentBattle.fxml"));
         fxmlLoader2.setController(this);
         Parent battleTournament = fxmlLoader2.load();
+        curentGame.setLocalTournaMent(new Tournament(curentGame.getCurrentTrainer()));
+        lbTrainerNameTournamentBattle.setText(curentGame.getLocalTournaMent().getRootTrainer().getName());
+        imgTrainerTournamentBattle.setImage(new Image(curentGame.getLocalTournaMent().getRootTrainer().getImg()));
         borderPane.setCenter(battleTournament);
     }
 
@@ -1301,6 +1305,7 @@ public class MasterGUI {
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to leve this battle?");
+        alert.showAndWait();
         ButtonType buttonTypeOne = new ButtonType("Yes");
         ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeCancel);
@@ -1315,9 +1320,12 @@ public class MasterGUI {
             }
         }
 
-
     }
 
+    @FXML
+    public void btFigthTournament(ActionEvent event) {
+
+    }
 
 
 

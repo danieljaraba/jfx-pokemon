@@ -22,7 +22,7 @@
                   <Image url="@../../img/battles/battle_box.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbAttackWildAttack" layoutX="24.0" layoutY="325.0" prefHeight="31.0" prefWidth="559.0" text="Your oponet will use...">
+            <Label fx:id="lbAttackWildAttack" layoutX="24.0" layoutY="325.0" prefHeight="31.0" prefWidth="559.0" text="Its your oponet's turn">
                <font>
                   <Font size="26.0" />
                </font>

@@ -12,7 +12,7 @@
 
 - **!Here Link!: [Previus Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo.pdf)**
 - **!Here Link #2!: [Second Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo2.pdf)**
-- **!Here Link #3!: [Third Documentation]()**
+- **!Here Link #3!: [Third Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo3.pdf)**
 
 ## <b> _Video_ </b> 🎥
 

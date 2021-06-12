@@ -32,6 +32,15 @@ public class PokemonBattle implements Battle {
         this.defMana = 100;
     }
 
+    public PokemonBattle(Pokemon user , PokemonTrainer attackerTrainner){
+        attacker = attackerTrainner.getRamdomPokemon();
+        this.user = user;
+
+        this.defHealth = user.getHealth();
+        this.atkMana = 100;
+        this.defMana = 100;
+    }
+
     public boolean userAttack(int attack){
         boolean win = false;
         switch(attack){

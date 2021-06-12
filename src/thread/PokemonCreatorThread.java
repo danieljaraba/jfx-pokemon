@@ -95,7 +95,7 @@ public class PokemonCreatorThread extends Thread{
                                 maxWater-=1;
                                 wasHere = 0;
                                 squirtleAttack[0] = new Attack("Water pulse",60,30,20);
-                                squirtleAttack[0] = new Attack("Bubble",20,10,30);
+                                squirtleAttack[1] = new Attack("Bubble",20,10,30);
                                 village.getLocalPokemons()[j] = new WaterPokemon(imgs.get(3),"Squirtle",150,1,166.9,89.5,false,"water",squirtleAttack,true);
 
 

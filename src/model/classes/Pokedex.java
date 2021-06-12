@@ -25,6 +25,11 @@ public class Pokedex extends StoreObject {
         currentPokemons = new MeLinkedList<>();
         pokemons = new Pokemon[18];
     }
+    public Pokedex(String name, double price,Pokemon[] createdPokemons){
+        super(name,price);
+        currentPokemons = new MeLinkedList<>();
+        pokemons = createdPokemons;
+    }
 
     /**
      * Add pokemon to seen pokemons.

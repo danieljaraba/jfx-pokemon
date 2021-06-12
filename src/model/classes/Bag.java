@@ -29,6 +29,9 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         super(name,price);
         this.space = space;
         emptyPokeballs = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            emptyPokeballs.add(new Pokeball("",0));
+        }
         usedPokeballs = new ArrayList<>();
         this.trainnerPokedex = trainnerPokedex;
     }
@@ -43,8 +46,17 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         if(!emptyPokeballs.isEmpty()){
             int canCapture = (int)(Math.random()*6);
             if(canCapture > 1){
+                WaterPokemon pkm = new WaterPokemon(pokemon.getImg(), pokemon.getName(), pokemon.getExp(), pokemon.getLevel(), pokemon.getHealth(), pokemon.getBaseDefense(), pokemon.isHasOwner(), pokemon.getType(), pokemon.getPokemonAttacks(), true);
                 Pokeball pokeball = emptyPokeballs.remove(emptyPokeballs.size()-1);
-                pokeball.setPokemon(pokemon);
+                pokeball.setPokemon(pkm);
+                switch (pokeball.getPokemon().getName()){
+                    case "Arcanine":
+                        pokeball.getPokemon().setImg("img/pokemon/pokemon_back_sprites/Arcanine.png");
+                    break;
+                    case "Blastoide":
+                        pokeball.getPokemon().setImg("img/pokemon/pokemon_back_sprites/Blastoise_back.png");
+                    break;
+                }
                 usedPokeballs.add(pokeball);
                 return true;
             }else{
@@ -71,6 +83,34 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
                     copy.set(j, copy.remove(j+1));
                     copy.set(j+1, temp);
                 }
+            }
+        }
+    }
+    /**
+     * Sort used pokeballs by pokemon name.
+     */
+    public void sortUsedPokeballsByPokemonName(){
+        for(int i = 0; i < usedPokeballs.size(); i++){
+            Pokeball min = usedPokeballs.get(i);
+            for( int j = i+1; j < usedPokeballs.size(); j++){
+                if(usedPokeballs.get(j).getPokemon().getName().compareToIgnoreCase(min.getPokemon().getName()) < 0){
+                    Pokeball temp = usedPokeballs.get(j);
+                    usedPokeballs.set(j,min);
+                    min = temp;
+                }
+            }
+            usedPokeballs.set(i,min);
+        }
+        //Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
+        //usedPokeballs.sort(pokemonOrderByName);
+    }
+
+    public void sortUsedPokeballByBaseDeffense(){
+        for(int i = 1; i < usedPokeballs.size(); i++){
+            for(int j = i; j > 0 && usedPokeballs.get(j-1).getPokemon().getBaseDefense() > usedPokeballs.get(j).getPokemon().getBaseDefense(); j--){
+                Pokeball temp = usedPokeballs.get(j);
+                usedPokeballs.set(j, usedPokeballs.get(j-1));
+                usedPokeballs.set(j-1,temp);
             }
         }
     }
@@ -121,26 +161,6 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }else{
             return ret;
         }
-    }
-
-
-    /**
-     * Sort used pokeballs by pokemon name.
-     */
-    public void sortUsedPokeballsByPokemonName(){
-        for(int i = 0; i < usedPokeballs.size(); i++){
-            Pokeball min = usedPokeballs.get(i);
-            for( int j = i+1; j < usedPokeballs.size(); j++){
-                if(usedPokeballs.get(j).getPokemon().getName().compareToIgnoreCase(min.getPokemon().getName()) < 0){
-                    Pokeball temp = usedPokeballs.get(j);
-                    usedPokeballs.set(j,min);
-                    min = temp;
-                }
-            }
-            usedPokeballs.set(i,min);
-        }
-        //Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
-        //usedPokeballs.sort(pokemonOrderByName);
     }
 
     /**

@@ -77,6 +77,34 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
             }
         }
     }
+    /**
+     * Sort used pokeballs by pokemon name.
+     */
+    public void sortUsedPokeballsByPokemonName(){
+        for(int i = 0; i < usedPokeballs.size(); i++){
+            Pokeball min = usedPokeballs.get(i);
+            for( int j = i+1; j < usedPokeballs.size(); j++){
+                if(usedPokeballs.get(j).getPokemon().getName().compareToIgnoreCase(min.getPokemon().getName()) < 0){
+                    Pokeball temp = usedPokeballs.get(j);
+                    usedPokeballs.set(j,min);
+                    min = temp;
+                }
+            }
+            usedPokeballs.set(i,min);
+        }
+        //Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
+        //usedPokeballs.sort(pokemonOrderByName);
+    }
+
+    public void sortUsedPokeballByBaseDeffense(){
+        for(int i = 1; i < usedPokeballs.size(); i++){
+            for(int j = i; j > 0 && usedPokeballs.get(j-1).getPokemon().getBaseDefense() > usedPokeballs.get(j).getPokemon().getBaseDefense(); j--){
+                Pokeball temp = usedPokeballs.get(j);
+                usedPokeballs.set(j, usedPokeballs.get(j-1));
+                usedPokeballs.set(j-1,temp);
+            }
+        }
+    }
 
     public Pokeball foundPokemonByLevel(ArrayList<Pokeball> used, int level){
         Pokeball ret = null;
@@ -124,26 +152,6 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }else{
             return ret;
         }
-    }
-
-
-    /**
-     * Sort used pokeballs by pokemon name.
-     */
-    public void sortUsedPokeballsByPokemonName(){
-        for(int i = 0; i < usedPokeballs.size(); i++){
-            Pokeball min = usedPokeballs.get(i);
-            for( int j = i+1; j < usedPokeballs.size(); j++){
-                if(usedPokeballs.get(j).getPokemon().getName().compareToIgnoreCase(min.getPokemon().getName()) < 0){
-                    Pokeball temp = usedPokeballs.get(j);
-                    usedPokeballs.set(j,min);
-                    min = temp;
-                }
-            }
-            usedPokeballs.set(i,min);
-        }
-        //Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
-        //usedPokeballs.sort(pokemonOrderByName);
     }
 
     /**

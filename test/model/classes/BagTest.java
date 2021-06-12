@@ -33,13 +33,13 @@ class BagTest {
         ArrayList<Pokeball> usedPokeballs = new ArrayList<>();
 
         usedPokeballs.add(new Pokeball("",0,
-                new WaterPokemon("","Squirtle",100,1,100,20,false,"Water",null, true)));
+                new WaterPokemon("","Squirtle",100,2,110,20,false,"Water",null, true)));
 
         usedPokeballs.add(new Pokeball("",0,
                 new WaterPokemon("","WaterPokemon",100,1,100,20,false,"Water",null, true)));
 
         usedPokeballs.add(new Pokeball("",0,
-                new WaterPokemon("","Blastoide",100,1,100,20,false,"Water",null, true)));
+                new WaterPokemon("","Blastoide",100,1,105,20,false,"Water",null, true)));
 
         Pokedex trainnerPokedex = new Pokedex("",0);
         bag = new Bag("",0,space, trainnerPokedex);
@@ -85,5 +85,50 @@ class BagTest {
         }else if(initialSizeEmpty > finalSizeEmpty && initialSizeUsed==finalSizeUsed){
             assertFalse(test);
         }
+    }
+
+    @Test
+    void sortUsedPokeballsByLevel() {
+        setupScenary2();
+        bag.sortUsedPokeballsByLevel();
+        int bad = 0;
+        for(int i = 1; i < bag.getUsedPokeballs().size(); i++){
+            if(bag.getUsedPokeballs().get(i-1).getPokemon().getLevel() > bag.getUsedPokeballs().get(i).getPokemon().getLevel()){
+                bad++;
+            }
+        }
+        boolean ret = (bad==0);
+        assertTrue(ret);
+    }
+
+    @Test
+    void sortUsedPokeballByBaseDeffense() {
+        setupScenary2();
+        bag.sortUsedPokeballByBaseDeffense();
+        int bad = 0;
+        for(int i = 1; i < bag.getUsedPokeballs().size(); i++){
+            if(bag.getUsedPokeballs().get(i-1).getPokemon().getBaseDefense() > bag.getUsedPokeballs().get(i).getPokemon().getBaseDefense()){
+                bad++;
+            }
+        }
+        boolean ret = (bad==0);
+        assertTrue(ret);
+    }
+
+    @Test
+    void foundPokemonByLevel() {
+        setupScenary2();
+        bag.sortUsedPokeballsByLevel();
+        Pokeball p = bag.foundPokemonByLevel(2);
+        assertEquals("Squirtle",p.getPokemon().getName());
+    }
+
+    @Test
+    void foundPokemonByHealth() {
+        setupScenary2();
+        Comparator<Pokeball> automaticOrder = (pokeballA, pokeballB) -> (int) (pokeballA.getPokemon().getHealth() - (pokeballB.getPokemon().getHealth()));
+        bag.getUsedPokeballs().sort(automaticOrder);
+        Pokeball p = bag.foundPokemonByHealth(105);
+        assertEquals("Blastoide",p.getPokemon().getName());
     }
 }

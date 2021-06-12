@@ -38,7 +38,7 @@ public class Game implements Serializable{
     private static final String FILE_EXTENSION = ".poke";
     private PokemonTrainer currentTrainer;
     private Village currentVillage;
-    private Game next;
+    private Tournament localTournaMent;
 
 
     /**
@@ -120,21 +120,11 @@ public class Game implements Serializable{
         this.currentVillage = currentVillage;
     }
 
-    /**
-     * Gets next.
-     *
-     * @return the next
-     */
-    public Game getNext() {
-        return next;
+    public Tournament getLocalTournaMent() {
+        return localTournaMent;
     }
 
-    /**
-     * Sets next.
-     *
-     * @param next the next
-     */
-    public void setNext(Game next) {
-        this.next = next;
+    public void setLocalTournaMent(Tournament localTournaMent) {
+        this.localTournaMent = localTournaMent;
     }
 }

@@ -9,9 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('/img/battles/tournamenBattleScene.png'); -fx-background-size: 90% 90%;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-
    <children>
       <Pane layoutY="-3.0" prefHeight="410.0" prefWidth="600.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-3.0">
          <children>
@@ -20,16 +18,13 @@
                   <Image url="@../../img/character/emerald_battle_1.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgTrainerTournamentBattle" fitHeight="119.0" fitWidth="164.0" layoutX="415.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/character/Protagonistas_RZ.gif" />
-               </image></ImageView>
+            <ImageView fx:id="imgTrainerTournamentBattle" fitHeight="119.0" fitWidth="164.0" layoutX="415.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="147.0" fitWidth="600.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/battles/battle_box.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btFigthWildBattle" layoutX="338.0" layoutY="296.0" onAction="#btFightWildBattle" text="FIGTH" textFill="#ebe6e6">
+            <JFXButton fx:id="btFigthWildBattle" layoutX="338.0" layoutY="296.0" text="FIGTH" textFill="#ebe6e6">
                <font>
                   <Font name="Open Sans Semibold" size="23.0" />
                </font>

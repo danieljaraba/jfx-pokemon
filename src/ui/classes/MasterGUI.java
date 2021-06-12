@@ -103,6 +103,9 @@ public class MasterGUI {
     private ImageView imgPokemonChoosePokemon;
 
     @FXML
+    private ImageView imgTrainerTournamentBattle;
+
+    @FXML
     private TextFlow tflTutorialPane;
 
     @FXML
@@ -210,15 +213,13 @@ public class MasterGUI {
     public MasterGUI() {
         villages = new Village[4];
         curentGame = new Game();
-   /*     musicThread = new MusicThread();
+        musicThread = new MusicThread();
         try {
             musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
-
-
+        }
     }
 
 
@@ -1509,7 +1510,7 @@ public class MasterGUI {
      */
     public void updateGui(String update,double atkHealth, double defHealth ){
         System.out.println("Salud del enemigo: "+atkHealth);
-        System.out.println("Salud del pendejo jugador: "+defHealth);
+        System.out.println("Salud del  jugador: "+defHealth);
         lbUserHealthWildAttack.setText("Health: "+defHealth);
         lbAttackerHealthWildAttack.setText("Health: "+ atkHealth);
         current.getActiveBattle().setDefHealth(defHealth);
@@ -1622,8 +1623,6 @@ public class MasterGUI {
         LoadBattleThread lbt = new LoadBattleThread(this);
         lbt.start();
 
-
-
     }
 
     /**
@@ -1635,7 +1634,15 @@ public class MasterGUI {
         FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("../battles/tournamentBattle.fxml"));
         fxmlLoader2.setController(this);
         Parent battleTournament = fxmlLoader2.load();
+        curentGame.setLocalTournaMent(new Tournament(curentGame.getCurrentTrainer()));
+        lbTrainerNameTournamentBattle.setText(curentGame.getLocalTournaMent().getRootTrainer().getName());
+        imgTrainerTournamentBattle.setImage(new Image(curentGame.getLocalTournaMent().getRootTrainer().getImg()));
         borderPane.setCenter(battleTournament);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Hey!");
+        alert.setHeaderText("This is a beta version of the tournament");
+        alert.setContentText("You can participate in a future version");
+        alert.showAndWait();
     }
 
     /**
@@ -1663,7 +1670,6 @@ public class MasterGUI {
                 borderPane.setCenter(tournament);
             }
         }
-
 
     }
 
@@ -1751,6 +1757,7 @@ public class MasterGUI {
         }
 
     }
+
 
 
 

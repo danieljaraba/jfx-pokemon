@@ -29,8 +29,8 @@ public class GameObject  implements Serializable {
      * @param pokemon      the pokemon
      */
     public GameObject(double x1, double x2, double y1, double y2, boolean transferable, double nearConst, boolean pokemon){
-        this.x1 = x1 + nearConst;
-        this.y1 = y1 + nearConst;
+        this.x1 = x1 - nearConst;
+        this.y1 = y1 - nearConst;
         this.x2 = x2 + nearConst;
         this.y2 = y2 + nearConst;
         this.transferable = transferable;

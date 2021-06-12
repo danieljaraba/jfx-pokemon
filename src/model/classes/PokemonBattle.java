@@ -3,10 +3,12 @@ package model.classes;
 import model.abstractClasses.Pokemon;
 import model.interfaces.Battle;
 
+import java.io.Serializable;
+
 /**
  * The type Pokemon battle.
  */
-public class PokemonBattle implements Battle {
+public class PokemonBattle implements Battle , Serializable {
 
     private Pokemon attacker;
     private Pokemon user;
@@ -43,6 +45,15 @@ public class PokemonBattle implements Battle {
         this.attacker = attacker;
         this.user = user;
         this.atkHealth = attacker.getHealth();
+        this.defHealth = user.getHealth();
+        this.atkMana = 100;
+        this.defMana = 100;
+    }
+
+    public PokemonBattle(Pokemon user , PokemonTrainer attackerTrainner){
+        attacker = attackerTrainner.getRamdomPokemon();
+        this.user = user;
+
         this.defHealth = user.getHealth();
         this.atkMana = 100;
         this.defMana = 100;

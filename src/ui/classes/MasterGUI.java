@@ -1238,6 +1238,31 @@ public class MasterGUI {
         }
     }
 
+    @FXML
+    void btCatchUserBattle(ActionEvent event) {
+        if(current.getActiveBattle().getAtkHealth() < 50){
+            if(current.getPlayer().getTrainersBag().saveCapturedPokemon(current.getActiveBattle().getAttacker())){
+                battleWins(3);
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText("Look!!");
+                alert.setContentText("Capture failed");
+
+                alert.showAndWait();
+                changeAttackerScreen();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Look!!");
+            alert.setContentText("Capture failed");
+
+            alert.showAndWait();
+            changeAttackerScreen();
+        }
+    }
+
 
     public void changeAttackerScreen(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildAttack.fxml"));

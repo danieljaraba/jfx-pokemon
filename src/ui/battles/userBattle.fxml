@@ -42,6 +42,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <JFXButton layoutX="258.0" layoutY="304.0" onAction="#btCatchUserBattle" prefHeight="25.0" prefWidth="118.0" text="Catch pokemon" />
          </children>
       </Pane>
    </children>

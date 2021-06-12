@@ -3,10 +3,12 @@ package model.classes;
 import model.abstractClasses.Pokemon;
 import model.interfaces.Battle;
 
+import java.io.Serializable;
+
 /**
  * The type Pokemon battle.
  */
-public class PokemonBattle implements Battle {
+public class PokemonBattle implements Battle , Serializable {
 
     private Pokemon attacker;
     private Pokemon user;

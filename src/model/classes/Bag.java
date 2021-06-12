@@ -29,6 +29,9 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         super(name,price);
         this.space = space;
         emptyPokeballs = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            emptyPokeballs.add(new Pokeball("",0));
+        }
         usedPokeballs = new ArrayList<>();
         this.trainnerPokedex = trainnerPokedex;
     }

@@ -161,6 +161,15 @@ public class MasterGUI {
     @FXML
     private Label lbAttackerHealthWildAttack;
 
+    @FXML
+    private ImageView imgUserEndBattle;
+
+    @FXML
+    private ImageView imgAttackerEndBattle;
+
+    @FXML
+    private Label lbTextEndBattle;
+
     private PokemonBattleThread pokemonBattleThread;
     private Village[] villages;
     private Village current;
@@ -411,6 +420,10 @@ public class MasterGUI {
 
     @FXML
     public void btLeaveWildBattle(ActionEvent event) throws IOException {
+        leaveBattle();
+    }
+
+    public void leaveBattle() throws IOException {
         String result = current.getName();
         switch (result) {
             case "pueblo: 1": {
@@ -1182,7 +1195,11 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(1);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-        changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
     }
 
     @FXML
@@ -1190,7 +1207,11 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(2);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-       changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
     }
 
     @FXML
@@ -1198,7 +1219,11 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(3);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-        changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
     }
 //I
     @FXML
@@ -1206,7 +1231,11 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(4);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-        changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
     }
 
 
@@ -1224,12 +1253,14 @@ public class MasterGUI {
         lbUserHealthWildAttack.setText("Health: "+ current.getActiveBattle().getDefHealth());
         lbAttackerHealthWildAttack.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         enemysTourn(current.getActiveBattle().getAtkHealth(), current.getActiveBattle().getDefHealth());
-
     }
 
     public void enemysTourn(double atkHealth, double defHealth){
         pokemonBattleThread = new PokemonBattleThread(new PokemonBattle(userPokemon,attacker),this,defHealth,atkHealth);
         pokemonBattleThread.start();
+    }
+
+    public void resumeBattle(){
         ResumeBattleThread rbt = new ResumeBattleThread(this);
         rbt.start();
     }
@@ -1244,6 +1275,40 @@ public class MasterGUI {
        // lbAttackWildAttack.setText("Attacker uses "+update);
     }
 
+    public void battleWins(int option){
+        switch (option){
+            case 1:
+                chargeEndBattleScreen();
+                lbTextEndBattle.setText("User wins");
+                break;
+            case 2:
+                chargeEndBattleScreen();
+                lbTextEndBattle.setText("Attacker wins");
+                break;
+            case 3:
+                chargeEndBattleScreen();
+                lbTextEndBattle.setText("Pokemon captured");
+                break;
+        }
+    }
+
+    @FXML
+    void btLeaveEndBattle(ActionEvent event) throws IOException {
+        leaveBattle();
+    }
+
+    public void chargeEndBattleScreen(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/endBattle.fxml"));
+        fxmlLoader.setController(this);
+        try {
+            Parent battle = fxmlLoader.load();
+            borderPane.setCenter(battle);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgUserEndBattle.setImage(new Image(userPokemon.getImg()));
+        imgAttackerEndBattle.setImage(new Image(attacker.getImg()));
+    }
 
     @FXML
     public void cpchangeColorAdveturePane(ActionEvent event) {

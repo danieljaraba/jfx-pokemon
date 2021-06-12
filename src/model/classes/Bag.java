@@ -86,6 +86,7 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
             }
         }
     }
+
     /**
      * Sort used pokeballs by pokemon name.
      */
@@ -105,6 +106,9 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         //usedPokeballs.sort(pokemonOrderByName);
     }
 
+    /**
+     * Sort used pokeball by base deffense.
+     */
     public void sortUsedPokeballByBaseDeffense(){
         for(int i = 1; i < usedPokeballs.size(); i++){
             for(int j = i; j > 0 && usedPokeballs.get(j-1).getPokemon().getBaseDefense() > usedPokeballs.get(j).getPokemon().getBaseDefense(); j--){
@@ -115,17 +119,24 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }
     }
 
-    public Pokeball foundPokemonByLevel(ArrayList<Pokeball> used, int level){
+
+    /**
+     * Found pokemon by level pokeball.
+     *
+     * @param level the level
+     * @return the pokeball
+     */
+    public Pokeball foundPokemonByLevel(int level){
         Pokeball ret = null;
-        int first = used.get(0).getPokemon().getLevel();
-        int last = used.get(used.size()-1).getPokemon().getLevel();
-        int mid = ( first + last)/2;
+        int first = usedPokeballs.get(0).getPokemon().getLevel();
+        int last = usedPokeballs.get(usedPokeballs.size()-1).getPokemon().getLevel();
+        int mid = ( usedPokeballs.size())/2;
         while( first <= last ){
-            if ( used.get(mid).getPokemon().getLevel() < level ){
+            if ( usedPokeballs.get(mid).getPokemon().getLevel() < level ){
                 first = mid + 1;
-            }else if ( used.get(mid).getPokemon().getLevel() == level ){
+            }else if ( usedPokeballs.get(mid).getPokemon().getLevel() == level ){
                 //System.out.println("Element is found at index: " + mid);
-                ret = used.get(mid);
+                ret = usedPokeballs.get(mid);
                 break;
             }else{
                 last = mid - 1;
@@ -139,17 +150,23 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }
     }
 
-    public Pokeball foundPokemonByHealth(ArrayList<Pokeball> used, int health){
+    /**
+     * Found pokemon by health pokeball.
+     *
+     * @param health the health
+     * @return the pokeball
+     */
+    public Pokeball foundPokemonByHealth( int health){
         Pokeball ret = null;
-        int first = (int)used.get(0).getPokemon().getHealth();
-        int last = (int)used.get(used.size()-1).getPokemon().getHealth();
-        int mid = ( first + last)/2;
+        int first = (int)usedPokeballs.get(0).getPokemon().getHealth();
+        int last = (int)usedPokeballs.get(usedPokeballs.size()-1).getPokemon().getHealth();
+        int mid = (usedPokeballs.size())/2;
         while( first <= last ){
-            if ( used.get(mid).getPokemon().getLevel() < health){
+            if ( usedPokeballs.get(mid).getPokemon().getHealth() < health){
                 first = mid + 1;
-            }else if ( used.get(mid).getPokemon().getHealth() == health){
+            }else if ( usedPokeballs.get(mid).getPokemon().getHealth() == health){
                 //System.out.println("Element is found at index: " + mid);
-                ret = used.get(mid);
+                ret = usedPokeballs.get(mid);
                 break;
             }else{
                 last = mid - 1;

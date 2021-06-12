@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-
+/**
+ * The type Me linked list.
+ *
+ * @param <E> the type parameter
+ */
 public class MeLinkedList<E> implements Serializable {
 
     private static final long serialVersionUID = 4L;
@@ -12,32 +16,65 @@ public class MeLinkedList<E> implements Serializable {
     private Node<E> tail;
     private int size;
 
+    /**
+     * Instantiates a new Me linked list.
+     */
     public MeLinkedList() {
         head = null;
         size = 0;
         tail = null;
     }
 
+    /**
+     * Gets head.
+     *
+     * @return the head
+     */
     public Node<E> getHead() {
         return head;
     }
 
+    /**
+     * Gets tail.
+     *
+     * @return the tail
+     */
     public Node<E> getTail() {
         return tail;
     }
 
+    /**
+     * Is empty boolean.
+     *
+     * @return the boolean
+     */
     public boolean isEmpty() {
         return (head == null)? true: false;
     }
 
+    /**
+     * Size int.
+     *
+     * @return the int
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Sets size.
+     *
+     * @param size the size
+     */
     public void setSize(int size) {
         this.size = size;
     }
 
+    /**
+     * Add.
+     *
+     * @param e the e
+     */
     public void add(E e) {
 
         if (head == null) {
@@ -70,6 +107,12 @@ public class MeLinkedList<E> implements Serializable {
 
     }
 
+    /**
+     * Index of int.
+     *
+     * @param e the e
+     * @return the int
+     */
     public int indexOf(E e){
         return indexOf(e, head, 0);
     }
@@ -85,7 +128,12 @@ public class MeLinkedList<E> implements Serializable {
     }
 
 
-
+    /**
+     * Get e.
+     *
+     * @param index the index
+     * @return the e
+     */
     public E get(int index){
 
         return get(index, head);
@@ -104,6 +152,12 @@ public class MeLinkedList<E> implements Serializable {
 
     }
 
+    /**
+     * Get node node.
+     *
+     * @param index the index
+     * @return the node
+     */
     public Node<E> getNode(int index){
 
         return getNode(index, head);
@@ -122,6 +176,11 @@ public class MeLinkedList<E> implements Serializable {
 
     }
 
+    /**
+     * Remove.
+     *
+     * @param index the index
+     */
     public void remove(int index){
         if(index == 0){
             head = head.getNext();
@@ -134,6 +193,11 @@ public class MeLinkedList<E> implements Serializable {
         size -= 1;
     }
 
+    /**
+     * Array to me list.
+     *
+     * @param array the array
+     */
     public void arrayToMeList(ArrayList<E> array){
 
         head = null;
@@ -147,6 +211,11 @@ public class MeLinkedList<E> implements Serializable {
 
     }
 
+    /**
+     * To array array list.
+     *
+     * @return the array list
+     */
     public ArrayList<E> toArray(){
         ArrayList<E> array = new ArrayList<E>();
 

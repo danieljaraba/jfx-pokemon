@@ -38,6 +38,9 @@ import model.classes.Village;
 import thread.*;
 
 
+/**
+ * The type Master gui.
+ */
 public class MasterGUI {
     //_______________ A. MAIN PANEL ____________
     //Attributes
@@ -98,6 +101,9 @@ public class MasterGUI {
 
     @FXML
     private ImageView imgPokemonChoosePokemon;
+
+    @FXML
+    private ImageView imgTrainerTournamentBattle;
 
     @FXML
     private TextFlow tflTutorialPane;
@@ -182,6 +188,9 @@ public class MasterGUI {
     private Village[] villages;
     private Village current;
     private Game curentGame;
+    /**
+     * The constant STEP.
+     */
     public final static double STEP = 8;
     private int down = 0;
     private int up = 0;
@@ -198,25 +207,29 @@ public class MasterGUI {
     private Pokemon userPokemon;
 
 
-
     /**
      * Instantiates a new Master gui.
      */
     public MasterGUI() {
         villages = new Village[4];
         curentGame = new Game();
-   /*     musicThread = new MusicThread();
+        musicThread = new MusicThread();
         try {
             musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
-
-
+        }
     }
 
 
+    /**
+     * Start game adventure pane.
+     *
+     * @param nameCharacter the name character
+     * @param imgURL        the img url
+     * @param nameColor     the name color
+     */
     public void startGameAdventurePane(String nameCharacter,String imgURL,String nameColor){
         for (int i = 0; i <villages.length ; i++) {
             villages[i] = new Village(370,225,3,"pueblo: "+(i+1), 5,nameCharacter,imgURL,nameColor);
@@ -290,6 +303,9 @@ public class MasterGUI {
     }
 
 
+    /**
+     * Add pokemon objects.
+     */
     public void addPokemonObjects(){
         for (Village village : villages) {
             String villageName = village.getName();
@@ -320,10 +336,6 @@ public class MasterGUI {
             }
         }
     }
-
-
-
-
 
 
     /**
@@ -425,11 +437,22 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Bt leave wild battle.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btLeaveWildBattle(ActionEvent event) throws IOException {
         leaveBattle();
     }
 
+    /**
+     * Leave battle.
+     *
+     * @throws IOException the io exception
+     */
     public void leaveBattle() throws IOException {
         String result = current.getName();
         switch (result) {
@@ -524,6 +547,11 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Set music volumen.
+     *
+     * @param event the event
+     */
     @FXML
     public void setMusicVolumen(MouseEvent event){
         System.out.println("Holam");
@@ -562,6 +590,12 @@ public class MasterGUI {
         borderPane.setCenter(toBackMenuPane);
     }
 
+    /**
+     * Btn adventure new game.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btnAdventureNewGame(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Adventure.fxml"));
@@ -575,6 +609,12 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Bt start adventure pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btStartAdventurePane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/Tutorial.fxml"));
@@ -618,7 +658,12 @@ public class MasterGUI {
     }
 
 
-
+    /**
+     * Bt continue tutorial pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btContinueTutorialPane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../villages/village1.fxml"));
@@ -682,6 +727,12 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Bt to back adventure pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btToBackAdventurePane(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../menus/NewGame.fxml"));
@@ -691,6 +742,12 @@ public class MasterGUI {
         borderPane.setCenter(toBackNewGamePane);
     }
 
+    /**
+     * Move space tutorial pane.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void moveSpaceTutorialPane(KeyEvent event) throws IOException {
         String msg = "";
@@ -762,7 +819,13 @@ public class MasterGUI {
     }
 
 
-    //metodo funciona en todas las pantallas que sean un mapa
+    /**
+     * Move character.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
+//metodo funciona en todas las pantallas que sean un mapa
     @FXML
     public void moveCharacter(KeyEvent event) throws IOException {
         System.out.println(event.getCode());
@@ -860,6 +923,11 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Make election.
+     *
+     * @param election the election
+     */
     public void makeElection(String election){
         switch (election){
             case "Save my game": TextInputDialog dialog = new TextInputDialog("walter");
@@ -921,6 +989,11 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Move left.
+     *
+     * @throws IOException the io exception
+     */
     public void moveLeft() throws IOException {
         String var = current.moveLeft();
         imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
@@ -931,7 +1004,11 @@ public class MasterGUI {
     }
 
 
-
+    /**
+     * Move right.
+     *
+     * @throws IOException the io exception
+     */
     public void moveRight() throws IOException {
         String var = current.moveRight();
         imgPlayerAllVillages.setLayoutX(current.getPlayer().getX());
@@ -943,7 +1020,11 @@ public class MasterGUI {
     }
 
 
-
+    /**
+     * Move up.
+     *
+     * @throws IOException the io exception
+     */
     public void moveUp() throws IOException {
         String var = current.moveUp();
         imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
@@ -953,6 +1034,11 @@ public class MasterGUI {
         System.out.println(current.getPlayer().getX() + " " + current.getPlayer().getY());
     }
 
+    /**
+     * Move down.
+     *
+     * @throws IOException the io exception
+     */
     public void moveDown() throws IOException {
         String var = current.moveDown();
         imgPlayerAllVillages.setLayoutY(current.getPlayer().getY());
@@ -962,6 +1048,12 @@ public class MasterGUI {
         System.out.println(current.getPlayer().getX() + " " + current.getPlayer().getY());
     }
 
+    /**
+     * Move option.
+     *
+     * @param var the var
+     * @throws IOException the io exception
+     */
     public void moveOption(String var) throws IOException {
         switch (var){
             case "Method":
@@ -973,6 +1065,11 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Move village.
+     *
+     * @throws IOException the io exception
+     */
     public void moveVillage() throws IOException {
         List<String> choices = new ArrayList<>();
         String check = current.getName();
@@ -1043,6 +1140,11 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Check position boolean.
+     *
+     * @return the boolean
+     */
     public boolean checkPosition(){
         boolean change = false;
         if ((imgPlayerAllVillages.getLayoutX() >= -20 && imgPlayerAllVillages.getLayoutX() <= 30) && (imgPlayerAllVillages.getLayoutY() >= 150 && imgPlayerAllVillages.getLayoutY() <= 195)){
@@ -1054,6 +1156,12 @@ public class MasterGUI {
         return change;
     }
 
+    /**
+     * Bt tournament new game.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btTournamentNewGame(ActionEvent event) throws IOException {
        if(current == null){
@@ -1073,6 +1181,12 @@ public class MasterGUI {
     }
 
 
+    /**
+     * Bt load previous game load game.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btLoadPreviousGameLoadGame(ActionEvent event) throws IOException {
         spinnerLoadGame.setVisible(true);
@@ -1138,6 +1252,9 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Pokemon zone.
+     */
     public void pokemonZone(){
         lasPositionX = imgPlayerAllVillages.getLayoutX();
         lasPositionY = imgPlayerAllVillages.getLayoutY();
@@ -1161,6 +1278,9 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Choose pokemon.
+     */
     public void choosePokemon(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/choosePokemon.fxml"));
         fxmlLoader.setController(this);
@@ -1177,6 +1297,11 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Bt fight choose pokemon.
+     *
+     * @param event the event
+     */
     @FXML
     void btFightChoosePokemon(ActionEvent event) {
         changeChoosePokemon("img/battles/emerald_battle_gif2.gif", 158, 201, 31, 126);
@@ -1193,6 +1318,9 @@ public class MasterGUI {
         thread.start();
     }
 
+    /**
+     * Start battle.
+     */
     public void startBattle(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/userBattle.fxml"));
         fxmlLoader.setController(this);
@@ -1208,6 +1336,15 @@ public class MasterGUI {
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
     }
 
+    /**
+     * Change choose pokemon.
+     *
+     * @param url       the url
+     * @param fitHeight the fit height
+     * @param fitWidth  the fit width
+     * @param x         the x
+     * @param y         the y
+     */
     public void changeChoosePokemon(String url, double fitHeight, double fitWidth, double x, double y){
         imgPlayerChoosePokemon.setImage(new Image(url));
         imgPlayerChoosePokemon.setFitHeight(fitHeight);
@@ -1216,11 +1353,21 @@ public class MasterGUI {
         imgPlayerChoosePokemon.setLayoutY(y);
     }
 
+    /**
+     * Bt fight wild battle.
+     *
+     * @param event the event
+     */
     @FXML
     void btFightWildBattle(ActionEvent event) {
         choosePokemon();
     }
 
+    /**
+     * Bt attack 1 user battle.
+     *
+     * @param event the event
+     */
     @FXML
     void btAttack1UserBattle(ActionEvent event) {
         current.getActiveBattle().userAttack(1);
@@ -1233,6 +1380,11 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Bt attack 2 user battle.
+     *
+     * @param event the event
+     */
     @FXML
     void btAttack2UserBattle(ActionEvent event) {
         current.getActiveBattle().userAttack(2);
@@ -1245,6 +1397,11 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Bt attack 3 user battle.
+     *
+     * @param event the event
+     */
     @FXML
     void btAttack3UserBattle(ActionEvent event) {
         current.getActiveBattle().userAttack(3);
@@ -1256,6 +1413,12 @@ public class MasterGUI {
             changeAttackerScreen();
         }
     }
+
+    /**
+     * Bt attack 4 user battle.
+     *
+     * @param event the event
+     */
 //I
     @FXML
     void btAttack4UserBattle(ActionEvent event) {
@@ -1269,6 +1432,11 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Bt catch user battle.
+     *
+     * @param event the event
+     */
     @FXML
     void btCatchUserBattle(ActionEvent event) {
         if(current.getActiveBattle().getAtkHealth() < 50){
@@ -1295,6 +1463,9 @@ public class MasterGUI {
     }
 
 
+    /**
+     * Change attacker screen.
+     */
     public void changeAttackerScreen(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/wildAttack.fxml"));
         fxmlLoader.setController(this);
@@ -1311,19 +1482,35 @@ public class MasterGUI {
         enemysTourn(current.getActiveBattle().getAtkHealth(), current.getActiveBattle().getDefHealth());
     }
 
+    /**
+     * Enemys tourn.
+     *
+     * @param atkHealth the atk health
+     * @param defHealth the def health
+     */
     public void enemysTourn(double atkHealth, double defHealth){
         pokemonBattleThread = new PokemonBattleThread(new PokemonBattle(userPokemon,attacker),this,defHealth,atkHealth);
         pokemonBattleThread.start();
     }
 
+    /**
+     * Resume battle.
+     */
     public void resumeBattle(){
         ResumeBattleThread rbt = new ResumeBattleThread(this);
         rbt.start();
     }
 
+    /**
+     * Update gui.
+     *
+     * @param update    the update
+     * @param atkHealth the atk health
+     * @param defHealth the def health
+     */
     public void updateGui(String update,double atkHealth, double defHealth ){
         System.out.println("Salud del enemigo: "+atkHealth);
-        System.out.println("Salud del pendejo jugador: "+defHealth);
+        System.out.println("Salud del  jugador: "+defHealth);
         lbUserHealthWildAttack.setText("Health: "+defHealth);
         lbAttackerHealthWildAttack.setText("Health: "+ atkHealth);
         current.getActiveBattle().setDefHealth(defHealth);
@@ -1331,6 +1518,11 @@ public class MasterGUI {
        // lbAttackWildAttack.setText("Attacker uses "+update);
     }
 
+    /**
+     * Battle wins.
+     *
+     * @param option the option
+     */
     public void battleWins(int option){
         switch (option){
             case 1:
@@ -1348,11 +1540,20 @@ public class MasterGUI {
         }
     }
 
+    /**
+     * Bt leave end battle.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void btLeaveEndBattle(ActionEvent event) throws IOException {
         leaveBattle();
     }
 
+    /**
+     * Charge end battle screen.
+     */
     public void chargeEndBattleScreen(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/endBattle.fxml"));
         fxmlLoader.setController(this);
@@ -1366,6 +1567,11 @@ public class MasterGUI {
         imgAttackerEndBattle.setImage(new Image(attacker.getImg()));
     }
 
+    /**
+     * Cpchange color adveture pane.
+     *
+     * @param event the event
+     */
     @FXML
     public void cpchangeColorAdveturePane(ActionEvent event) {
             Color c = colorPickerAdventurePane.getValue();
@@ -1388,6 +1594,12 @@ public class MasterGUI {
 
     }
 
+    /**
+     * To rgb code string.
+     *
+     * @param color the color
+     * @return the string
+     */
     public String toRGBCode( Color color )
     {
         return String.format( "#%02X%02X%02X",
@@ -1396,6 +1608,12 @@ public class MasterGUI {
                 (int)( color.getBlue() * 255 ) );
     }
 
+    /**
+     * Load versus screen.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void loadVersusScreen(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/versusScreen.fxml"));
@@ -1405,17 +1623,34 @@ public class MasterGUI {
         LoadBattleThread lbt = new LoadBattleThread(this);
         lbt.start();
 
-
-
     }
 
+    /**
+     * Load battle tournament.
+     *
+     * @throws IOException the io exception
+     */
     public void loadBattleTournament() throws IOException {
         FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("../battles/tournamentBattle.fxml"));
         fxmlLoader2.setController(this);
         Parent battleTournament = fxmlLoader2.load();
+        curentGame.setLocalTournaMent(new Tournament(curentGame.getCurrentTrainer()));
+        lbTrainerNameTournamentBattle.setText(curentGame.getLocalTournaMent().getRootTrainer().getName());
+        imgTrainerTournamentBattle.setImage(new Image(curentGame.getLocalTournaMent().getRootTrainer().getImg()));
         borderPane.setCenter(battleTournament);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Hey!");
+        alert.setHeaderText("This is a beta version of the tournament");
+        alert.setContentText("You can participate in a future version");
+        alert.showAndWait();
     }
 
+    /**
+     * Bt leave tournament battle.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void btLeaveTournamentBattle(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -1436,9 +1671,13 @@ public class MasterGUI {
             }
         }
 
-
     }
 
+    /**
+     * Bt search pokedex.
+     *
+     * @param event the event
+     */
     @FXML
     public void btSearchPokedex(ActionEvent event) {
        String namePokemon = tfNamePokedexPane.getText();
@@ -1523,15 +1762,18 @@ public class MasterGUI {
 
 
 
+
     //Getters and Setters.
 
     public BorderPane getBorderPane() {
         return borderPane;
     }
 
+
     public MusicThread getMusicThread() {
         return musicThread;
     }
+
 
     public void setBorderPane(BorderPane borderPane) {
         this.borderPane = borderPane;

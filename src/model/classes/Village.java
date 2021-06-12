@@ -10,6 +10,8 @@ import java.util.ArrayList;
  */
 public class Village extends World {
 
+    //Attributes
+
     private String name;
     private PokemonTrainer player;
     private ArrayList<GameObject> gameObjects;
@@ -39,6 +41,7 @@ public class Village extends World {
         this.movement = movement;
         localPokemons = new Pokemon[3];
     }
+
 
 
     /**
@@ -175,6 +178,12 @@ public class Village extends World {
         return is;
     }
 
+    /**
+     * Search pokemon index int.
+     *
+     * @param name the name
+     * @return the int
+     */
     public int searchPokemonIndex(String name){
         int index = 0;
         for(int i = 0; i<player.getTrainersBag().getUsedPokeballs().size(); i++){
@@ -185,18 +194,40 @@ public class Village extends World {
         return index;
     }
 
+    /**
+     * Start battle.
+     *
+     * @param attacker the attacker
+     * @param user     the user
+     * @param trainer  the trainer
+     */
     public void startBattle(Pokemon attacker, Pokemon user, PokemonTrainer trainer){
         this.activeBattle = new PokemonBattle(attacker, user, trainer);
     }
 
+    /**
+     * Sets local pokemons.
+     *
+     * @param localPokemons the local pokemons
+     */
     public void setLocalPokemons(Pokemon[] localPokemons) {
         this.localPokemons = localPokemons;
     }
 
+    /**
+     * Gets active battle.
+     *
+     * @return the active battle
+     */
     public PokemonBattle getActiveBattle() {
         return activeBattle;
     }
 
+    /**
+     * Sets active battle.
+     *
+     * @param activeBattle the active battle
+     */
     public void setActiveBattle(PokemonBattle activeBattle) {
         this.activeBattle = activeBattle;
     }

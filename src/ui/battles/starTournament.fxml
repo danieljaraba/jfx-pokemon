@@ -18,25 +18,12 @@
                   <Image url="@../../img/battles/INTERNATIONAL-LOGO-FINAL.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="413.0" layoutY="497.0" onAction="#loadVersusScreen" styleClass="buttonResumeTournament" stylesheets="@../../../style/Style.css" text="Participate" textFill="#f2f2f2f7">
+            <JFXButton layoutX="614.0" layoutY="478.0" onAction="#loadVersusScreen" styleClass="buttonResumeTournament" stylesheets="@../../../style/Style.css" text="Participate" textFill="#f2f2f2f7">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
                <ripplerFill>
                   <RadialGradient centerX="0.42696629213483145" centerY="0.4278846153846154" radius="0.5">
-                     <stops>
-                        <Stop color="BLACK" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </RadialGradient>
-               </ripplerFill>
-            </JFXButton>
-            <JFXButton layoutX="874.0" layoutY="497.0" prefHeight="49.0" prefWidth="191.0" styleClass="buttonResumeTournament" stylesheets="@../../../style/Style.css" text="Resume" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="26.0" />
-               </font>
-               <ripplerFill>
-                  <RadialGradient centerX="0.5" centerY="0.5721153846153846" radius="0.5">
                      <stops>
                         <Stop color="BLACK" />
                         <Stop color="WHITE" offset="1.0" />

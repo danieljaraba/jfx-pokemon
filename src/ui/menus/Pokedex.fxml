@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton layoutX="472.0" layoutY="39.0" onAction="#btSearchPokedex" style="-fx-background-color: black;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></JFXButton>
+      <JFXTextArea fx:id="taTextPokedexPane" editable="false" layoutX="34.0" layoutY="130.0" prefHeight="251.0" prefWidth="532.0" unFocusColor="RED" />
+      <JFXTextField fx:id="tfNamePokedexPane" layoutX="145.0" layoutY="39.0" promptText="Name Pokemon" unFocusColor="RED">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></JFXTextField>
+   </children>
+</Pane>

@@ -33,7 +33,11 @@ public class PokemonBattleThread extends Thread{
             alert.setContentText(pokemonBattle.getUser().getName()+" uses: "+pokemonBattle.getUser().getPokemonAttacks()[ramdomAttack-1].getName());
             alert.showAndWait();
 
-
+            if(pokemonBattle.getAtkHealth() <= 0){
+                masterGUI.battleWins(2);
+            }else{
+                masterGUI.resumeBattle();
+            }
         }));
 
     }
@@ -61,4 +65,6 @@ public class PokemonBattleThread extends Thread{
     public void setDefHealth(double defHealth) {
         this.defHealth = defHealth;
     }
+
+
 }

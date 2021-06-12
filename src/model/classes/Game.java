@@ -5,7 +5,7 @@ import java.io.*;
  * The type Game.
  */
 public class Game implements Serializable{
-
+    private  static final long serialVersionUID = 2;
 
     /**
      * The constant PATH_FIRE_POKEMON_TXT.

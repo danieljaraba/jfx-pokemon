@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
@@ -22,6 +23,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
@@ -164,6 +166,21 @@ public class MasterGUI {
     @FXML
     private Label lbAttackerHealthWildAttack;
 
+    @FXML
+    private ImageView imgUserEndBattle;
+
+    @FXML
+    private ImageView imgAttackerEndBattle;
+
+    @FXML
+    private Label lbTextEndBattle;
+
+    @FXML
+    private JFXTextArea taTextPokedexPane;
+
+    @FXML
+    private JFXTextField tfNamePokedexPane;
+
     private PokemonBattleThread pokemonBattleThread;
     private Village[] villages;
     private Village current;
@@ -191,14 +208,13 @@ public class MasterGUI {
     public MasterGUI() {
         villages = new Village[4];
         curentGame = new Game();
-        musicThread = new MusicThread();
-       /* try {
+   /*     musicThread = new MusicThread();
+        try {
             musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        */
+        }*/
 
 
     }
@@ -414,6 +430,10 @@ public class MasterGUI {
 
     @FXML
     public void btLeaveWildBattle(ActionEvent event) throws IOException {
+        leaveBattle();
+    }
+
+    public void leaveBattle() throws IOException {
         String result = current.getName();
         switch (result) {
             case "pueblo: 1": {
@@ -699,7 +719,7 @@ public class MasterGUI {
 
                     num +=1;
                     break;
-                case 3:  Text text6 = new Text("You also have the possibility to press \"ESC\" to save your progress or return " +
+                case 3:  Text text6 = new Text("You also have the possibility to press \"ESC\" to save your progress, See Pokedex or return " +
                         "to the menu.");
                     text6.setFont(textEdit);
                     tflTutorialPane.getChildren().setAll();
@@ -753,6 +773,7 @@ public class MasterGUI {
 
             List<String> choices = new ArrayList<>();
             choices.add("Save my game");
+            choices.add("POKEDEX");
             choices.add("Back to menu");
 
 
@@ -872,6 +893,29 @@ public class MasterGUI {
                 }
 
                 borderPane.setCenter(toBackMenuPane);
+                break;
+            case "POKEDEX":
+                FXMLLoader open = new FXMLLoader(getClass().getResource("../menus/Pokedex.fxml"));
+                open.setController(this);
+                Parent root = null;
+
+
+                try {
+                    root = open.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(scene);
+                stage.setTitle("Pokedex");
+                stage.showAndWait();
+
+
+
+
                 break;
             default:
                 System.out.println("Para que muestres el tuto kchon");
@@ -1185,7 +1229,11 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(1);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-        changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
     }
 
     @FXML
@@ -1193,7 +1241,11 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(2);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-       changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
     }
 
     @FXML
@@ -1201,7 +1253,11 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(3);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-        changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
     }
 //I
     @FXML
@@ -1209,7 +1265,36 @@ public class MasterGUI {
         current.getActiveBattle().userAttack(4);
         lbAttackerHealthUserBattle.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         System.out.println("Health: "+ current.getActiveBattle().getAtkHealth());
-        changeAttackerScreen();
+        if(current.getActiveBattle().userWins()){
+            battleWins(1);
+        }else{
+            changeAttackerScreen();
+        }
+    }
+
+    @FXML
+    void btCatchUserBattle(ActionEvent event) {
+        if(current.getActiveBattle().getAtkHealth() < 50){
+            if(current.getPlayer().getTrainersBag().saveCapturedPokemon(current.getActiveBattle().getAttacker())){
+                battleWins(3);
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText("Look!!");
+                alert.setContentText("Capture failed");
+
+                alert.showAndWait();
+                changeAttackerScreen();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Look!!");
+            alert.setContentText("Capture failed");
+
+            alert.showAndWait();
+            changeAttackerScreen();
+        }
     }
 
 
@@ -1227,12 +1312,14 @@ public class MasterGUI {
         lbUserHealthWildAttack.setText("Health: "+ current.getActiveBattle().getDefHealth());
         lbAttackerHealthWildAttack.setText("Health: "+ current.getActiveBattle().getAtkHealth());
         enemysTourn(current.getActiveBattle().getAtkHealth(), current.getActiveBattle().getDefHealth());
-
     }
 
     public void enemysTourn(double atkHealth, double defHealth){
         pokemonBattleThread = new PokemonBattleThread(new PokemonBattle(userPokemon,attacker),this,defHealth,atkHealth);
         pokemonBattleThread.start();
+    }
+
+    public void resumeBattle(){
         ResumeBattleThread rbt = new ResumeBattleThread(this);
         rbt.start();
     }
@@ -1247,6 +1334,40 @@ public class MasterGUI {
        // lbAttackWildAttack.setText("Attacker uses "+update);
     }
 
+    public void battleWins(int option){
+        switch (option){
+            case 1:
+                chargeEndBattleScreen();
+                lbTextEndBattle.setText("User wins");
+                break;
+            case 2:
+                chargeEndBattleScreen();
+                lbTextEndBattle.setText("Attacker wins");
+                break;
+            case 3:
+                chargeEndBattleScreen();
+                lbTextEndBattle.setText("Pokemon captured");
+                break;
+        }
+    }
+
+    @FXML
+    void btLeaveEndBattle(ActionEvent event) throws IOException {
+        leaveBattle();
+    }
+
+    public void chargeEndBattleScreen(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../battles/endBattle.fxml"));
+        fxmlLoader.setController(this);
+        try {
+            Parent battle = fxmlLoader.load();
+            borderPane.setCenter(battle);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgUserEndBattle.setImage(new Image(userPokemon.getImg()));
+        imgAttackerEndBattle.setImage(new Image(attacker.getImg()));
+    }
 
     @FXML
     public void cpchangeColorAdveturePane(ActionEvent event) {
@@ -1322,6 +1443,86 @@ public class MasterGUI {
                 tournament.requestFocus();
                 borderPane.setCenter(tournament);
             }
+        }
+
+    }
+
+    @FXML
+    public void btSearchPokedex(ActionEvent event) {
+       String namePokemon = tfNamePokedexPane.getText();
+        taTextPokedexPane.setFont(textEdit);
+
+        switch (namePokemon) {
+            case "Arcanine":
+
+                taTextPokedexPane.setText("The sight of it running over 6,200 miles in a " +
+                        "single day and night has captivated many people.");
+                break;
+            case "Blastoise":
+                taTextPokedexPane.setText("It crushes its foe under its heavy body to cause fainting." +
+                        " In a pinch, it will withdraw inside its shell.");
+                break;
+            case "Bulbasaur":
+                taTextPokedexPane.setText("There is a plant seed on its back right from the day this Pokémon is born." +
+                        " The seed slowly grows larger.");
+                break;
+            case "Charmander":
+                taTextPokedexPane.setText("From the time it is born, a flame burns at the tip of its tail." +
+                        " Its life would end if the flame were to go out.");
+                break;
+            case "Charizard":
+                taTextPokedexPane.setText("It spits fire that is hot enough to melt boulders. " +
+                        "It may cause forest fires by blowing flames.");
+                break;
+            case "Geodude":
+                taTextPokedexPane.setText("Commonly found near mountain trails and the like." +
+                        " If you step on one by accident, it gets angry.");
+                break;
+            case "Grovyle":
+                taTextPokedexPane.setText("The leaves growing out of Grovyle’s body are convenient for camouflaging it from enemies in the forest." +
+                        " This Pokémon is a master at climbing trees in jungles.");
+                break;
+            case "Mew":
+                taTextPokedexPane.setText("When viewed through a microscope, this Pokémon’s short, fine, delicate hair can be seen.");
+                break;
+            case "Mewtwo":
+                taTextPokedexPane.setText("Its DNA is almost the same as Mew’s. However, its size and disposition are vastly different.");
+                break;
+            case "Moltres":
+                taTextPokedexPane.setText("It’s one of the legendary bird Pokémon. When Moltres flaps its flaming wings, " +
+                        "they glimmer with a dazzling red glow.");
+                break;
+            case "Onix":
+                taTextPokedexPane.setText("As it digs through the ground, " +
+                        "it absorbs many hard objects. This is what makes its body so solid.");
+                break;
+            case "Pikachu":
+                taTextPokedexPane.setText("Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.");
+                break;
+            case "Psyduck":
+                taTextPokedexPane.setText("Psyduck is constantly beset by headaches. If the Pokémon lets its strange power erupt, apparently" +
+                        " the pain subsides for a while.");
+                break;
+            case "Raikou":
+                taTextPokedexPane.setText("Raikou embodies the speed of lightning. The roars of this Pokémon send shock waves shuddering" +
+                        " through the air and shake the ground as if lightning bolts had come crashing down.");
+                break;
+            case "Snorlax":
+                taTextPokedexPane.setText("It is not satisfied unless it eats over 880 pounds of food every day." +
+                        " When it is done eating, it goes promptly to sleep.");
+                break;
+            case "Squirtle":
+                taTextPokedexPane.setText("When it retracts its long neck into its shell, it squirts out water with vigorous force.");
+                break;
+            case "Venusaur":
+                taTextPokedexPane.setText("Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.");
+                break;
+            case "Zapdos":
+                taTextPokedexPane.setText("This Pokémon has complete control over electricity." +
+                        " There are tales of Zapdos nesting in the dark depths of pitch-black thunderclouds.");
+                break;
+            default:
+                taTextPokedexPane.setText("Revisa el nombre del Pokemon");
         }
 
     }

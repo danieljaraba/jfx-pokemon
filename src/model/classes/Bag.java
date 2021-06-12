@@ -6,7 +6,6 @@ import model.interfaces.Tradable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * The type Bag.
@@ -30,16 +29,34 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         super(name,price);
         this.space = space;
         emptyPokeballs = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            emptyPokeballs.add(new Pokeball("",0));
+        }
         usedPokeballs = new ArrayList<>();
         this.trainnerPokedex = trainnerPokedex;
     }
 
+    /**
+     * Save captured pokemon boolean.
+     *
+     * @param pokemon the pokemon
+     * @return the boolean
+     */
     public boolean saveCapturedPokemon(Pokemon pokemon){
         if(!emptyPokeballs.isEmpty()){
             int canCapture = (int)(Math.random()*6);
             if(canCapture > 1){
+                WaterPokemon pkm = new WaterPokemon(pokemon.getImg(), pokemon.getName(), pokemon.getExp(), pokemon.getLevel(), pokemon.getHealth(), pokemon.getBaseDefense(), pokemon.isHasOwner(), pokemon.getType(), pokemon.getPokemonAttacks(), true);
                 Pokeball pokeball = emptyPokeballs.remove(emptyPokeballs.size()-1);
-                pokeball.setPokemon(pokemon);
+                pokeball.setPokemon(pkm);
+                switch (pokeball.getPokemon().getName()){
+                    case "Arcanine":
+                        pokeball.getPokemon().setImg("img/pokemon/pokemon_back_sprites/Arcanine.png");
+                    break;
+                    case "Blastoide":
+                        pokeball.getPokemon().setImg("img/pokemon/pokemon_back_sprites/Blastoise_back.png");
+                    break;
+                }
                 usedPokeballs.add(pokeball);
                 return true;
             }else{
@@ -51,6 +68,24 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }
     }
 
+    /**
+     * Sort used pokeballs by level.
+     */
+    public void sortUsedPokeballsByLevel(){
+        ArrayList<Pokeball> copy = usedPokeballs;
+        boolean changed = true;
+        for(int i = 1; i < copy.size() && changed; i++){
+            changed = false;
+            for(int j = 0; j < copy.size() -i; j++){
+                if(copy.get(j).getPokemon().getLevel() > copy.get(j+1).getPokemon().getLevel()){
+                    changed = true;
+                    Pokeball temp = copy.get(j);
+                    copy.set(j, copy.remove(j+1));
+                    copy.set(j+1, temp);
+                }
+            }
+        }
+    }
     /**
      * Sort used pokeballs by pokemon name.
      */
@@ -68,6 +103,64 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }
         //Comparator<Pokeball> pokemonOrderByName = (pokeballA, pokeballB) -> (pokeballA.getPokemon().getName().compareToIgnoreCase(pokeballB.getPokemon().getName()));
         //usedPokeballs.sort(pokemonOrderByName);
+    }
+
+    public void sortUsedPokeballByBaseDeffense(){
+        for(int i = 1; i < usedPokeballs.size(); i++){
+            for(int j = i; j > 0 && usedPokeballs.get(j-1).getPokemon().getBaseDefense() > usedPokeballs.get(j).getPokemon().getBaseDefense(); j--){
+                Pokeball temp = usedPokeballs.get(j);
+                usedPokeballs.set(j, usedPokeballs.get(j-1));
+                usedPokeballs.set(j-1,temp);
+            }
+        }
+    }
+
+    public Pokeball foundPokemonByLevel(ArrayList<Pokeball> used, int level){
+        Pokeball ret = null;
+        int first = used.get(0).getPokemon().getLevel();
+        int last = used.get(used.size()-1).getPokemon().getLevel();
+        int mid = ( first + last)/2;
+        while( first <= last ){
+            if ( used.get(mid).getPokemon().getLevel() < level ){
+                first = mid + 1;
+            }else if ( used.get(mid).getPokemon().getLevel() == level ){
+                //System.out.println("Element is found at index: " + mid);
+                ret = used.get(mid);
+                break;
+            }else{
+                last = mid - 1;
+            }
+            mid = (first + last)/2;
+        }
+        if ( first > last ){
+            return null;
+        }else{
+            return ret;
+        }
+    }
+
+    public Pokeball foundPokemonByHealth(ArrayList<Pokeball> used, int health){
+        Pokeball ret = null;
+        int first = (int)used.get(0).getPokemon().getHealth();
+        int last = (int)used.get(used.size()-1).getPokemon().getHealth();
+        int mid = ( first + last)/2;
+        while( first <= last ){
+            if ( used.get(mid).getPokemon().getLevel() < health){
+                first = mid + 1;
+            }else if ( used.get(mid).getPokemon().getHealth() == health){
+                //System.out.println("Element is found at index: " + mid);
+                ret = used.get(mid);
+                break;
+            }else{
+                last = mid - 1;
+            }
+            mid = (first + last)/2;
+        }
+        if ( first > last ){
+            return null;
+        }else{
+            return ret;
+        }
     }
 
     /**

@@ -33,7 +33,7 @@ class BagTest {
         ArrayList<Pokeball> usedPokeballs = new ArrayList<>();
 
         usedPokeballs.add(new Pokeball("",0,
-                new WaterPokemon("","Squirtle",100,1,100,20,false,"Water",null, true)));
+                new WaterPokemon("","Squirtle",100,2,100,20,false,"Water",null, true)));
 
         usedPokeballs.add(new Pokeball("",0,
                 new WaterPokemon("","WaterPokemon",100,1,100,20,false,"Water",null, true)));
@@ -85,5 +85,41 @@ class BagTest {
         }else if(initialSizeEmpty > finalSizeEmpty && initialSizeUsed==finalSizeUsed){
             assertFalse(test);
         }
+    }
+
+    @Test
+    void sortUsedPokeballsByLevel() {
+        setupScenary2();
+        bag.sortUsedPokeballsByLevel();
+        int bad = 0;
+        for(int i = 1; i < bag.getUsedPokeballs().size(); i++){
+            if(bag.getUsedPokeballs().get(i-1).getPokemon().getLevel() > bag.getUsedPokeballs().get(i).getPokemon().getLevel()){
+                bad++;
+            }
+        }
+        boolean ret = (bad==0);
+        assertTrue(ret);
+    }
+
+    @Test
+    void sortUsedPokeballByBaseDeffense() {
+        setupScenary2();
+        bag.sortUsedPokeballByBaseDeffense();
+        int bad = 0;
+        for(int i = 1; i < bag.getUsedPokeballs().size(); i++){
+            if(bag.getUsedPokeballs().get(i-1).getPokemon().getLevel() > bag.getUsedPokeballs().get(i).getPokemon().getLevel()){
+                bad++;
+            }
+        }
+        boolean ret = (bad==0);
+        assertTrue(ret);
+    }
+
+    @Test
+    void foundPokemonByLevel() {
+    }
+
+    @Test
+    void foundPokemonByHealth() {
     }
 }

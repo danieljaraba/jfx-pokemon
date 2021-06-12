@@ -208,15 +208,13 @@ public class MasterGUI {
     public MasterGUI() {
         villages = new Village[4];
         curentGame = new Game();
-   /*     musicThread = new MusicThread();
+        musicThread = new MusicThread();
         try {
             musicThread.start();
             musicThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
-
-
+        }
     }
 
 

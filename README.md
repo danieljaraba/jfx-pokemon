@@ -10,8 +10,13 @@
 ## <b> _Documentation_ </b> 📄
 
 
-- **¡Here Link!: [Previus Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo.pdf)**
-- **¡Here Link #2!: [Second Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo2.pdf)**
+- **!Here Link!: [Previus Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo.pdf)**
+- **!Here Link #2!: [Second Documentation](https://github.com/danieljaraba/jfx-pokemon/blob/master/docs/Campaz-Gonz%C3%A1lez-Jaraba-Ricardo2.pdf)**
+- **!Here Link #3!: [Third Documentation]()**
+
+## <b> _Video_ </b> 🎥
+
+- **!Here Link¡: [Video]()**
 
 ## <b> _Built with_ </b> 🛠️
 + [Java](https://www.oracle.com/co/java/technologies/javase/javase-jdk8-downloads.html) - Programming language used.
@@ -19,7 +24,7 @@
 + [Scene Builder](https://gluonhq.com/products/scene-builder/) - GUI development programt.
 + [JFoenix](https://github.com/sshahine/JFoenix) - Library to improve the appearance of the GUI.
 
-## <b> _Overview_ </b>
+## <b> _Overview_ </b> 💻🕹️
 
 
 <img src = "https://cdn.discordapp.com/attachments/753000876494290995/848746205349019678/unknown.png" width="600px" height="400px">
@@ -30,18 +35,6 @@
 <img src = "https://cdn.discordapp.com/attachments/753000876494290995/848747056532422736/unknown.png" width="600px" height="400px">
 <img src = "https://cdn.discordapp.com/attachments/753000876494290995/848747118440349716/unknown.png" width="600px" height="400px">
 <img src = "https://cdn.discordapp.com/attachments/753000876494290995/848747166083710997/unknown.png" width="600px" height="400px">
-
-## <b> _Updates:_ </b>
-
-Functional requirements working:
-
-+ **Music**
-+ **Collisions**
-+ **Map travel**
-
-
-***<h2>coming soon....***<h2/> <br>
-
 
 ## <b> _Made by_ </b>
 

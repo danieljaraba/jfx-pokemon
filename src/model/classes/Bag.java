@@ -86,6 +86,7 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
             }
         }
     }
+
     /**
      * Sort used pokeballs by pokemon name.
      */
@@ -105,6 +106,9 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         //usedPokeballs.sort(pokemonOrderByName);
     }
 
+    /**
+     * Sort used pokeball by base deffense.
+     */
     public void sortUsedPokeballByBaseDeffense(){
         for(int i = 1; i < usedPokeballs.size(); i++){
             for(int j = i; j > 0 && usedPokeballs.get(j-1).getPokemon().getBaseDefense() > usedPokeballs.get(j).getPokemon().getBaseDefense(); j--){
@@ -115,6 +119,13 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }
     }
 
+    /**
+     * Found pokemon by level pokeball.
+     *
+     * @param used  the used
+     * @param level the level
+     * @return the pokeball
+     */
     public Pokeball foundPokemonByLevel(ArrayList<Pokeball> used, int level){
         Pokeball ret = null;
         int first = used.get(0).getPokemon().getLevel();
@@ -139,6 +150,13 @@ public class Bag extends StoreObject  implements Tradable , Serializable {
         }
     }
 
+    /**
+     * Found pokemon by health pokeball.
+     *
+     * @param used   the used
+     * @param health the health
+     * @return the pokeball
+     */
     public Pokeball foundPokemonByHealth(ArrayList<Pokeball> used, int health){
         Pokeball ret = null;
         int first = (int)used.get(0).getPokemon().getHealth();

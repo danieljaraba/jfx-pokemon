@@ -716,7 +716,7 @@ public class MasterGUI {
 
                     num +=1;
                     break;
-                case 3:  Text text6 = new Text("You also have the possibility to press \"ESC\" to save your progress or return " +
+                case 3:  Text text6 = new Text("You also have the possibility to press \"ESC\" to save your progress, See Pokedex or return " +
                         "to the menu.");
                     text6.setFont(textEdit);
                     tflTutorialPane.getChildren().setAll();

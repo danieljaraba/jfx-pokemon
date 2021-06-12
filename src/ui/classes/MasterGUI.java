@@ -1239,7 +1239,7 @@ public class MasterGUI {
 
     public void updateGui(String update,double atkHealth, double defHealth ){
         System.out.println("Salud del enemigo: "+atkHealth);
-        System.out.println("Salud del pendejo jugador: "+defHealth);
+        System.out.println("Salud del  jugador: "+defHealth);
         lbUserHealthWildAttack.setText("Health: "+defHealth);
         lbAttackerHealthWildAttack.setText("Health: "+ atkHealth);
         current.getActiveBattle().setDefHealth(defHealth);
@@ -1297,6 +1297,11 @@ public class MasterGUI {
         lbTrainerNameTournamentBattle.setText(curentGame.getLocalTournaMent().getRootTrainer().getName());
         imgTrainerTournamentBattle.setImage(new Image(curentGame.getLocalTournaMent().getRootTrainer().getImg()));
         borderPane.setCenter(battleTournament);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Hey!");
+        alert.setHeaderText("This is a beta version of the tournament");
+        alert.setContentText("You can participate in a future version");
+        alert.showAndWait();
     }
 
     @FXML
@@ -1305,7 +1310,6 @@ public class MasterGUI {
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to leve this battle?");
-        alert.showAndWait();
         ButtonType buttonTypeOne = new ButtonType("Yes");
         ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeCancel);
@@ -1322,10 +1326,7 @@ public class MasterGUI {
 
     }
 
-    @FXML
-    public void btFigthTournament(ActionEvent event) {
 
-    }
 
 
 

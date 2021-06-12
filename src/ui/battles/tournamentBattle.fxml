@@ -25,7 +25,7 @@
                   <Image url="@../../img/battles/battle_box.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btFigthWildBattle" layoutX="338.0" layoutY="296.0" onAction="#btFigthTournament" text="FIGTH" textFill="#ebe6e6">
+            <JFXButton fx:id="btFigthWildBattle" layoutX="338.0" layoutY="296.0" text="FIGTH" textFill="#ebe6e6">
                <font>
                   <Font name="Open Sans Semibold" size="23.0" />
                </font>
